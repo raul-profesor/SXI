@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 3.1 - Configuració d'un servidor DNS - Servicis en xarxa i Internet</title>
+        <title>Pràctica 3.2 - Configuració de servidor DNS mestre i esclau - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-31-configuracio-dun-servidor-dns" class="md-skip">
+        <a href="#practica-32-configuracio-de-servidor-dns-mestre-i-esclau" class="md-skip">
           Salta el contingut
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 3.1 - Configuració d'un servidor DNS
+              Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
             
           </span>
         </div>
@@ -299,6 +299,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -311,12 +323,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 3.1 - Configuració d'un servidor DNS
+          Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Pràctica 3.1 - Configuració d'un servidor DNS
+        Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
       </a>
       
         
@@ -334,51 +346,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
+  <a href="#millora-de-la-configuracio-del-servidor" class="md-nav__link">
+    Millora de la configuració del servidor
   </a>
   
-    <nav class="md-nav" aria-label="Configuració del servidor">
+    <nav class="md-nav" aria-label="Millora de la configuració del servidor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuracio-namedconfoptions" class="md-nav__link">
-    Configuració named.conf.options
+  <a href="#pas-1-afegir-subdomini-automaticament" class="md-nav__link">
+    Pas 1 – Afegir subdomini automàticament
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuracio-namedconflocal" class="md-nav__link">
-    Configuració named.conf.local
+  <a href="#pas-2-afegir-el-nostre-servidor-dns-com-a-unic-en-el-client" class="md-nav__link">
+    Pas 2 – Afegir el nostre servidor DNS com a únic en el client
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
-    Creació de l'arxiu de zona
+  <a href="#pas-3-afegir-forwarders" class="md-nav__link">
+    Pas 3 – Afegir forwarders
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
-    Creació de l'arxiu de zona pera a la resolució inversa
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
-    Comprovació de les configuracions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
-    Comprovació de les resolucions i de les consultes
+  <a href="#pas-4-afegir-arxius-de-log" class="md-nav__link">
+    Pas 4 - Afegir arxius de log
   </a>
   
 </li>
@@ -399,18 +397,6 @@
   
 </nav>
       
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../P3.2/" class="md-nav__link">
-        Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
-      </a>
     </li>
   
 
@@ -447,51 +433,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
+  <a href="#millora-de-la-configuracio-del-servidor" class="md-nav__link">
+    Millora de la configuració del servidor
   </a>
   
-    <nav class="md-nav" aria-label="Configuració del servidor">
+    <nav class="md-nav" aria-label="Millora de la configuració del servidor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuracio-namedconfoptions" class="md-nav__link">
-    Configuració named.conf.options
+  <a href="#pas-1-afegir-subdomini-automaticament" class="md-nav__link">
+    Pas 1 – Afegir subdomini automàticament
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuracio-namedconflocal" class="md-nav__link">
-    Configuració named.conf.local
+  <a href="#pas-2-afegir-el-nostre-servidor-dns-com-a-unic-en-el-client" class="md-nav__link">
+    Pas 2 – Afegir el nostre servidor DNS com a únic en el client
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
-    Creació de l'arxiu de zona
+  <a href="#pas-3-afegir-forwarders" class="md-nav__link">
+    Pas 3 – Afegir forwarders
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
-    Creació de l'arxiu de zona pera a la resolució inversa
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
-    Comprovació de les configuracions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
-    Comprovació de les resolucions i de les consultes
+  <a href="#pas-4-afegir-arxius-de-log" class="md-nav__link">
+    Pas 4 - Afegir arxius de log
   </a>
   
 </li>
@@ -521,21 +493,15 @@
               
                 
                 
-                <h1 id="practica-31-configuracio-dun-servidor-dns">Pràctica 3.1 - Configuració d'un servidor DNS</h1>
+                <h1 id="practica-32-configuracio-de-servidor-dns-mestre-i-esclau">Pràctica 3.2 - Configuració de servidor DNS mestre i esclau</h1>
 <div class="admonition danger">
-<p class="admonition-title">Atenció, molt important!</p>
-<p>✔ Heu de tindre un clon de l'Ubuntu Server, perquè faci de servidor DNS esclau</p>
-<p>✔ Aquest servidor esclau estarà a la nostra xarxa interna de manera que només necessita una interfície,
-    la de la xarxa interna que rebrà la IP per DHCP així que:</p>
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<p>✔ Heu de tenir un clon de l'Ubuntu Server, perquè faci de servidor DNS esclau</p>
+<p>✔ Aquest servidor esclau tindrà una interfície a la nostra xarxa interna que rebrà la IP per DHCP així que:</p>
 <ul>
-<li>
-<p>Cal desactivar-una de les interfícies en Virtualbox</p>
-</li>
-<li>
-<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
-</li>
+<li>Aquesta interfície, estarà configurada per a la mateixa xarxa interna que el server original i haurà de tindre configurat en netplan que reba la IP per DHCP</li>
 </ul>
-<p>✔ Heu de tindre configurat el servidor DHCP perquè assigni una adreça IP fixa a l'Ubuntu Server.</p>
+<p>✔ Heu de tenir configurat el servidor DHCP perquè assigni una dirección IP fixa a l'Ubuntu Server.</p>
 <div class="admonition info">
 <p class="admonition-title">Avís</p>
 <p>✔ Si ja havíeu clonat el servidor per fer les pràctiques de tema anterior,
@@ -548,100 +514,138 @@ podeu reutilitzar-la però recordeu:</p>
 <p>Cal desactivar-una de les interfícies en Virtualbox</p>
 </li>
 <li>
-<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
+<p>La interfície de la xarxa interna estarà configurada per a la mateixa xarxa interna que el server original i haurà de tenir configurat en netplan que rebi la IP per DHCP</p>
 </li>
 <li>
-<p>Instal·lar Bind i els paquets addicionals, tal com vam fer en la pràctica anterior al servidor original     </p>
+<p>Instal·lar Bind i els paquets addicionals, tal com vam fer en la pràctica anterior al servidor original </p>
 </li>
 </ul>
 </div>
 </div>
-<h2 id="configuracio-del-servidor">Configuració del servidor</h2>
-<p>Ja que a classe només utilitzarem IPv4, anem a dir-ho a Bind, en el seu arxiu general de configuració. Aquest fitxer ("named") es troba en el directori:</p>
-<div class="highlight"><pre><span></span><code>/etc/default
+<div class="admonition warning">
+<p class="admonition-title">Nota important</p>
+<p>Si no ixen els resultats que deuen, pot passar que s'hagi quedat informació guardada en la caché del client o del server. Per esborrar-les en el client:</p>
+<div class="highlight"><pre><span></span><code>sudo systemd-resolve --flush-caches
 </code></pre></div>
-<p>I per indicar-li que només faci servir IPv4, hem de modificar la línia següent amb el text ressaltat:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">OPTIONS</span> <span class="o">=</span> <span class="s2">&quot;-u bind -4&quot;</span>
+<p>I en el servidor:</p>
+<div class="highlight"><pre><span></span><code>sudo rndc flush
+sudo rndc reload
 </code></pre></div>
-<p>L'arxiu de configuració principal (named.conf) de Bind està en el directori:</p>
-<p><div class="highlight"><pre><span></span><code>/etc/bind
+</div>
+<h2 id="millora-de-la-configuracio-del-servidor">Millora de la configuració del servidor</h2>
+<h3 id="pas-1-afegir-subdomini-automaticament">Pas 1 – Afegir subdomini automàticament</h3>
+<p>Si proveu, amb la configuració de la pràctica anterior cal incloure el subdomini al nom de host per poder fer ping i que el DNS resolgui bé les direccions.</p>
+<p>Així no funciona:</p>
+<p><img alt="" src="../../img/3.2_1.png" /></p>
+<p>Així hauria de funcionar:</p>
+<p><img alt="" src="../../img/3.2_2.png" /></p>
+<p>Podem solucionar això. Hem d'enviar la nostra direcció de domini als hosts per que la afegeixin a la seva IP quan se la assigni el DHCP.
+Per això heu d'utilitzar, dins de la declaració de la vostra subnet a l'arxiu de configuració de l'DHCP, la directiva "option domain sre.es".</p>
+<h3 id="pas-2-afegir-el-nostre-servidor-dns-com-a-unic-en-el-client">Pas 2 – Afegir el nostre servidor DNS com a únic en el client</h3>
+<p>Si us heu fixat en la sortida de dig o de nslookup des del client, quan us diu que servidor DNS ha utilitzat per a la consulta, us posa que ha estat el 127.0.0.53</p>
+<p><img alt="" src="../../img/3.2_3.png" /></p>
+<p>Aquesta adreça és l'adreça local de la vostra màquina client. Això és així perquè systemd, el “nou” sistema de gestió de serveis de Linux, té una espècie de servidor DNS local que és el primer que es consulta i si no té la resposta, la reenvía al servidor DNS que hàgim configurat.</p>
+<p>Això és una fallada coneguda de systemd i hi ha una espècie de “arranjament” per solucionar-ho i és crear un link simbòlic:</p>
+<p><div class="highlight"><pre><span></span><code>$ sudo rm -f /etc/resolv.conf
+$ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 </code></pre></div>
-Si ho consultem veurem el següent:</p>
-<p><img alt="" src="../../img/3.1.bind_1.png" /></p>
-<p>Aquest fitxer serveix simplement per aglutinar o agrupar els arxius de configuració que farem servir. Aquests 3 includes fan referència als 3 diferents arxius on haurem de realitzar la veritable configuració, ubicats en el mateix directori.</p>
-<h3 id="configuracio-namedconfoptions">Configuració <em>named.conf.options</em></h3>
-<p>És una bona pràctica que feu sempre una còpia de seguretat d'un arxiu de configuració cada vegada que aneu a realitzar algun canvi:.</p>
-<p><div class="highlight"><pre><span></span><code>sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.backup
+I heu de reaplicar la configuració de xarxa:</p>
+<div class="highlight"><pre><span></span><code>sudo netplan apply
 </code></pre></div>
-Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem els següents continguts:</p>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Feu una nova consulta en dig i comproveu que ara sí ha utilitzat el servidor que deu, és a dir, l'Ubuntu Server que heu configurat vosaltres. Adjunteu captures de pantalla de la configuració i el resultat.</p>
+</div>
+<h3 id="pas-3-afegir-forwarders">Pas 3 – Afegir forwarders</h3>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Comproveu que si feu una consulta a una adreça de domini d'Internet (cisco.com, github.com…), el domini sí es resol perfectament. Com és això possible si només hem configurat les zones autoritativas del DNS i cap més?A quins servidors DNS creïs que consulta el nostre Bind?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Descomenta en l'arxiu la secció de forwarders i afegeix les següents adreces.
+<div class="highlight"><pre><span></span><code>  <span class="l l-Scalar l-Scalar-Plain">forwarders {</span>
+            <span class="l l-Scalar l-Scalar-Plain">208.67.222.222; //Servidor DNS d&#39;Opendns</span>
+            <span class="l l-Scalar l-Scalar-Plain">1.1.1.1; //Servidor DNS de  Cloudflare</span>  
+     <span class="l l-Scalar l-Scalar-Plain">};</span>
+</code></pre></div></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Fes un dig a una adreça d'Internet una vegada més. Què creus que hem fet afegint aquestes adreces?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Si en l'arxiu “named.conf.options” canvieu la línia “recursion yes;” per “recursion no;”
+* Segueix funcionant la resolució de subdominis externs d'Internet (comprova-ho amb dig o nslookup? 
+* I els propis (comprova-ho amb dig i amb el nom de domini complet de les màquines .sre.es)?
+* Per què passa això si tenim els forwarders configurats?</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>Pot passar que no us funcionen de primeres. En aquest cas, i en el mateix arxiu, proveu a canviar la línia:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">dnssec-validation auto;</span>
+</code></pre></div>
+Per:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">dnssec-enable yes;</span>
+<span class="l l-Scalar l-Scalar-Plain">dnssec-validation yes;</span>
+</code></pre></div>
+</div>
+<h3 id="pas-4-afegir-arxius-de-log">Pas 4 - Afegir arxius de log</h3>
+<p>Històricament tots els serveis de Linux han tingut el que es coneixen com a arxius de logs. Aquests arxius contenen text i registren tota l'activitat del servei, és a dir, tot el que ocorre amb ell. </p>
+<p>Avui dia això ho controla systemd i podem veure l'estat i l'activitat del servei amb el comando “suo journalctl -o nom_de el_servei”.
+No obstant això, anem a afegir els nostres propis arxius de logs per fer-ho més accessible i manejable.</p>
+<p>Per a això, en l'arxiu “named.conf” li indiquem que ha de tenir en compte un nou arxiu de configuració que crearem després per especificar com guardar els logs:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">include &quot;/etc/bind/named.conf.logging&quot;;</span>
+</code></pre></div>
+Hem de crear, ara sí, l'arxiu “named.conf.logging” amb el següent contingut:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">logging {</span>
+    <span class="l l-Scalar l-Scalar-Plain">channel errors_syslog {</span>
+          <span class="l l-Scalar l-Scalar-Plain">syslog daemon;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity warning;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">// Per loggear totes les consultes DNS al servidor</span>
+     <span class="l l-Scalar l-Scalar-Plain">channel queries_log {</span>
+<span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/queries.log&quot; versions 600 size 20m;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-estafi yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">//Per loggear tots els errors en realitzar consultes al servidor</span>
+     <span class="l l-Scalar l-Scalar-Plain">channel query-errors_log {</span>
+<span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/query-errors.log&quot; versions 5 size 20m;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-estafi yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">//Definim les categories associades als channels</span>
+        <span class="l l-Scalar l-Scalar-Plain">category llepa-servers { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category edns-disabled { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category resoldre { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category dnssec { errors_syslog; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category default { errors_syslog; default_debug; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category unmatched { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category queries { queries_log; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category query-errors { query-errors_log; };</span>
+<span class="l l-Scalar l-Scalar-Plain">};</span>
+</code></pre></div>
+Fixeu-vos en les parts destacades en groc. Li estem indicant que aquests van a ser els arxius de log on es bolcarà tota la informació corresponent. </p>
+<p>No obstant això, comproveu que aquest directori i aquests fitxers no existeixen.</p>
 <ul>
-<li>
-<p>Per motius de seguretat, anem a incloure una llista d'accés perquè només puguin fer consultes recursives a servidor aquells hosts que nosaltres decidim.</p>
-<p>En el nostre cas, els hosts fiables seran els de la xarxa 172.1.X.0 / 24. Així doncs, just abans del bloc "options {...}", al principi de l'arxiu, afegirem alguna cosa així:</p>
-<p><img alt="" src="../../img/3.1.bind_2.png" /></p>
-</li>
+<li>Creeu aquest directori amb aquests fitxers</li>
+<li>Després de fer-ho, heu de canviar la propietat de l'arxiu a l'usuari “bind”, que és el corresponent al servidor DNS:</li>
 </ul>
-<p>Si ens fixem el servidor per defecte ja ve configurat per a ser un DNS caché. El directori on es cachearan o guardaran les zones és:</p>
-<div class="highlight"><pre><span></span><code>/var/cache/bind
+<div class="highlight"><pre><span></span><code>sudo chown bind.bind nom_de_fitxer
 </code></pre></div>
-<p>Ara hem de configurar els següents aspectes dins de l'bloc "options {...}":</p>
-<ul>
-<li>
-<p>Que només es permeten les consultes recursives als hosts que hem decidit en la llista d'accés anterior.</p>
-</li>
-<li>
-<p>No permetre transferència de zones a ningú, de moment.</p>
-</li>
-<li>
-<p>Configurar el servidor perquè escolti consultes DNS al port 53 (per defecte DNS utilitza port 53 UDP) ia la IP de la seva interfície de la xarxa privada. Haureu col·locar la IP de la interfície connectada a la xarxa privada de servidor, ja que resoldrà les consultes DNS de el client / s d'aquesta xarxa.</p>
-</li>
-<li>
-<p>Permetre les consultes recursives, ja que en el primer punt ja li hem dit que només puguin fer-les els hosts de l'ACL.</p>
-</li>
-<li>
-<p>A més, comentarem la línia que posa "listen-on-v6 {any; }; " ja que no anem a respondre a consultes d'IPv6. Per a comentar-la n'hi ha prou amb afegir al principi de la línia dues barres (//).</p>
-<p>També podria fer-se amb un coixinet però apareixeria ressaltat amb color ja que aquestos comentaris els sol utilitzar l'administrador per a aclarir algun aspecte de la configuració.</p>
-<p><img alt="" src="../../img/3.1.bind_3.png" /></p>
-</li>
-</ul>
-<p>Podem comprovar si la nostra configuració és correcta amb el comando:</p>
-<p><img alt="" src="../../img/3.1.bind_4.png" /></p>
-<p>Si hi ha algun error, ens ho farà saber. En cas contrari, ens torna a la línia de comandos.</p>
-<p>Reiniciem el servidor i comprovem el seu estat:</p>
-<p><img alt="" src="../../img/3.1.bind_5.png" /></p>
-<h3 id="configuracio-namedconflocal">Configuració <em>named.conf.local</em></h3>
-<p>En aquest arxiu configurarem aspectes relatius a les nostres zones. Declararem la zona "sre.es". Per ara simplement indicarem que el servidor DNS és mestre per a aquesta zona i on estarà ubicat el fitxer de zona que crearem més endavant:</p>
-<p><img alt="" src="../../img/3.1.bind_6.png" /></p>
-<h3 id="creacio-de-larxiu-de-zona">Creació de l'arxiu de zona</h3>
-<p>Crearem l'arxiu de zona de resolució directa justament en el directori que hem indicat abans i amb el mateix nom que hem indicat abans.</p>
-<p>El contingut serà una cosa així (procureu respectar el format):</p>
-<p><img alt="" src="../../img/3.1.bind_7.png" /></p>
-<p>Recordeu de teoria que els registres SOA són per a detallar aspectes de la zona autoritativa, els NS per indicar els servidors DNS de la zona i els A les IPs respectives.</p>
-<p>On apareixen les X heu de posar les vostres IPs privades corresponents, tant del vostre servidor com del vostre client.</p>
-<h3 id="creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa">Creació de l'arxiu de zona pera a la resolució inversa</h3>
-<p>Recordeu que hi ha d'haver dos arxius de zona, un per a la resolució directa i un altre per a la inversa. Anem doncs a crear l'arxiu de zona inversa.</p>
-<p>En primer lloc, hem d'afegir les línies corresponents a aquesta zona inversa a l'arxiu named.conf.local, igual que hem fet abans amb la zona de resolució directa:</p>
-<p><img alt="" src="../../img/3.1.bind_8.png" /></p>
-<p>On la X es el tercer byte de la vostra xarxa interna.</p>
-<p>Y la configuración de la zona de resolució inversa:</p>
-<p><img alt="" src="../../img/3.1.bind_9.png" /></p>
-<p>Podem comprovar que la configuració de les zones es correcta amb el comando adequat.</p>
-<h3 id="comprovacio-de-les-configuracions">Comprovació de les configuracions</h3>
-<p>Per a comprovar la configuració de la zona de resolució directa:</p>
-<p><img alt="" src="../../img/3.1.bind_10.png" /></p>
-<p>Y per a comprovar la configuració de la zona de resolució inversa:</p>
-<p><img alt="" src="../../img/3.1.bind_11.png" /></p>
-<p>Si tot ha anat bé, retornarà OK. En cas de que haja qualsevol error, ens n'informarà.</p>
-<p>Reiniciem el servici y comprovem l'estat:</p>
-<p><img alt="" src="../../img/3.1.bind_12.png" /></p>
-<h3 id="comprovacio-de-les-resolucions-i-de-les-consultes">Comprovació de les resolucions i de les consultes</h3>
-<p>Podem comprovar des dels clients, amb dig o nslookup les resolucions directes i inverses:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Resolucions nom del server</label><div class="tabbed-content">
-<p><img alt="" src="../../img/3.1.bind_13.png" /></p>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Resolucions nom del client</label><div class="tabbed-content">
-<p><img alt="" src="../../img/3.1.bind_14.png" /></p>
-</div>
+<p>Finalment, a la configuració de Bind cal dir-li que sigui capaç de registrar la informació relativa a les queries o consultes DNS. Per a això modifiquem l'arxiu d'opcions “named.conf.options” i afegim, dins de “options {...}” la línia:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">querylog yes;</span>
+</code></pre></div>
+I reiniciem el servei de bind (named).</p>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Comprova que realitzant ara consultes des del client, queden registrades en aquest arxiu i fes una captura de pantalla.</p>
 </div>
 <h2 id="tasques-a-realitzar">Tasques a realitzar</h2>
 <p>Seguint els mateixos passos, introdueix en els arxius de zona al client clonat. Posa-li el nom XubuntuClon i comprova, de la mateixa manera, que també es resol bé el seu nom i és possible fer-li ping per nom.</p>
@@ -673,7 +677,7 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../P2.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 2.2 - DHCP Relay" rel="prev">
+        <a href="../P3.1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 3.1 - Configuració d&#39;un servidor DNS" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -682,26 +686,11 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Pràctica 2.2 - DHCP Relay
+              Pràctica 3.1 - Configuració d'un servidor DNS
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../P3.2/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 3.2 - Configuració de servidor DNS mestre i esclau" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Següent
-              </span>
-              Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
