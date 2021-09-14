@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 2.1 - Instal·lació i configuració de servidor DHCP - Servicis en xarxa i Internet</title>
+        <title>Pràctica 3.1 - Configuració d'un servidor DNS - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-21-installacio-i-configuracio-de-servidor-dhcp" class="md-skip">
+        <a href="#practica-31-configuracio-dun-servidor-dns" class="md-skip">
           Salta el contingut
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+              Pràctica 3.1 - Configuració d'un servidor DNS
             
           </span>
         </div>
@@ -275,79 +275,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
         Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installacio-del-servidor-dhcp" class="md-nav__link">
-    Instal·lació del servidor DHCP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-del-client" class="md-nav__link">
-    Configuració del client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracion-del-servidor-dhcp" class="md-nav__link">
-    Configuración del servidor DHCP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#afegir-un-client-dhcp-amb-ip-reservada" class="md-nav__link">
-    Afegir un client DHCP amb IP reservada
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ultima-comprovacio" class="md-nav__link">
-    Ultima comprovació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -367,11 +299,113 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../P3.1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 3.1 - Configuració d'un servidor DNS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Pràctica 3.1 - Configuració d'un servidor DNS
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#millora-de-la-configuracio-del-servidor" class="md-nav__link">
+    Millora de la configuració del servidor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-servidor" class="md-nav__link">
+    Configuració del servidor
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuració del servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-namedconfoptions" class="md-nav__link">
+    Configuració named.conf.options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-namedconflocal" class="md-nav__link">
+    Configuració named.conf.local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
+    Creació de l'arxiu de zona
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
+    Creació de l'arxiu de zona pera a la resolució inversa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
+    Comprovació de les configuracions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
+    Comprovació de les resolucions i de les consultes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques-a-realitzar" class="md-nav__link">
+    Tasques a realitzar
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -408,36 +442,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installacio-del-servidor-dhcp" class="md-nav__link">
-    Instal·lació del servidor DHCP
+  <a href="#millora-de-la-configuracio-del-servidor" class="md-nav__link">
+    Millora de la configuració del servidor
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-client" class="md-nav__link">
-    Configuració del client
+  <a href="#configuracio-del-servidor" class="md-nav__link">
+    Configuració del servidor
   </a>
+  
+    <nav class="md-nav" aria-label="Configuració del servidor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-namedconfoptions" class="md-nav__link">
+    Configuració named.conf.options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-namedconflocal" class="md-nav__link">
+    Configuració named.conf.local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
+    Creació de l'arxiu de zona
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
+    Creació de l'arxiu de zona pera a la resolució inversa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
+    Comprovació de les configuracions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
+    Comprovació de les resolucions i de les consultes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracion-del-servidor-dhcp" class="md-nav__link">
-    Configuración del servidor DHCP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#afegir-un-client-dhcp-amb-ip-reservada" class="md-nav__link">
-    Afegir un client DHCP amb IP reservada
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ultima-comprovacio" class="md-nav__link">
-    Ultima comprovació
+  <a href="#tasques-a-realitzar" class="md-nav__link">
+    Tasques a realitzar
   </a>
   
 </li>
@@ -455,116 +523,142 @@
               
                 
                 
-                <h1 id="practica-21-installacio-i-configuracio-de-servidor-dhcp">Pràctica 2.1 - Instal·lació i configuració de servidor DHCP</h1>
-<h2 id="installacio-del-servidor-dhcp">Instal·lació del servidor DHCP</h2>
-<p>Per instal·lar el servidor DHCP en Ubuntu Server, usarem els repositoris oficials. Per això, podrem instal·lar-ho com qualsevol paquet en Ubuntu:
-<div class="highlight"><pre><span></span><code>suo apt-get install isc-dhcp-server
-</code></pre></div></p>
-<h2 id="configuracio-del-client">Configuració del client</h2>
-<p>Si recordem de la pràctica 1, el client té ara mateix configurada la IP de forma estàtica ja que la vam posar a mà en l'arxiu localitzat en el directori <strong><em>/etc/netplan</em></strong>.</p>
-<p>Com el nostre objectiu és muntar un servidor DHCP en l'Ubuntu Server que assigni IPs a tots els clients que hi hagi en aquesta xarxa, els clients han d'estar configurats de tal forma que obtinguin aquesta adreça per DHCP també.</p>
-<p>Així doncs, amb el coixinet comentem les línies on li indicàvem al servidor quin era la IP i el gateway perquè no es tinguin en compte i li indiquem que obtingui aquesta informació mitjançant el DHCP.</p>
-<p><img alt="Configuració netplan del client" src="../../img/2.1Cliente_netplan.png" /></p>
-<div class="admonition info">
-<p class="admonition-title">Recordatori</p>
-<p>Recordeu aplicar la configuració després de canviar-la.</p>
-</div>
-<h2 id="configuracion-del-servidor-dhcp">Configuración del servidor DHCP</h2>
-<p>Abans de gens, atès que el servidor té dues interfícies, la de l'adaptador pont (enp0s3) i la de la xarxa interna (enp0s8), hem d'indicar-li en quin d'elles ha d'assignar les IPs.</p>
-<p>Això es fa editant l'arxiu:</p>
-<div class="highlight"><pre><span></span><code>isc-dhcp-server
-</code></pre></div>
-<p>Que podeu trobar en el directori:</p>
-<p><div class="highlight"><pre><span></span><code>/etc/default
-</code></pre></div>
-<img alt="Configuració interfaces del servidor" src="../../img/2.1Servidor_interfaces.png" /></p>
-<p>Podem afegir una interfície de tipus IPv4 o IPv6. ja que nosaltres estem treballant amb adreces IP d'IPv4, hem d'editar la línia assenyalada en roig. Entre cometes posarem el nom de la interfície on es van a assignar les IP</p>
-<div class="admonition tip">
-<p class="admonition-title">Consell</p>
-<ul>
-<li>Recordeu quin era el comando per consultar el nom de les interfícies</li>
-<li>Observeu en el diagrama de xarxa quina serà la interfície per on s'han d'assignar les IP</li>
-</ul>
-</div>
-<p>Ara que ja li hem dit al servidor quin interfície ha d'utilitzar, anem a configurar tot el relacionat amb el DHCP.</p>
-<p>L'arxiu per configurar el servidor DHCP està en el directori:</p>
-<div class="highlight"><pre><span></span><code>/etc/dhcp
-</code></pre></div>
-<p>I el fitxer es diu:</p>
-<div class="highlight"><pre><span></span><code>dhcpd.conf
-</code></pre></div>
-<p>Tenint en compte els exemples de configuració d'aquest arxiu que hem vist en teoria i que podeu consultar en el PDF del tema 2, heu de configurar el servidor amb els següents paràmetres:</p>
+                <h1 id="practica-31-configuracio-dun-servidor-dns">Pràctica 3.1 - Configuració d'un servidor DNS</h1>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important!</p>
+<p>✔ Heu de tindre un clon de l'Ubuntu Server, perquè faci de servidor DNS esclau</p>
+<p>✔ Aquest servidor esclau estarà a la nostra xarxa interna de manera que només necessita una interfície,
+    la de la xarxa interna que rebrà la IP per DHCP així que:</p>
 <ul>
 <li>
-<p>El rang ha d'anar des de la IP de la interfície corresponent número 3, fins a la 10. És a dir, s'han d'assignar les IPs des de la X.X.X.2 fins a la X.X.X.10. (X.X.X.0 és la xarxa de la interfície on ha d'estar el DHCP)</p>
+<p>Cal desactivar-una de les interfícies en Virtualbox</p>
 </li>
 <li>
-<p>Heu d'enviar-li també la porta d'enllaç als clients als quals assigneu la IP </p>
-</li>
-<li>
-<p>També heu d'enviar-li als clients els DNS, que seran dos: <em>1.1.1.1</em> i <em>8.8.8.8</em></p>
+<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
 </li>
 </ul>
-<p>Per a comprovar si la configuració la teniu bé, en el terminal podeu utilitza el comando:</p>
-<div class="highlight"><pre><span></span><code>dhcpd -t
-</code></pre></div>
-<p>Si la teniu bé, apareixerà alguna cosa com això:</p>
-<p><img alt="" src="../../img/2.1dhcpd-t.png" /></p>
-<p>I si està malament us indicarà l'error:</p>
-<p><img alt="" src="../../img/2.1dhcpd-t_error.png" /></p>
-<p>(Després de “subnet” no va “mask)</p>
-<p>Quan comproveu que la configuració està bé, reinicieu el servei DHCP amb el següent comando:</p>
-<p><div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
-</code></pre></div>
-I hauria d'assignar-li la IP al client.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Com sempre, heu de comprovar que tot està bé després de configurar-lo. </p>
-<p>Per a veure en el client la IP que us ha assignat el servidor:</p>
-<div class="highlight"><pre><span></span><code>ip a
-</code></pre></div>
-<p>Recordeu que donat que la primera IP que assigna la IP X.X.X.3, <strong>NO</strong> podeu tenir la mateixa IP que quan abans la teníeu estàtica, que era la X.X.X.2</p>
-<p>Per a comprovar si us ha afegit la ruta per defecte, és a dir, el gateway:</p>
-<p><div class="highlight"><pre><span></span><code>ip route
-</code></pre></div>
-I haurà d'aparèixer una ruta del tipus:</p>
-<div class="highlight"><pre><span></span><code>default via porta_de_enllaç dev interfície ...
-</code></pre></div>
-<p>Si ho teniu tot en ordre, podreu seguir fent ping a un equip client d'un altre company, tal i com vam fer en la pràctica 1.</p>
-</div>
-<h2 id="afegir-un-client-dhcp-amb-ip-reservada">Afegir un client DHCP amb IP reservada</h2>
-<p>Per a aquesta part de la pràctica, en Virtualbox heu de clonar la màquina client (Xubuntu).</p>
-<p>Amb la màquina apagada → “Màquina → Clonar”. </p>
-<p>I la iniciem per tenir dos clients a la nostra xarxa interna.</p>
-<p>A aquesta màquina, anem a reservar-li la mateixa IP sempre. Si consulteu l'apartat de “Reserves” del tema de teoria, teniu un exemple de com configurar això en l'arxiu <strong>dhcpd.conf</strong></p>
-<p>Recordeu que aquesta configuració ha d'estar just sota la qual ja teniu i entre les claus del bloc:</p>
-<div class="highlight"><pre><span></span><code>subnet x.x.x.x netmask x.x.x.x <span class="o">{</span>
-    La vostra configuració anterior
-    La configuració per a la IP reservada ← Aquí
-<span class="o">}</span>
-</code></pre></div>
-<p>La IP fixa ha de ser la número 11 → <strong>X.X.X.11</strong></p>
-<p>Realitzeu la mateixes comprovacions que en l'apartat anterior (el client té bé la IP, el gateway/porta d'enllaç, pot fer ping al client d'un altre company).</p>
-<p>Recordeu que després de canviar la configuració del servidor DHCP sempre heu de reiniciar el servei amb el comando vist anteriorment:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
-</code></pre></div>
+<p>✔ Heu de tindre configurat el servidor DHCP perquè assigni una adreça IP fixa a l'Ubuntu Server.</p>
 <div class="admonition info">
-<p class="admonition-title">Nota</p>
-<p>L'adreça física/MAC/maquinari address, la podeu consultar en la interfície corresponent amb el comando:</p>
-<div class="highlight"><pre><span></span><code>ip a 
-</code></pre></div>
+<p class="admonition-title">Avís</p>
+<p>✔ Si ja havíeu clonat el servidor per fer les pràctiques de tema anterior,
+podeu reutilitzar-la però recordeu:</p>
+<ul>
+<li>
+<p>Aturar els serveis que tinguéssiu instal·lats (isc-dhcp-server, isc-dhcp-relay)</p>
+</li>
+<li>
+<p>Cal desactivar-una de les interfícies en Virtualbox</p>
+</li>
+<li>
+<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
+</li>
+<li>
+<p>Instal·lar Bind i els paquets addicionals, tal com vam fer en la pràctica anterior al servidor original     </p>
+</li>
+</ul>
 </div>
-<h2 id="ultima-comprovacio">Ultima comprovació</h2>
-<p>Finalment, ja vam dir en la part de teoria que el servidor ha de portar un registre de quin IPs ha assignat i quan, ja que caduquen. </p>
-<p>Aquest registre es pot consultar en el directori:</p>
-<div class="highlight"><pre><span></span><code>/var/lib/dhcp
+</div>
+<h2 id="millora-de-la-configuracio-del-servidor">Millora de la configuració del servidor</h2>
+<p>Si proveu, amb la configuració de la pràctica anterior cal incloure el subdomini al nom de host per poder fer ping i que el DNS resolgui bé les direccions.</p>
+<p>Així no funciona:</p>
+<div class="highlight"><pre><span></span><code>ping dnsserver
+ping cliXubuntu
 </code></pre></div>
-<p>En l'arxiu </p>
-<div class="highlight"><pre><span></span><code>dhcpd.leases
+<p>Així hauria de funcionar:</p>
+<p><div class="highlight"><pre><span></span><code>ping dnsserver.sre.es
+ping cliXubuntu.sre.es
 </code></pre></div>
-<p>(Poden aparèixer arxius del tipus dhcpd.leases, que són temporals i heu d'ignorar)</p>
-<p>Aquí podreu veure totes les IP que ha assignat el servidor, a quina hora i quan caduquen, entre altres coses. </p>
-<p>Adjunteu també una captura de pantalla del contingut d'aquest arxiu.</p>
+Podem solucionar això. Hem d'enviar la nostra direcció de domini als hosts per que la afegeixin a la seva IP quan se la assigni el DHCP.
+Per això heu d'utilitzar, dins de la declaració de la vostra subnet a l'arxiu de configuració de l'DHCP, la directiva "option domain sre.es".</p>
+<h2 id="configuracio-del-servidor">Configuració del servidor</h2>
+<p>Ja que a classe només utilitzarem IPv4, anem a dir-ho a Bind, en el seu arxiu general de configuració. Aquest fitxer ("named") es troba en el directori:</p>
+<div class="highlight"><pre><span></span><code>/etc/default
+</code></pre></div>
+<p>I per indicar-li que només faci servir IPv4, hem de modificar la línia següent amb el text ressaltat:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">OPTIONS</span> <span class="o">=</span> <span class="s2">&quot;-u bind -4&quot;</span>
+</code></pre></div>
+<p>L'arxiu de configuració principal (named.conf) de Bind està en el directori:</p>
+<p><div class="highlight"><pre><span></span><code>/etc/bind
+</code></pre></div>
+Si ho consultem veurem el següent:</p>
+<p><img alt="" src="../../img/3.1.bind_1.png" /></p>
+<p>Aquest fitxer serveix simplement per aglutinar o agrupar els arxius de configuració que farem servir. Aquests 3 includes fan referència als 3 diferents arxius on haurem de realitzar la veritable configuració, ubicats en el mateix directori.</p>
+<h3 id="configuracio-namedconfoptions">Configuració <em>named.conf.options</em></h3>
+<p>És una bona pràctica que feu sempre una còpia de seguretat d'un arxiu de configuració cada vegada que aneu a realitzar algun canvi:.</p>
+<p><div class="highlight"><pre><span></span><code>sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.backup
+</code></pre></div>
+Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem els següents continguts:</p>
+<ul>
+<li>
+<p>Per motius de seguretat, anem a incloure una llista d'accés perquè només puguin fer consultes recursives a servidor aquells hosts que nosaltres decidim.</p>
+<p>En el nostre cas, els hosts fiables seran els de la xarxa 172.1.X.0 / 24. Així doncs, just abans del bloc "options {...}", al principi de l'arxiu, afegirem alguna cosa així:</p>
+<p><img alt="" src="../../img/3.1.bind_2.png" /></p>
+</li>
+</ul>
+<p>Si ens fixem el servidor per defecte ja ve configurat per a ser un DNS caché. El directori on es cachearan o guardaran les zones és:</p>
+<div class="highlight"><pre><span></span><code>/var/cache/bind
+</code></pre></div>
+<p>Ara hem de configurar els següents aspectes dins de l'bloc "options {...}":</p>
+<ul>
+<li>
+<p>Que només es permeten les consultes recursives als hosts que hem decidit en la llista d'accés anterior.</p>
+</li>
+<li>
+<p>No permetre transferència de zones a ningú, de moment.</p>
+</li>
+<li>
+<p>Configurar el servidor perquè escolti consultes DNS al port 53 (per defecte DNS utilitza port 53 UDP) ia la IP de la seva interfície de la xarxa privada. Haureu col·locar la IP de la interfície connectada a la xarxa privada de servidor, ja que resoldrà les consultes DNS de el client / s d'aquesta xarxa.</p>
+</li>
+<li>
+<p>Permetre les consultes recursives, ja que en el primer punt ja li hem dit que només puguin fer-les els hosts de l'ACL.</p>
+</li>
+<li>
+<p>A més, comentarem la línia que posa "listen-on-v6 {any; }; " ja que no anem a respondre a consultes d'IPv6. Per a comentar-la n'hi ha prou amb afegir al principi de la línia dues barres (//).</p>
+<p>També podria fer-se amb un coixinet però apareixeria ressaltat amb color ja que aquestos comentaris els sol utilitzar l'administrador per a aclarir algun aspecte de la configuració.</p>
+<p><img alt="" src="../../img/3.1.bind_3.png" /></p>
+</li>
+</ul>
+<p>Podem comprovar si la nostra configuració és correcta amb el comando:</p>
+<p><img alt="" src="../../img/3.1.bind_4.png" /></p>
+<p>Si hi ha algun error, ens ho farà saber. En cas contrari, ens torna a la línia de comandos.</p>
+<p>Reiniciem el servidor i comprovem el seu estat:</p>
+<p><img alt="" src="../../img/3.1.bind_5.png" /></p>
+<h3 id="configuracio-namedconflocal">Configuració <em>named.conf.local</em></h3>
+<p>En aquest arxiu configurarem aspectes relatius a les nostres zones. Declararem la zona "sre.es". Per ara simplement indicarem que el servidor DNS és mestre per a aquesta zona i on estarà ubicat el fitxer de zona que crearem més endavant:</p>
+<p><img alt="" src="../../img/3.1.bind_6.png" /></p>
+<h3 id="creacio-de-larxiu-de-zona">Creació de l'arxiu de zona</h3>
+<p>Crearem l'arxiu de zona de resolució directa justament en el directori que hem indicat abans i amb el mateix nom que hem indicat abans.</p>
+<p>El contingut serà una cosa així (procureu respectar el format):</p>
+<p><img alt="" src="../../img/3.1.bind_7.png" /></p>
+<p>Recordeu de teoria que els registres SOA són per a detallar aspectes de la zona autoritativa, els NS per indicar els servidors DNS de la zona i els A les IPs respectives.</p>
+<p>On apareixen les X heu de posar les vostres IPs privades corresponents, tant del vostre servidor com del vostre client.</p>
+<h3 id="creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa">Creació de l'arxiu de zona pera a la resolució inversa</h3>
+<p>Recordeu que hi ha d'haver dos arxius de zona, un per a la resolució directa i un altre per a la inversa. Anem doncs a crear l'arxiu de zona inversa.</p>
+<p>En primer lloc, hem d'afegir les línies corresponents a aquesta zona inversa a l'arxiu named.conf.local, igual que hem fet abans amb la zona de resolució directa:</p>
+<p><img alt="" src="../../img/3.1.bind_8.png" /></p>
+<p>On la X es el tercer byte de la vostra xarxa interna.</p>
+<p>Y la configuración de la zona de resolució inversa:</p>
+<p><img alt="" src="../../img/3.1.bind_9.png" /></p>
+<p>Podem comprovar que la configuració de les zones es correcta amb el comando adequat.</p>
+<h3 id="comprovacio-de-les-configuracions">Comprovació de les configuracions</h3>
+<p>Per a comprovar la configuració de la zona de resolució directa:</p>
+<p><img alt="" src="../../img/3.1.bind_10.png" /></p>
+<p>Y per a comprovar la configuració de la zona de resolució inversa:</p>
+<p><img alt="" src="../../img/3.1.bind_11.png" /></p>
+<p>Si tot ha anat bé, retornarà OK. En cas de que haja qualsevol error, ens n'informarà.</p>
+<p>Reiniciem el servici y comprovem l'estat:</p>
+<p><img alt="" src="../../img/3.1.bind_12.png" /></p>
+<h3 id="comprovacio-de-les-resolucions-i-de-les-consultes">Comprovació de les resolucions i de les consultes</h3>
+<p>Podem comprovar des dels clients, amb dig o nslookup les resolucions directes i inverses:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Resolucions nom del server</label><div class="tabbed-content">
+<p><img alt="" src="../../img/3.1.bind_13.png" /></p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Resolucions nom del client</label><div class="tabbed-content">
+<p><img alt="" src="../../img/3.1.bind_14.png" /></p>
+</div>
+</div>
+<h2 id="tasques-a-realitzar">Tasques a realitzar</h2>
+<p>Seguint els mateixos passos, introdueix en els arxius de zona al client clonat. Posa-li el nom XubuntuClon i comprova, de la mateixa manera, que també es resol bé el seu nom i és possible fer-li ping per nom.</p>
 <div class="admonition caution">
 <p class="admonition-title">Atenció per a l'informe</p>
 <p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
@@ -593,7 +687,7 @@ I haurà d'aparèixer una ruta del tipus:</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../P1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 1 - Muntant l&#39;arquitectura de xarxa" rel="prev">
+        <a href="../P2.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 2.2 - DHCP Relay" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -602,26 +696,11 @@ I haurà d'aparèixer una ruta del tipus:</p>
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Pràctica 1 - Muntant l'arquitectura de xarxa
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../P2.2/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 2.2 - DHCP Relay" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Següent
-              </span>
               Pràctica 2.2 - DHCP Relay
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
