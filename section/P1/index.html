@@ -535,7 +535,10 @@ Això es tradueix en que el Ubuntu Server tindrà configurats dos adaptadors de 
 <p>Ja hem configurat les interfícies, o el que és el mateix, és com si haguéssim connectat tots els cables físicament per formar l'arquitectura que podeu vore dibuixada en el diagrama. </p>
 <h3 id="configuracio-dinterfaces-amb-netplan">Configuració d'interfaces amb netplan</h3>
 <p>Ara hem de configurar les IPs dins de cada màquina virtual. Per a això utilitzarem el configurador d'interfícies de xarxa en Linux, “netplan”.</p>
-<p>Les interfícies han de configurar-se en un arxiu de text en llenguatge “yaml”. Aquest arxiu està localitzat en: /etc/netplan Per saber quins són les nostres interfícies, hem d'utilitzar el comando “ip a” Si comprovem el server:</p>
+<p>Les interfícies han de configurar-se en un arxiu de text en llenguatge “yaml”. Aquest arxiu està localitzat en0: </p>
+<div class="highlight"><pre><span></span><code>/etc/netplan
+</code></pre></div>
+<p>Per saber quines són les nostres interfícies, hem d'utilitzar el comando “ip a” Si comprovem el server:</p>
 <p><img alt="" src="../../img/netplan1.png" /></p>
 <p>Veiem que tenim la interfície de loopback que no ens preocupa i dues interfícies més, enp0s3 i enp0s8. </p>
 <p>La primera es correspon amb la primera que tenim configurada en la màquina, és a dir, l'adaptador pont. Això ho sabem perquè ja té assignada una IP automàticament.</p>
