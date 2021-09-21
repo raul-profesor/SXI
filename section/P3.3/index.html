@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 2.2 - DHCP Relay - Servicis en xarxa i Internet</title>
+        <title>Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-22-dhcp-relay" class="md-skip">
+        <a href="#practica-33-configuracio-de-servidors-mestre-i-esclau-en-diferents-xarxes" class="md-skip">
           Salta el contingut
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 2.2 - DHCP Relay
+              Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
             
           </span>
         </div>
@@ -287,106 +287,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 2.2 - DHCP Relay
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
         Pràctica 2.2 - DHCP Relay
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-del-client" class="md-nav__link">
-    Configuració del client
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració del servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parada-del-servidor-dhcp" class="md-nav__link">
-    Parada del servidor DHCP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installacio-del-dhcp-relay" class="md-nav__link">
-    Instal·lació del DHCP relay
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-dhcp-server" class="md-nav__link">
-    Configuració DHCP Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprovacio" class="md-nav__link">
-    Comprovació
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nova-comprobacio" class="md-nav__link">
-    Nova comprobació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -418,11 +323,65 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../P3.3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#escenari" class="md-nav__link">
+    Escenari
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-dels-dominis" class="md-nav__link">
+    Configuració dels dominis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-mestre" class="md-nav__link">
+    Configuració del mestre
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -459,63 +418,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
+  <a href="#escenari" class="md-nav__link">
+    Escenari
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-client" class="md-nav__link">
-    Configuració del client
+  <a href="#configuracio-dels-dominis" class="md-nav__link">
+    Configuració dels dominis
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració del servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parada-del-servidor-dhcp" class="md-nav__link">
-    Parada del servidor DHCP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installacio-del-dhcp-relay" class="md-nav__link">
-    Instal·lació del DHCP relay
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-dhcp-server" class="md-nav__link">
-    Configuració DHCP Server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprovacio" class="md-nav__link">
-    Comprovació
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#nova-comprobacio" class="md-nav__link">
-    Nova comprobació
+  <a href="#configuracio-del-mestre" class="md-nav__link">
+    Configuració del mestre
   </a>
   
 </li>
@@ -533,98 +451,66 @@
               
                 
                 
-                <h1 id="practica-22-dhcp-relay">Pràctica 2.2 - DHCP Relay</h1>
+                <h1 id="practica-33-configuracio-de-servidors-mestre-i-esclau-en-diferents-xarxes">Pràctica 3.3 - Configuració de servidors mestre i esclau en diferents xarxes</h1>
 <div class="admonition danger">
-<p class="admonition-title">Atenció, molt important!</p>
-<p>Per realitzar aquesta pràctica és <strong>imprescindible</strong> que tingueu funcionant correctament l'escenari de la Pràctica 1. </p>
-<p><strong>Comproveu-ho</strong> abans d'iniciar aquesta.</p>
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<p>✔ És <ins><strong>imprescindible</strong></ins> que tingueu funcionant correctament l'escenari de la pràctica 1 del Tema 1.</p>
+<p>✔ També és <ins><strong>imprescindible</strong></ins> que tingueu funcionant la pràctica 2.1.</p>
+<p>✔ Comproveu que ambdues coses funcionen correctament abans de començar aquesta pràctica.</p>
 </div>
-<h2 id="introduccio">Introducció</h2>
-<p>En ocasions pot ser que una empresa posseeixi oficines en diferents punts d'Espanya. D'acord amb la lògica que hem seguit en la pràctica anterior, podríem pensar que hem de muntar un servidor DHCP en cadascuna de les LAN de cada oficina que tinguin per Espanya.</p>
-<p>No obstant això, aquesta opció va totalment en contra del que vam veure en la teoria a propòsit dels servidors DHCP, és a dir, augmenta la complexitat per mantenir el repartiment i assignació d'IP ja que perdem la centralització en un només servidor i arxiu de configuració.</p>
-<p>Per a solucionar això sorgeix el DHCP relay, que és la situació on un servidor intermedi fa les vegades de repetidor i envia les peticions DHCP a un servidor remot, que serà el que assigna les IP. </p>
-<p>Seria el cas de que totes les oficines enviessin les peticions DHCP al servidor localitzat a Elx i fos aquest el que assignés les IP de tots els equips de la resta d'oficines d'Espanya.</p>
-<p>Així només hauríem de mantindre un únic servidor DHCP, el d'Elx, facilitant i simplificant en gran mesura el treball.</p>
-<h2 id="configuracio-del-client">Configuració del client</h2>
-<p>Els clients no requereixen de cap configuració addicional. En la Pràctica 2.1 ja els vau configurar perquè adquirissin la IP mitjançant DHCP i així han de seguir.</p>
-<h2 id="configuracio-del-servidor">Configuració del servidor</h2>
-<p>Si recordem l'escenari de la Pràctica 1:</p>
-<p><img alt="" src="../../img/routing1.png" /></p>
-<p>Veiem que aquesta pràctica l'heu de fer per parelles o, en defecte d'això, amb 4 màquines virtuals com s'ha explicat en classe.</p>
-<p>Haureu d'alternar-vos perquè primer un sigui el relay i l'altre el servidor DHCP i després canviïn els rols.</p>
-<p>Així doncs, en el primer cas, el servidor/router de l'Alumne 1 serà el que redirigeixi les peticions DHCP dels seus clients al servidor/router de l'Alumne 2 a través de la interfície de la LAN de classe/casa.</p>
-<h3 id="parada-del-servidor-dhcp">Parada del servidor DHCP</h3>
-<p>En primer lloc és <strong>imprescindible</strong> que l'alumne que vagi a fer de DHCP relay pari el seu servidor DHCP, ja que el que va a fer és delegar aquesta responsabilitat en el servidor DHCP del company, redirigint-li les peticions que li arribin.</p>
-<p>Per a parar-lo:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop isc-dhcp-server
-</code></pre></div>
-<h3 id="installacio-del-dhcp-relay">Instal·lació del DHCP relay</h3>
-<p>Per instal·lar el servidor DHCP relay en Ubuntu Server, usarem els repositoris oficials. Per això, podrem instal·lar-ho com qualsevol paquet en Ubuntu:</p>
-<p><div class="highlight"><pre><span></span><code>sudo apt install isc-dhcp-relay
-</code></pre></div>
-Per completar la instal·lació, us farà 3 preguntes amb les quals generarà l'arxiu de configuració que generarà en el directori <strong>/etc/default</strong> amb el nom d'arxiu <strong>isc-dhcp-relay</strong>:</p>
-<p><img alt="" src="../../img/2.2relay1.png" /></p>
-<p>Ací vos pregunta quina és l'adreça IP destí a on ha de redirigir les peticions DHCP que reba. </p>
-<p>Com aneu a redirigir-les per la interfície de la LAN cap al server del vostre company, heu d'indicar-li l'adreça IP de la interfície LAN del server del vostre company.</p>
-<p><img alt="" src="../../img/2.2relay2.png" /></p>
-<p>Aquí us pregunta en quina interfície va a rebre peticions DHCP dels clients. </p>
-<p>La lògica dicta que com només té clients en la interfície de la xarxa interna, aquesta anés l'única interfície que poséssim aquí. No obstant això, si fem això, el servidor descartaria les respostes que provenen del servidor del vostre company, ja que arriben per l'altra interfície, per la LAN (observeu el dibuix amb deteniment per poder entendre-ho).</p>
-<p>Així doncs, perquè funcioni correctament tot, heu de posar el nom d'ambdues interfícies separades per un espai.</p>
-<p><img alt="" src="../../img/2.2relay3.png" /></p>
-<p>Finalment us pregunta si voleu executar el programa amb alguna opció. Heu d'indicar-li que amb l'opció -D perquè s'executi com a dimoni.</p>
-<h2 id="configuracio-dhcp-server">Configuració DHCP Server</h2>
-<p>Com és obvi, el servidor DHCP del vostre company haurà de tindre configurat en el seu dhcpd.conf (que ja vam veure on estava en la Pràctica 2) tant el rang d'IP de la seva xarxa com el rang d'IP de la vostra xarxa. </p>
-<p>És a dir, el dhcpd.conf ha de tenir declarades dos subnets, les xarxes internes dels dos alumnes.</p>
-<p>En canviar la configuració recordeu que podeu comprovar si està bé amb:</p>
-<p><div class="highlight"><pre><span></span><code>dhcpd -t
-</code></pre></div>
-I per a que s'aplique la configuració, heu de reiniciar el servei:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
-</code></pre></div>
-<h2 id="comprovacio">Comprovació</h2>
-<p>Forceu al client Xubuntu al fet que reconfigure la seva xarxa perquè comenci a buscar IP per DHCP una altra vegada:</p>
-<div class="highlight"><pre><span></span><code>sudo netplan apply
-</code></pre></div>
-<p>Ara podreu veure l'estat del DHCP relay escrivint:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl status isc-dhcp-relay
-</code></pre></div>
-<p><img alt="" src="../../img/2.2Comprovacio_relay_1.png" /></p>
-<p>Veurem com el servei està actiu i funcionant correctament (active (running)) i que està redirigint les peticions de la MAC del vostre client a la IP del servidor del vostre company.</p>
-<p>I l'estat del servidor DHCP del vostre company amb:</p>
-<div class="highlight"><pre><span></span><code>sudo systemctl status isc-dhcp-server
-</code></pre></div>
-<p><img alt="" src="../../img/2.2Comprovacio_relay_2.png" /></p>
-<p>Ací notem que malgrat que el servici DHCP està actiu i funcionant correctament, es produeix un error que ens indica en roig que efectivament alguna cosa està malament.</p>
-<p>El que està dient aquest error és que el servidor DHCP ha detectat que està rebent peticions/missatges DHCP per la interfície LAN. No obstant això, en el dhcpd.conf, les úniques xarxes que hi ha configurades són les internes dels dos alumnes, 1 i 2. </p>
-<p>Com en l'arxiu dhcpd.conf no apareix configurat gens relacionat amb la interfície LAN, les peticions DHCP d'aquesta interfície s'ignoren, per la qual cosa no està contestant a les peticions del DHCP relay.</p>
-<p>Per solucionar això, simplement hem de dir-li al servidor DHCP que aquesta interfície també participarà en tot el procés DHCP i que per favor tingui en compte el que li arribe per aquesta interfície.</p>
-<p><strong>Com?</strong></p>
-<p>En l'arxiu dhcpd.conf heu de fer una nova declaració d'una subnet, en aquest cas la de la interfície LAN. </p>
-<p>La declaració estarà buida, és a dir, només posareu l'adreça de xarxa i la màscara, entre les claus no haurà contingut perquè òbviament no es va a assignar cap IP en aquesta interfície (això ja ho fa el router de classe/casa).</p>
-<h2 id="nova-comprobacio">Nova comprobació</h2>
-<p>Si una vegada configurat l'anterior tornem a comprovar l'estat de tots dos serveis, el DHCP relay de l'alumne 1 i el servidor DHCP de l'alumne 2:</p>
+<div class="admonition info">
+<p class="admonition-title">Recordatori</p>
+<p>Recordeu posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor mestre</td>
+<td align="center"><em>172.1.X.X</em></td>
+</tr>
+<tr>
+<td align="left">Servidor esclau</td>
+<td align="center"><em>172.1.X.X</em></td>
+</tr>
+<tr>
+<td align="left">Client 1</td>
+<td align="center"><em>172.1.X.X</em></td>
+</tr>
+<tr>
+<td align="left">Client2</td>
+<td align="center"><em>172.1.X.X</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="escenari">Escenari</h2>
+<p>En aquesta pràctica anem a muntar, igual que vam fer en l'anterior, un escenari de servidors mestre/esclau. El mestre serà el vostre servidor i l'esclau el servidor d'un altre company.</p>
+<p><img alt="" src="../img/3.3_1.png" /></p>
+<p>Si transferim les zones des del servidor fins a l'esclau amb aquesta configuració de xarxa, l'alumne 2 serà capaç de fer ping al nostre nom de domini d'alumne 1 (recordeu que, de la pràctica 1, ja es podía fer ping per IP).</p>
+<p>És a dir, la màquina 171.1.a.2 podria fer ping a <strong>clixubuntu.sre.es</strong>.</p>
+<h2 id="configuracio-dels-dominis">Configuració dels dominis</h2>
+<p>En primer lloc, anem a canviar el nom dels dominis.
+Canviarem el nom del subdomini a utilitzar de “.sre.es.” a “nombre_alumne.es.” Així doncs, el meu domini per exemple quedaria com “raul.es.”. D'aquesta forma, cada alumne tindrà un subdomini diferent.</p>
+<p>Això implica que haureu de canviar en tots els arxius, en totes les línies on aparega, “sre.es” pel vostre domini:</p>
 <ul>
-<li>
-<p>Veurem que el DHCP relay segueix redirigint les peticions adequadament</p>
-</li>
-<li>
-<p>En el servidor DHCP ara veurem que ja sí s'estan assignant IP posat que apareixen els missatges DHCP que vam veure en teoria, en la interfície de la LAN:</p>
-</li>
+<li>Arxius de configuració de zones</li>
+<li><em>named.conf.local</em></li>
+<li>Configuració DHCP</li>
 </ul>
-<p><img alt="" src="../../img/2.2Comprovacio_relay_3.png" /></p>
-<p>Ací es pot veure com s'ha assignat la IP 172.1.2.11 a un client d'una altra xarxa interna.</p>
-<p>Si comproveu el client Xubuntu de l'alumne 1, el que ha configurat el DHCP relay, ara ja tindrà IP assignada.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Si després de configurar-ho tot no funciona, comproveu que heu reiniciat els serveis dels quals hàgiu canviat la configuració. A més, feu un
-<div class="highlight"><pre><span></span><code>sudo netplan apply
-</code></pre></div>
-en el client per forçar-li a que torne a intentar buscar IP.</p>
-</div>
-<div class="admonition caution">
-<p class="admonition-title">Atenció per a l'informe</p>
-<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
-</div>
+<h2 id="configuracio-del-mestre">Configuració del mestre</h2>
+<p>Mireu el diagrama de xarxa o imatge de més amunt.</p>
+<p>Adoneu-vos que ara el servidor DNS ha d'escoltar per les dues interfícies:</p>
+<ul>
+<li>La interfície de la xarxa interna → per resoldre les consultes del client</li>
+<li>La interfície de la *LAN → per poder transferir/rebre les zones</li>
+</ul>
+<p>Això implica que haureu de modificar l'arxiu <em>“named.conf.options”</em> de forma concorde. Recordem l'arxiu de configuració <em>“named.conf.options”</em>:</p>
+<h1 id="llista-dacces-per-permetre-unicament-els-hosts-que-decidim">Llista d'accés per permetre únicament els *hosts que decidim</h1>
                 
               
               
@@ -649,7 +535,7 @@ en el client per forçar-li a que torne a intentar buscar IP.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../P2.1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 2.1 - Instal·lació i configuració de servidor DHCP" rel="prev">
+        <a href="../P3.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 3.2 - Configuració de servidor DNS mestre i esclau" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -658,26 +544,11 @@ en el client per forçar-li a que torne a intentar buscar IP.</p>
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+              Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../P3.1/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 3.1 - Configuració d&#39;un servidor DNS" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Següent
-              </span>
-              Pràctica 3.1 - Configuració d'un servidor DNS
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
