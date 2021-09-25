@@ -495,22 +495,22 @@
 <p>És a dir, la màquina 171.1.a.2 podria fer ping a <strong>clixubuntu.sre.es</strong>.</p>
 <h2 id="configuracio-dels-dominis">Configuració dels dominis</h2>
 <p>En primer lloc, anem a canviar el nom dels dominis.
-Canviarem el nom del subdomini a utilitzar de “.sre.es.” a “nombre_alumne.es.” Així doncs, el meu domini per exemple quedaria com “raul.es.”. D'aquesta forma, cada alumne tindrà un subdomini diferent.</p>
-<p>Això implica que haureu de canviar en tots els arxius, en totes les línies on aparega, “sre.es” pel vostre domini:</p>
+Canviarem el nom del subdomini a utilitzar de <code>.sre.es.</code> a <code>nom_alumne.es.</code> Així doncs, el meu domini per exemple quedaria com <code>raul.es.</code>. D'aquesta forma, cada alumne tindrà un subdomini diferent.</p>
+<p>Això implica que haureu de canviar en tots els arxius, en totes les línies on aparega, <code>sre.es</code> pel vostre domini:</p>
 <ul>
 <li>Arxius de configuració de zones</li>
-<li><em>named.conf.local</em></li>
+<li><em><code>named.conf.local</code></em></li>
 <li>Configuració DHCP</li>
 </ul>
 <h2 id="configuracio-del-mestre">Configuració del mestre</h2>
 <p>Mireu el diagrama de xarxa o imatge de més amunt.</p>
 <p>Adoneu-vos que ara el servidor DNS ha d'escoltar per les dues interfícies:</p>
 <ul>
-<li>La interfície de la xarxa interna → per resoldre les consultes del client</li>
-<li>La interfície de la *LAN → per poder transferir/rebre les zones</li>
+<li><strong>La interfície de la xarxa interna</strong> → per resoldre les consultes del client</li>
+<li><strong>La interfície de la LAN</strong> → per poder transferir/rebre les zones</li>
 </ul>
 <p>Això implica que haureu de modificar l'arxiu <em>“named.conf.options”</em> de forma concorde. Recordem l'arxiu de configuració <em>“named.conf.options”</em>:</p>
-<h1 id="llista-dacces-per-permetre-unicament-els-hosts-que-decidim">Llista d'accés per permetre únicament els *hosts que decidim</h1>
+<h1 id="llista-dacces-per-permetre-unicament-els-hosts-que-decidim">Llista d'accés per permetre únicament els hosts que decidim</h1>
                 
               
               
