@@ -551,7 +551,7 @@
 <p>I si està malament us indicarà l'error:</p>
 <p><img alt="" src="../../img/2.1dhcpd-t_error.png" /></p>
 <p>(Després de “subnet” no va “mask)</p>
-<p>Quan comproveu que la configuració està bé, reinicieu el servei DHCP amb el següent comando:</p>
+<p>Quan comproveu que la configuració està bé, reinicieu el servici DHCP amb el següent comando:</p>
 <p><div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
 </code></pre></div>
 I hauria d'assignar-li la IP al client.</p>
@@ -583,7 +583,7 @@ I haurà d'aparèixer una ruta del tipus:</p>
 </code></pre></div>
 <p>La IP fixa ha de ser la número 11 → <strong>X.X.X.11</strong></p>
 <p>Realitzeu la mateixes comprovacions que en l'apartat anterior (el client té bé la IP, el gateway/porta d'enllaç, pot fer ping al client d'un altre company).</p>
-<p>Recordeu que després de canviar la configuració del servidor DHCP sempre heu de reiniciar el servei amb el comando vist anteriorment:</p>
+<p>Recordeu que després de canviar la configuració del servidor DHCP sempre heu de reiniciar el servici amb el comando vist anteriorment:</p>
 <div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
 </code></pre></div>
 <div class="admonition info">
