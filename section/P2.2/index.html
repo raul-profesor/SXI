@@ -383,6 +383,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -520,6 +527,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -623,8 +637,33 @@ en el client per forçar-li a que torne a intentar buscar IP.</p>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Atenció per a l'informe</p>
-<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
+<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació. </p>
 </div>
+<h2 id="questions-finals">Questions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+</div>
+<p>Si l'<em>alumne 1</em> està fent de <strong>servidor DHCP</strong> i l'<em>alumne 2</em> està fent de <strong>relay</strong>, imaginem que l'alumne 2 afegix al ser Ubuntu server (que, recordem, fa de relay) una interfície que es crida <ins>enp0s15</ins>. </p>
+<p>En aquesta interfície, l'alumne 2 decidix crear la nova xarxa 10.10.10.0/24 amb un sol client Xubuntu, on la interfície del router té la IP 10.10.10.1 i el client Xubuntu la IP 10.10.10.2</p>
+<p>Explica detalladament tot el que hauríem de configurar per tal de que el server DHCP de l'alumne 1 puga donar IP també en el rang d'eixa nova xarxa del company i, concretament, en el rang 10.10.10.50 - 10.10.10.150</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+</div>
+<p>Imagineu que el comando <code>dhcpd -t</code> vos diu que teniu un error en  l'arxiu <code>dhcpd.conf</code>, el detecteu i editeu l'arxiu solucionant l'error. No obstant això, el server dhcp continua donant error. ¿Qué més fa falta, a més d'editar l'error de <code>dhcpd.conf</code>?</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+</div>
+<p>En aquesta captura:</p>
+<p><img alt="" src="../../img/2.2Comprovacio_relay_1.png" /></p>
+<p>A qui pertany la direcció MAC i qui pertany la IP <code>192.168.18.76</code>?</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+</div>
+<p>Com puc saber o a on puc vore quines IP ha assignat ja el servidor DHCP?</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 5</p>
+</div>
+<p>Podría assignar una IP fixa a la xarxa del meu company? Explica detalladament quina configuració faría falta.</p>
                 
               
               
