@@ -581,6 +581,7 @@
 <p>Veiem que aquesta pràctica l'heu de fer per parelles o, en defecte d'això, amb 4 màquines virtuals com s'ha explicat en classe.</p>
 <p>Haureu d'alternar-vos perquè primer un sigui el relay i l'altre el servidor DHCP i després canviïn els rols.</p>
 <p>Així doncs, en el primer cas, el servidor/router de l'Alumne 1 serà el que redirigeixi les peticions DHCP dels seus clients al servidor/router de l'Alumne 2 a través de la interfície de la LAN de classe/casa.</p>
+<p><strong>En aquest router/servidor, a l'arxiu <code>/etc/default/isc-dhcp-server</code> teniueu posat l'interfaz de la xarxa interna. Com hara rebreu les peticions DHCP del relay per l'interfaz LAN haureu d'afegir a l'apartat "INTERFACESv4" el nom d'eixa interfaz.</strong></p>
 <h3 id="parada-del-servidor-dhcp">Parada del servidor DHCP</h3>
 <p>En primer lloc és <strong>imprescindible</strong> que l'alumne que vagi a fer de DHCP relay pari el seu servidor DHCP, ja que el que va a fer és delegar aquesta responsabilitat en el servidor DHCP del company, redirigint-li les peticions que li arribin.</p>
 <p>Per a parar-lo:</p>
