@@ -378,6 +378,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#configuracio-de-lesclau" class="md-nav__link">
+    Configuració de l'esclau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprovacio" class="md-nav__link">
+    Comprovació
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-servidor-mestreesclau" class="md-nav__link">
+    Configuració servidor mestre/esclau
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -438,6 +459,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#configuracio-de-lesclau" class="md-nav__link">
+    Configuració de l'esclau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprovacio" class="md-nav__link">
+    Comprovació
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-servidor-mestreesclau" class="md-nav__link">
+    Configuració servidor mestre/esclau
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -471,19 +513,19 @@
 <tbody>
 <tr>
 <td align="left">Servidor mestre</td>
-<td align="center"><em>172.1.X.X</em></td>
+<td align="center">172.1.X.X</td>
 </tr>
 <tr>
 <td align="left">Servidor esclau</td>
-<td align="center"><em>172.1.X.X</em></td>
+<td align="center">172.1.X.X</td>
 </tr>
 <tr>
 <td align="left">Client 1</td>
-<td align="center"><em>172.1.X.X</em></td>
+<td align="center">172.1.X.X</td>
 </tr>
 <tr>
 <td align="left">Client2</td>
-<td align="center"><em>172.1.X.X</em></td>
+<td align="center">172.1.X.X</td>
 </tr>
 </tbody>
 </table>
@@ -510,7 +552,71 @@ Canviarem el nom del subdomini a utilitzar de <code>.sre.es.</code> a <code>nom_
 <li><strong>La interfície de la LAN</strong> → per poder transferir/rebre les zones</li>
 </ul>
 <p>Això implica que haureu de modificar l'arxiu <em>“named.conf.options”</em> de forma concorde. Recordem l'arxiu de configuració <em>“named.conf.options”</em>:</p>
-<h1 id="llista-dacces-per-permetre-unicament-els-hosts-que-decidim">Llista d'accés per permetre únicament els hosts que decidim</h1>
+<div class="highlight"><pre><span></span><code><span class="err">Llista</span> <span class="err">d&#39;accés</span> <span class="err">per</span> <span class="err">permetre</span> <span class="err">únicament</span> <span class="err">els</span> <span class="err">hosts</span> <span class="err">que</span> <span class="err">decidim</span>
+<span class="err">acl</span> <span class="err">confiables{</span>
+    <span class="err">172.1.1.0/24;</span>
+<span class="err">};</span>
+
+<span class="err">options</span> <span class="err">{</span>
+    <span class="err">directory</span> <span class="err">&quot;/var/cache/bind&quot;;</span>
+    <span class="err">querylog</span> <span class="err">yes;</span>
+    <span class="c">// If there is a firewall between you and nameservers you want</span>
+    <span class="c">// to talk to, you may need to fix the firewall to allow multiple</span>
+    <span class="c">// ports to talk.  See http://www.kb.cert.org/vuls/id/800113</span>
+
+    <span class="c">// If your ISP provided one or habiti IP addresses for stable </span>
+    <span class="c">// nameservers, you probably want to usi them as forwarders.  </span>
+    <span class="c">// Uncomment the following block, and insert the addresses replacing </span>
+    <span class="c">// the all-0&#39;s placeholder.</span>
+
+    <span class="err">forwarders</span> <span class="err">{</span>
+        <span class="err">208.67.222.222;</span>
+        <span class="err">1.1.1.1;</span> 
+     <span class="err">};</span>
+
+    <span class="err">allow-recursion</span> <span class="err">{confiables;};</span>
+    <span class="err">allow-transfer</span> <span class="err">{</span> <span class="err">X.X.X.X;</span> <span class="err">};</span>
+    <span class="err">also-notify</span> <span class="err">{</span> <span class="err">X.X.X.X;</span> <span class="err">};</span>
+    <span class="err">listen-on</span> <span class="err">port</span> <span class="err">53</span> <span class="err">{</span> <span class="err">172.1.1.1;</span> <span class="err">};</span>
+    <span class="err">recursion</span> <span class="err">yes;</span>
+
+    <span class="c">//========================================================================</span>
+    <span class="c">// If BIND logs error messages about the root key being expired,</span>
+    <span class="c">// you will need to update your keys.  See https://www.isc.org/bind-keys</span>
+
+    <span class="c">//dnssec-validation acte;</span>
+    <span class="err">dnssec-enable</span> <span class="err">yes;</span>
+    <span class="err">dnssec-validation</span> <span class="err">yes;</span>
+    <span class="c">//llistin-on-v6 { none; };</span>
+<span class="err">};</span>
+</code></pre></div>
+<p>Recordem què fa cada opció:</p>
+<ul>
+<li><strong>allow-recursion</strong> → de qui es permeten les consultes recursives en aquest servidor DNS</li>
+<li><strong>allow-transfer</strong> → cap a qui es permet transferència de zones</li>
+<li><strong>also-notify</strong>→ cap a qui s'envia un avís o notificació quan el mestre recarrega els seus arxius de zona</li>
+<li><strong>listen-on port 53</strong> → la IP  de la interfície on el servidor escolta consultes DNS</li>
+<li><strong>recursion yes;</strong> → es permeten les consultes recursives, amb allow-recursion li indiquem de qui exactament, utilitzant la ACL (llista d'accés) confiables.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En la pràctica anterior vos vaig dir que les línies <em>allow-transfer</em> i <em>also-notify</em> les podíeu tenir en “named.conf.options” o dins de cada zona en “named.conf.local”. Poseu-les només en un dels dos llocs perquè si les teniu en els dos llocs i no estan iguals, podeu tenir problemes.</p>
+</div>
+<p>Així les coses, hem de configurar el servidor mestre de tal forma que consideri al servidor esclau com confiable, que permita les consultes recursivas dels confiables, que permeti les transferències de zona cap a la IP de l'esclau, que també li notifiqui i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna i la de la LAN).</p>
+<p>Recordeu a l'hora de posar les IPs corresponents, mirant una vegada més el diagrama de xarxa, que ara les zones es transfereixen per la LAN.</p>
+<h2 id="configuracio-de-lesclau">Configuració de l'esclau</h2>
+<p>En l'esclau també s'han de canviar els mateixos arxius per posar-li el nou domini (recordeu que cada alumne tindrà un subdomini amb el seu nom).</p>
+<p>Debemos configurar el servidor esclau de tal forma que consideri al servidor mestre com confiable, que permita les consultes recursivas, i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna per als clients i la de la LAN per al mestre).</p>
+<p>Recordeu de la pràctica 3.2 com es configuraven les zones en “named.conf.local”, depenent de si era mestre o esclau el servidor.</p>
+<h2 id="comprovacio">Comprovació</h2>
+<p>Comproveu amb “journalctl -o named -f” que es produeixen les transferències de zona.</p>
+<p>Si tot ha anat bé, podré resoldre (amb nslookup) i fer ping als meus noms de domini (dnsserver i cliXubuntu) i als de l'esclau (dnsserver.nomalumno.es i cliXubuntu.nomalumno.es). </p>
+<p>Recordeu que per resoldre els subdominis de l'esclau haig d'afegir-li el subdomini ja que és un de diferent al meu i en el DHCP només li estic enviant el meu.</p>
+<h2 id="configuracio-servidor-mestreesclau">Configuració servidor mestre/esclau</h2>
+<p>Ara haureu de configurar tots dos servidors perquè siguin mestre/esclau.</p>
+<p>Serà mestre de les zones del vostre subdomini (raul.es. en el meu cas) i esclau de les del vostre company (nombrealumne.es.). </p>
+<p>Això vol dir que l'arxiu “named.conf.local” tindrà zones de tipus mestre i esclau.</p>
+<p>Una vegada configurat, comproveu que tots dos des dels vostres clients podeu resoldre els noms de domini del company (recordeu afegir el subdomini del company en els noms de les consultes).</p>
                 
               
               

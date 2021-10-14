@@ -334,6 +334,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installacio-de-servidor-dns" class="md-nav__link">
+    Instal·lació de servidor DNS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuracio-del-servidor" class="md-nav__link">
     Configuració del servidor
   </a>
@@ -391,6 +398,20 @@
         <li class="md-nav__item">
   <a href="#tasques-a-realitzar" class="md-nav__link">
     Tasques a realitzar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
   </a>
   
 </li>
@@ -459,6 +480,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installacio-de-servidor-dns" class="md-nav__link">
+    Instal·lació de servidor DNS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuracio-del-servidor" class="md-nav__link">
     Configuració del servidor
   </a>
@@ -520,6 +548,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -535,39 +577,17 @@
                 
                 <h1 id="practica-31-configuracio-dun-servidor-dns">Pràctica 3.1 - Configuració d'un servidor DNS</h1>
 <div class="admonition danger">
-<p class="admonition-title">Atenció, molt important!</p>
-<p>✔ Heu de tindre un clon de l'Ubuntu Server, perquè faci de servidor DNS esclau</p>
-<p>✔ Aquest servidor esclau estarà a la nostra xarxa interna de manera que només necessita una interfície,
-    la de la xarxa interna que rebrà la IP per DHCP així que:</p>
-<ul>
-<li>
-<p>Cal desactivar-una de les interfícies en Virtualbox</p>
-</li>
-<li>
-<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
-</li>
-</ul>
-<p>✔ Heu de tindre configurat el servidor DHCP perquè assigni una adreça IP fixa a l'Ubuntu Server.</p>
-<div class="admonition info">
-<p class="admonition-title">Avís</p>
-<p>✔ Si ja havíeu clonat el servidor per fer les pràctiques de tema anterior,
-podeu reutilitzar-la però recordeu:</p>
-<ul>
-<li>
-<p>Aturar els serveis que tinguéssiu instal·lats (isc-dhcp-server, isc-dhcp-relay)</p>
-</li>
-<li>
-<p>Cal desactivar-una de les interfícies en Virtualbox</p>
-</li>
-<li>
-<p>La que quedi activa, estarà configurada per a la mateixa xarxa interna que el server original i ha de tenir configurat en netplan que rebi la IP per DHCP</p>
-</li>
-<li>
-<p>Instal·lar Bind i els paquets addicionals, tal com vam fer en la pràctica anterior al servidor original     </p>
-</li>
-</ul>
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<p>✔ Heu de tindre el servidor, el client i a més un clon de el client. Tots dins de la mateixa xarxa interna.</p>
+<p>✔ Heu de tindre configurat el servidor DHCP per que assigne adreces IP fixes als dos clients.</p>
+<p>✔ IMPORTANT: A l'clonar la màquina client, per poder assignar IPs fixes en el DHCP, necessiten tenir adreces MAC diferents:        </p>
+<p><img alt="" src="../../img/3.1.bind_0.png" /></p>
 </div>
-</div>
+<h2 id="installacio-de-servidor-dns">Instal·lació de servidor DNS</h2>
+<p>Bind és l'estàndard de facto per a servidors DNS. És una eina de programari lliure i es distribueix amb la majoria de plataformes Unix i Linux, on també se li coneix  amb el sobrenom de named (name daemon). Bind9 és la versió recomanada per a usar-se i és la que utilitzarem. </p>
+<p>Per instal·lar el servidor DNS en Ubuntu Server, farem servir els repositoris oficials. Per això, podrem instal·lar com qualsevol paquet a Ubuntu:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install bind9 bind9utils bind9-doc 
+</code></pre></div>
 <h2 id="configuracio-del-servidor">Configuració del servidor</h2>
 <p>Ja que a classe només utilitzarem IPv4, anem a dir-ho a Bind, en el seu arxiu general de configuració. Aquest fitxer ("named") es troba en el directori:</p>
 <div class="highlight"><pre><span></span><code>/etc/default
@@ -580,7 +600,7 @@ podeu reutilitzar-la però recordeu:</p>
 </code></pre></div>
 Si ho consultem veurem el següent:</p>
 <p><img alt="" src="../../img/3.1.bind_1.png" /></p>
-<p>Aquest fitxer serveix simplement per aglutinar o agrupar els arxius de configuració que farem servir. Aquests 3 includes fan referència als 3 diferents arxius on haurem de realitzar la veritable configuració, ubicats en el mateix directori.</p>
+<p>Aquest fitxer serveix simplement per aglutinar o agrupar els arxius de configuració que farem servir. Aquests 3 includes fan referència als 3 diferents arxius on haurem de realitzar l'autèntica configuració, ubicats en el mateix directori.</p>
 <h3 id="configuracio-namedconfoptions">Configuració <em>named.conf.options</em></h3>
 <p>És una bona pràctica que feu sempre una còpia de seguretat d'un arxiu de configuració cada vegada que aneu a realitzar algun canvi:.</p>
 <p><div class="highlight"><pre><span></span><code>sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.backup
@@ -589,7 +609,7 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
 <ul>
 <li>
 <p>Per motius de seguretat, anem a incloure una llista d'accés perquè només puguin fer consultes recursives a servidor aquells hosts que nosaltres decidim.</p>
-<p>En el nostre cas, els hosts fiables seran els de la xarxa 172.1.X.0 / 24. Així doncs, just abans del bloc "options {...}", al principi de l'arxiu, afegirem alguna cosa així:</p>
+<p>En el nostre cas, els hosts fiables seran els de la xarxa 172.1.X.0/24. Així doncs, just abans del bloc "options {...}", al principi de l'arxiu, afegirem alguna cosa així:</p>
 <p><img alt="" src="../../img/3.1.bind_2.png" /></p>
 </li>
 </ul>
@@ -605,14 +625,13 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
 <p>No permetre transferència de zones a ningú, de moment.</p>
 </li>
 <li>
-<p>Configurar el servidor perquè escolti consultes DNS al port 53 (per defecte DNS utilitza port 53 UDP) ia la IP de la seva interfície de la xarxa privada. Haureu col·locar la IP de la interfície connectada a la xarxa privada de servidor, ja que resoldrà les consultes DNS de el client / s d'aquesta xarxa.</p>
+<p>Configurar el servidor perquè escolti consultes DNS al port 53 (per defecte DNS utilitza port 53 UDP) ia la IP de la seva interfície de la xarxa privada. Haureu col·locar la IP de la interfície connectada a la xarxa privada de servidor, ja que resoldrà les consultes DNS de el client/s d'aquesta xarxa.</p>
 </li>
 <li>
 <p>Permetre les consultes recursives, ja que en el primer punt ja li hem dit que només puguin fer-les els hosts de l'ACL.</p>
 </li>
 <li>
 <p>A més, comentarem la línia que posa "listen-on-v6 {any; }; " ja que no anem a respondre a consultes d'IPv6. Per a comentar-la n'hi ha prou amb afegir al principi de la línia dues barres (//).</p>
-<p>També podria fer-se amb un coixinet però apareixeria ressaltat amb color ja que aquestos comentaris els sol utilitzar l'administrador per a aclarir algun aspecte de la configuració.</p>
 <p><img alt="" src="../../img/3.1.bind_3.png" /></p>
 </li>
 </ul>
@@ -661,6 +680,50 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
 <p class="admonition-title">Atenció per a l'informe</p>
 <p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
 </div>
+<h2 id="questions-finals">Questions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Qué passarà si un client d'una xarxa diferent a la teua intenta fer ús del teu DNS d'alguna manera, li funcionarà? Per qué, en quina part de la configuració es pot vore?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Per què hem de permetre les consultes recursives en la configuració?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>El servidor DNS que acabeu de muntar, es autoritatiu? Per què?</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració correcta del servidor DNS</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de la zona DNS</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Evidències de les comprovacions del correcte funcionament</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Questions finals</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+</tbody>
+</table>
                 
               
               
