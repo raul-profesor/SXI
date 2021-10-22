@@ -665,6 +665,11 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
 <p>Si tot ha anat bé, retornarà OK. En cas de que haja qualsevol error, ens n'informarà.</p>
 <p>Reiniciem el servici y comprovem l'estat:</p>
 <p><img alt="" src="../../img/3.1.bind_12.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció!</p>
+<p>És molt important que el client estiga configurat per utilitzar com a servidor DNS el que acabem d'instal·lar i configurar.</p>
+<p>Però, com podem fer això? Cal recordar que e lclienteestà configurat per DHCP i que DHCP permetia una completa configuració de xarxa, a més de la IP.Consulteu al Tema 2 que "option" dins de la declaració de la subnet a fitxer dhcpd.conf ens permetía enviar-li a el client la IP de servidor DNS.</p>
+</div>
 <h3 id="comprovacio-de-les-resolucions-i-de-les-consultes">Comprovació de les resolucions i de les consultes</h3>
 <p>Podem comprovar des dels clients, amb dig o nslookup les resolucions directes i inverses:</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Resolucions nom del server</label><div class="tabbed-content">
