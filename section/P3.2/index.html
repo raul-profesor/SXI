@@ -557,7 +557,7 @@ Per això heu d'utilitzar, dins de la declaració de la vostra subnet a l'arxiu 
 <p>Si us heu fixat en la sortida de dig o de nslookup des del client, quan us diu que servidor DNS ha utilitzat per a la consulta, us posa que ha estat el 127.0.0.53</p>
 <p><img alt="" src="../../img/3.2_3.png" /></p>
 <p>Aquesta adreça és l'adreça local de la vostra màquina client. Això és així perquè systemd, el “nou” sistema de gestió de serveis de Linux, té una espècie de servidor DNS local que és el primer que es consulta i si no té la resposta, la reenvía al servidor DNS que hàgim configurat.</p>
-<p>Això és una fallada coneguda de systemd i hi ha una espècie de “arranjament” per solucionar-ho i és crear un link simbòlic:</p>
+<p>Això és una falla coneguda de systemd i n'hi ha una espècie de “arranjament” per solucionar-ho i és crear un link simbòlic:</p>
 <p><div class="highlight"><pre><span></span><code>$ sudo rm -f /etc/resolv.conf
 $ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
 </code></pre></div>
@@ -571,7 +571,7 @@ I heu de reaplicar la configuració de xarxa:</p>
 <h3 id="pas-3-afegir-forwarders">Pas 3 – Afegir forwarders</h3>
 <div class="admonition question">
 <p class="admonition-title">Tasca</p>
-<p>Comproveu que si feu una consulta a una adreça de domini d'Internet (cisco.com, github.com…), el domini sí es resol perfectament. Com és això possible si només hem configurat les zones autoritativas del DNS i cap més?A quins servidors DNS creïs que consulta el nostre Bind?</p>
+<p>Comproveu que si feu una consulta a una adreça de domini d'Internet (cisco.com, github.com…), el domini sí es resol perfectament. Com és això possible si només hem configurat les zones autoritatives del DNS i cap més? A quins servidors DNS creieu que consulta el nostre Bind?</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Tasca</p>
@@ -605,9 +605,9 @@ Per:</p>
 </div>
 <h3 id="pas-4-afegir-arxius-de-log">Pas 4 - Afegir arxius de log</h3>
 <p>Històricament tots els serveis de Linux han tingut el que es coneixen com a arxius de logs. Aquests arxius contenen text i registren tota l'activitat del servei, és a dir, tot el que ocorre amb ell. </p>
-<p>Avui dia això ho controla systemd i podem veure l'estat i l'activitat del servei amb el comando “suo journalctl -o nom_de el_servei”.
+<p>Hui dia això ho controla systemd i podem veure l'estat i l'activitat del servei amb el comando <code>sudo journalctl -o nom_de el_servei</code>.
 No obstant això, anem a afegir els nostres propis arxius de logs per fer-ho més accessible i manejable.</p>
-<p>Per a això, en l'arxiu “named.conf” li indiquem que ha de tenir en compte un nou arxiu de configuració que crearem després per especificar com guardar els logs:</p>
+<p>Per a això, en l'arxiu “named.conf” l'indiquem que ha de tenir en compte un nou arxiu de configuració que crearem després per especificar com guardar els logs:</p>
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">include &quot;/etc/bind/named.conf.logging&quot;;</span>
 </code></pre></div>
 Hem de crear, ara sí, l'arxiu “named.conf.logging” amb el següent contingut:</p>
