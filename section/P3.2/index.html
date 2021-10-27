@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 3.2 - Configuració de servidor DNS mestre i esclau - Servicis en xarxa i Internet</title>
+        <title>Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-32-configuracio-de-servidor-dns-mestre-i-esclau" class="md-skip">
+        <a href="#practica-32-configuracio-de-servidor-dns-mestreesclau-i-millora-de-la-configuracio" class="md-skip">
           Salta el contingut
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
+              Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
             
           </span>
         </div>
@@ -323,12 +323,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
+          Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Pràctica 3.2 - Configuració de servidor DNS mestre i esclau
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
       </a>
       
         
@@ -381,15 +381,22 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#configuracio-del-servidor-esclau" class="md-nav__link">
+    Configuració del servidor esclau
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques-a-realitzar" class="md-nav__link">
-    Tasques a realitzar
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-la-configuracio" class="md-nav__link">
+    Comprovació de la configuració
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -480,15 +487,22 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#configuracio-del-servidor-esclau" class="md-nav__link">
+    Configuració del servidor esclau
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques-a-realitzar" class="md-nav__link">
-    Tasques a realitzar
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio-de-la-configuracio" class="md-nav__link">
+    Comprovació de la configuració
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -505,7 +519,7 @@
               
                 
                 
-                <h1 id="practica-32-configuracio-de-servidor-dns-mestre-i-esclau">Pràctica 3.2 - Configuració de servidor DNS mestre i esclau</h1>
+                <h1 id="practica-32-configuracio-de-servidor-dns-mestreesclau-i-millora-de-la-configuracio">Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració</h1>
 <div class="admonition danger">
 <p class="admonition-title">Atenció, molt important abans de començar!</p>
 <p>✔ Heu de tenir un clon de l'Ubuntu Server, perquè faci de servidor DNS esclau</p>
@@ -520,7 +534,7 @@
 podeu reutilitzar-la però recordeu:</p>
 <ul>
 <li>
-<p>Aturar els serveis que tinguéssiu instal·lats (isc-dhcp-server, isc-dhcp-relay)</p>
+<p>Aturar els servicis que tinguéssiu instal·lats (isc-dhcp-server, isc-dhcp-relay)</p>
 </li>
 <li>
 <p>Cal desactivar-una de les interfícies en Virtualbox</p>
@@ -536,7 +550,7 @@ podeu reutilitzar-la però recordeu:</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Nota important</p>
-<p>Si no ixen els resultats que deuen, pot passar que s'hagi quedat informació guardada en la caché del client o del server. Per esborrar-les en el client:</p>
+<p>Si després de configurar-ho tot en la pràctica, no ixen els resultats que deuen, pot passar que s'hagi quedat informació guardada en la caché del client o del server. Per esborrar-les en el client:</p>
 <div class="highlight"><pre><span></span><code>sudo systemd-resolve --flush-caches
 </code></pre></div>
 <p>I en el servidor:</p>
@@ -556,7 +570,7 @@ Per això heu d'utilitzar, dins de la declaració de la vostra subnet a l'arxiu 
 <h3 id="pas-2-afegir-el-nostre-servidor-dns-com-a-unic-en-el-client">Pas 2 – Afegir el nostre servidor DNS com a únic en el client</h3>
 <p>Si us heu fixat en la sortida de dig o de nslookup des del client, quan us diu que servidor DNS ha utilitzat per a la consulta, us posa que ha estat el 127.0.0.53</p>
 <p><img alt="" src="../../img/3.2_3.png" /></p>
-<p>Aquesta adreça és l'adreça local de la vostra màquina client. Això és així perquè systemd, el “nou” sistema de gestió de serveis de Linux, té una espècie de servidor DNS local que és el primer que es consulta i si no té la resposta, la reenvía al servidor DNS que hàgim configurat.</p>
+<p>Aquesta adreça és l'adreça local de la vostra màquina client. Això és així perquè systemd, el “nou” sistema de gestió de servicis de Linux, té una espècie de servidor DNS local que és el primer que es consulta i si no té la resposta, la reenvía al servidor DNS que hàgim configurat.</p>
 <p>Això és una falla coneguda de systemd i n'hi ha una espècie de “arranjament” per solucionar-ho i és crear un link simbòlic:</p>
 <p><div class="highlight"><pre><span></span><code>$ sudo rm -f /etc/resolv.conf
 $ sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf
@@ -604,8 +618,8 @@ Per:</p>
 </code></pre></div>
 </div>
 <h3 id="pas-4-afegir-arxius-de-log">Pas 4 - Afegir arxius de log</h3>
-<p>Històricament tots els serveis de Linux han tingut el que es coneixen com a arxius de logs. Aquests arxius contenen text i registren tota l'activitat del servei, és a dir, tot el que ocorre amb ell. </p>
-<p>Hui dia això ho controla systemd i podem veure l'estat i l'activitat del servei amb el comando <code>sudo journalctl -o nom_de el_servei</code>.
+<p>Històricament tots els servicis de Linux han tingut el que es coneixen com a arxius de logs. Aquests arxius contenen text i registren tota l'activitat del servici, és a dir, tot el que ocorre amb ell. </p>
+<p>Hui dia això ho controla systemd i podem veure l'estat i l'activitat del servici amb el comando <code>sudo journalctl -o nom_de el_servici</code>.
 No obstant això, anem a afegir els nostres propis arxius de logs per fer-ho més accessible i manejable.</p>
 <p>Per a això, en l'arxiu “named.conf” l'indiquem que ha de tenir en compte un nou arxiu de configuració que crearem després per especificar com guardar els logs:</p>
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">include &quot;/etc/bind/named.conf.logging&quot;;</span>
@@ -619,7 +633,7 @@ Hem de crear, ara sí, l'arxiu “named.conf.logging” amb el següent contingu
 <span class="l l-Scalar l-Scalar-Plain">// Per loggear totes les consultes DNS al servidor</span>
      <span class="l l-Scalar l-Scalar-Plain">channel queries_log {</span>
 <span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/queries.log&quot; versions 600 size 20m;</span>
-</span>          <span class="l l-Scalar l-Scalar-Plain">print-estafi yes;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-time yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
@@ -627,15 +641,15 @@ Hem de crear, ara sí, l'arxiu “named.conf.logging” amb el següent contingu
 <span class="l l-Scalar l-Scalar-Plain">//Per loggear tots els errors en realitzar consultes al servidor</span>
      <span class="l l-Scalar l-Scalar-Plain">channel query-errors_log {</span>
 <span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/query-errors.log&quot; versions 5 size 20m;</span>
-</span>          <span class="l l-Scalar l-Scalar-Plain">print-estafi yes;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-time yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
           <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
         <span class="l l-Scalar l-Scalar-Plain">};</span>
 <span class="l l-Scalar l-Scalar-Plain">//Definim les categories associades als channels</span>
-        <span class="l l-Scalar l-Scalar-Plain">category llepa-servers { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category lame-servers { null; };</span>
         <span class="l l-Scalar l-Scalar-Plain">category edns-disabled { null; };</span>
-        <span class="l l-Scalar l-Scalar-Plain">category resoldre { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category resolver { null; };</span>
         <span class="l l-Scalar l-Scalar-Plain">category dnssec { errors_syslog; };</span>
         <span class="l l-Scalar l-Scalar-Plain">category default { errors_syslog; default_debug; };</span>
         <span class="l l-Scalar l-Scalar-Plain">category unmatched { null; };</span>
@@ -654,16 +668,73 @@ Fixeu-vos en les parts destacades en groc. Li estem indicant que aquests van a s
 <p>Finalment, a la configuració de Bind cal dir-li que sigui capaç de registrar la informació relativa a les queries o consultes DNS. Per a això modifiquem l'arxiu d'opcions “named.conf.options” i afegim, dins de “options {...}” la línia:</p>
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">querylog yes;</span>
 </code></pre></div>
-I reiniciem el servei de bind (named).</p>
+I reiniciem el servici de bind (named).</p>
 <div class="admonition question">
 <p class="admonition-title">Tasca</p>
 <p>Comprova que realitzant ara consultes des del client, queden registrades en aquest arxiu i fes una captura de pantalla.</p>
 </div>
-<h2 id="tasques-a-realitzar">Tasques a realitzar</h2>
-<p>Seguint els mateixos passos, introdueix en els arxius de zona al client clonat. Posa-li el nom XubuntuClon i comprova, de la mateixa manera, que també es resol bé el seu nom i és possible fer-li ping per nom.</p>
-<div class="admonition caution">
-<p class="admonition-title">Atenció per a l'informe</p>
-<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
+<h3 id="configuracio-del-servidor-esclau">Configuració del servidor esclau</h3>
+<p>Per configurar el servidor esclau, hem de tenir un clon de nostre serviuor i realitzar els mateixos passos per instal·lar Bind.</p>
+<p>Aquest servidor esclau serà capaç de resoldre les mateixes consultes que el principal, fins i tot serà capaç de seguir resolent consultes si el principal deixa de funcionar.</p>
+<p>Així doncs, després d'instal·lar Bind de la mateixa forma que hem fet en el principal, configurem l'arxiu “named.conf.options” exactament de la mateixa manera també.
+Per indicar-li a l'esclau que zones va a rebre, hem d'indicar-li que les mateixes que el mestre però en manera esclava. Quedaria així:</p>
+<p><img alt="" src="../../img/esclau_1.png" /></p>
+<ul>
+<li>En la configuració posa que es guardaran les zones transferides en el directori “esclaus” dins del directori <code>/etc/bind</code>, així que no oblideu crear aquest directori posat que no existeix. <strong>Si vos dona error per qüestió de permisos, canvieu la ruta per a guardar les zones a <code>/var/cache/bind/nom_de_zona</code></strong></li>
+<li></li>
+<li>En el servidor DNS mestre, hem de, ara sí, indicar què zones i a qui anem a tranferirlas. S'utilitzaran aquestes línies de configuració:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">allow-transfer { X.X.X.X };</span>
+<span class="l l-Scalar l-Scalar-Plain">also-notify { X.X.X.X; };</span>  
+</code></pre></div>
+<p>Aquestes línies teniu dues opcions, posar-les perquè actuïn per a cada zona de forma genèrica, en l'arxiu “named.conf.options”.</p>
+<p>O podeu posar-la dins de cada zona en què vulguem transferir en el “named.conf.local”, tenint un major control sobre cadascuna d'elles.</p>
+<p>En lloc de les X.X.X.X, heu de posar la IP del vostre servidor DNS esclau, que és a qui se li van a transferir les zones.</p>
+<ul>
+<li>Finalment reinicia el servici de Bind del mestre i de l'esclau.</li>
+</ul>
+<h3 id="comprovacio-de-la-configuracio">Comprovació de la configuració</h3>
+<div class="admonition question">
+<p class="admonition-title">Tasca comprovació 1</p>
+<ul>
+<li>Usant el comando per monitorizar servicis </li>
+</ul>
+<div class="highlight"><pre><span></span><code>journalctl -o nom_de_servici -f
+</code></pre></div>
+<p>comprova que es produeix la transferència de zona en l'esclau. Hauries de veure alguna cosa com això:</p>
+<p><img alt="" src="../../img/3.2.esclau_2.png" /></p>
+<p>Aquí podeu veure com es produeixen les transferències de la zona de resolució directa i de la zona de resolució inversa.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca comprovació 2<ul>
+<li>
+<p>Comprova que el servidor esclau funciona correctament i resol els noms de dnsserver i cliXubuntu, així com els de Internet. Pots usar qualsevol d'aquests dos comandos:</p>
+<p><div class="highlight"><pre><span></span><code>dig nombre.sre.es @X.X.X.X → IP del servidor esclau
+nslookup nomeni X.X.X.X → IP del servidor esclau
+</code></pre></div>
+Indica en la captura de pantalla on comprovem efectivament que és el servidor esclau el que està resolent la consulta.</p>
+</li>
+</ul>
+</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca comprovació 3</p>
+<ul>
+<li>
+<p>Comprova que tot funciona com ha de ser i apaga el servici “named” o “bind9” del servidor principal/mestre.</p>
+<p>El servidor esclau hauria de respondre sense problema a les consultes DNS.</p>
+</li>
+<li>
+<p>Adjunta captures de pantalla dels comandos que utilitzis per fer les consultes DNS i indica en elles on podem veure que és el servidor esclau el que està resolent les consultes.</p>
+</li>
+<li>
+<p>Adjunta captura de pantalla dels logs, on es mostra que s'estan rebent consultes (queries).</p>
+</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Atenció, nota</p>
+<p>Recorda que perquè els clients usin un servidor DNS en cas de fallada d'un altre, aquesta informació l'ha de manar el servidor DHCP. Això és, el servidor DHCP haurà d'enviar-los les adrecis IP de tots dos servidors DNS als clients.</p>
 </div>
                 
               
