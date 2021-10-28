@@ -400,6 +400,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -506,6 +520,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -602,10 +630,12 @@ I heu de reaplicar la configuració de xarxa:</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Tasca</p>
-<p>Si en l'arxiu “named.conf.options” canvieu la línia “recursion yes;” per “recursion no;”
-* Segueix funcionant la resolució de subdominis externs d'Internet (comprova-ho amb dig o nslookup? 
-* I els propis (comprova-ho amb dig i amb el nom de domini complet de les màquines .sre.es)?
-* Per què passa això si tenim els forwarders configurats?</p>
+<p>Si en l'arxiu “named.conf.options” canvieu la línia “recursion yes;” per “recursion no;”</p>
+<ul>
+<li>Segueix funcionant la resolució de subdominis externs d'Internet (comprova-ho amb dig o nslookup)? </li>
+<li>I els propis (comprova-ho amb dig i amb el nom de domini complet de les màquines .sre.es)?</li>
+<li>Per què passa això si tenim els forwarders configurats?</li>
+</ul>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Nota</p>
@@ -674,7 +704,7 @@ I reiniciem el servici de bind (named).</p>
 <p>Comprova que realitzant ara consultes des del client, queden registrades en aquest arxiu i fes una captura de pantalla.</p>
 </div>
 <h3 id="configuracio-del-servidor-esclau">Configuració del servidor esclau</h3>
-<p>Per configurar el servidor esclau, hem de tenir un clon de nostre serviuor i realitzar els mateixos passos per instal·lar Bind.</p>
+<p>Per configurar el servidor esclau, hem de tenir un clon de nostre servidor i realitzar els mateixos passos per instal·lar Bind.</p>
 <p>Aquest servidor esclau serà capaç de resoldre les mateixes consultes que el principal, fins i tot serà capaç de seguir resolent consultes si el principal deixa de funcionar.</p>
 <p>Així doncs, després d'instal·lar Bind de la mateixa forma que hem fet en el principal, configurem l'arxiu “named.conf.options” exactament de la mateixa manera també.
 Per indicar-li a l'esclau que zones va a rebre, hem d'indicar-li que les mateixes que el mestre però en manera esclava. Quedaria així:</p>
@@ -710,7 +740,7 @@ Per indicar-li a l'esclau que zones va a rebre, hem d'indicar-li que les mateixe
 <li>
 <p>Comprova que el servidor esclau funciona correctament i resol els noms de dnsserver i cliXubuntu, així com els de Internet. Pots usar qualsevol d'aquests dos comandos:</p>
 <p><div class="highlight"><pre><span></span><code>dig nombre.sre.es @X.X.X.X → IP del servidor esclau
-nslookup nomeni X.X.X.X → IP del servidor esclau
+nslookup nom X.X.X.X → IP del servidor esclau
 </code></pre></div>
 Indica en la captura de pantalla on comprovem efectivament que és el servidor esclau el que està resolent la consulta.</p>
 </li>
@@ -736,6 +766,65 @@ Indica en la captura de pantalla on comprovem efectivament que és el servidor e
 <p class="admonition-title">Atenció, nota</p>
 <p>Recorda que perquè els clients usin un servidor DNS en cas de fallada d'un altre, aquesta informació l'ha d'enviar el servidor DHCP. Això és, el servidor DHCP haurà d'enviar-li les adreces IP de <strong>tots dos</strong> servidors DNS als clients.</p>
 </div>
+<h2 id="questions-finals">Questions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>De quina altra forma, utilitzant un arxiu de configuración de Bind9, podem fer que el subdomini <strong><em>"sre.es"</em></strong> s'afegisca automàticament als noms de la zona, aconseguint lo mateix que en el <strong>Pas 1</strong>?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Explica detalladament què és un servidor mestre o principal i què és un esclau o secundari, així com la rel·lació que tenen.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Explica per a què serveixen aquestes línies i per què hem de posarles a l'arxiu de configuració corresponent:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">allow-transfer { X.X.X.X };</span>
+<span class="l l-Scalar l-Scalar-Plain">also-notify { X.X.X.X; };</span>  
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+<p>Com saben els clients què quan falla el server DNS principal, ha de començar a utilitzar el secondari?</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració correcta DHCP per a enviar subdomini i <ins>comprovació</ins></td>
+<td align="center"><strong>1  punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta del servidor DNS com a únic en el client i <ins>comprovació</ins></td>
+<td align="center"><strong>0,5 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta dels forwarders i resposta a les questions</td>
+<td align="center"><strong>0,5 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta dels logs i <ins>comprovació</ins></td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta del servidor esclau i <ins><strong>totes</strong> les comprovacions</ins></td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Questions finals</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+</tbody>
+</table>
                 
               
               
