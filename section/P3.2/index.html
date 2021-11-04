@@ -649,7 +649,7 @@ Per:</p>
 </div>
 <h3 id="pas-4-afegir-arxius-de-log">Pas 4 - Afegir arxius de log</h3>
 <p>Històricament tots els servicis de Linux han tingut el que es coneixen com a arxius de logs. Aquests arxius contenen text i registren tota l'activitat del servici, és a dir, tot el que ocorre amb ell. </p>
-<p>Hui dia això ho controla systemd i podem veure l'estat i l'activitat del servici amb el comando <code>sudo journalctl -o nom_de el_servici</code>.
+<p>Hui dia això ho controla systemd i podem veure l'estat i l'activitat del servici amb el comando <code>sudo journalctl -u nom_de el_servici</code>.
 No obstant això, anem a afegir els nostres propis arxius de logs per fer-ho més accessible i manejable.</p>
 <p>Per a això, en l'arxiu “named.conf” l'indiquem que ha de tenir en compte un nou arxiu de configuració que crearem després per especificar com guardar els logs:</p>
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">include &quot;/etc/bind/named.conf.logging&quot;;</span>
@@ -729,7 +729,7 @@ Per indicar-li a l'esclau que zones va a rebre, hem d'indicar-li que les mateixe
 <ul>
 <li>Usant el comando per monitorizar servicis </li>
 </ul>
-<div class="highlight"><pre><span></span><code>journalctl -o nom_de_servici -f
+<div class="highlight"><pre><span></span><code>journalctlo -u nom_de_servici -f
 </code></pre></div>
 <p>comprova que es produeix la transferència de zona en l'esclau. Hauries de veure alguna cosa com això:</p>
 <p><img alt="" src="../../img/3.2.esclau_2.png" /></p>

@@ -496,13 +496,12 @@
                 <h1 id="practica-33-configuracio-de-servidors-mestre-i-esclau-en-diferents-xarxes">Pràctica 3.3 - Configuració de servidors mestre i esclau en diferents xarxes</h1>
 <div class="admonition danger">
 <p class="admonition-title">Atenció, molt important abans de començar!</p>
-<p>✔ És <ins><strong>imprescindible</strong></ins> que tingueu funcionant correctament l'escenari de la pràctica 1 del Tema 1.</p>
-<p>✔ També és <ins><strong>imprescindible</strong></ins> que tingueu funcionant la pràctica 2.1.</p>
-<p>✔ Comproveu que ambdues coses funcionen correctament abans de començar aquesta pràctica.</p>
+<p>✔ És <ins><strong>imprescindible</strong></ins> que tingueu funcionant correctament totes les pràctiques anteriors</p>
+<p>✔ Comproveu que les pràctiques anteriors funcionen correctament abans de començar aquesta pràctica.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Recordatori - Descripció de les màquines</p>
-<p>Recordeu posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
 <table>
 <thead>
 <tr>
@@ -606,11 +605,11 @@ Canviarem el nom del subdomini a utilitzar de <code>.sre.es.</code> a <code>nom_
 <p>Recordeu a l'hora de posar les IPs corresponents, mirant una vegada més el diagrama de xarxa, que ara les zones es transfereixen per la LAN.</p>
 <h2 id="configuracio-de-lesclau">Configuració de l'esclau</h2>
 <p>En l'esclau també s'han de canviar els mateixos arxius per posar-li el nou domini (recordeu que cada alumne tindrà un subdomini amb el seu nom).</p>
-<p>Debemos configurar el servidor esclau de tal forma que consideri al servidor mestre com confiable, que permita les consultes recursivas, i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna per als clients i la de la LAN per al mestre).</p>
+<p>Hem de configurar el servidor esclau de tal forma que consideri al servidor mestre com confiable, que permita les consultes recursivas, i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna per als clients i la de la LAN per al mestre).</p>
 <p>Recordeu de la pràctica 3.2 com es configuraven les zones en “named.conf.local”, depenent de si era mestre o esclau el servidor.</p>
 <h2 id="comprovacio">Comprovació</h2>
-<p>Comproveu amb “journalctl -o named -f” que es produeixen les transferències de zona.</p>
-<p>Si tot ha anat bé, podré resoldre (amb nslookup) i fer ping als meus noms de domini (dnsserver i cliXubuntu) i als de l'esclau (dnsserver.nomalumno.es i cliXubuntu.nomalumno.es). </p>
+<p>Comproveu amb “journalctl -u named -f” que es produeixen les transferències de zona.</p>
+<p>Si tot ha anat bé, podré resoldre (amb nslookup) i fer ping als meus noms de domini (dnsserver i cliXubuntu) i als de l'esclau (dnsserver.nomalumno.es i cliXubuntu.nom_alumne.es). </p>
 <p>Recordeu que per resoldre els subdominis de l'esclau haig d'afegir-li el subdomini ja que és un de diferent al meu i en el DHCP només li estic enviant el meu.</p>
 <h2 id="configuracio-servidor-mestreesclau">Configuració servidor mestre/esclau</h2>
 <p>Ara haureu de configurar tots dos servidors perquè siguin mestre/esclau.</p>
