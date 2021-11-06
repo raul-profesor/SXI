@@ -399,6 +399,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -476,6 +490,20 @@
         <li class="md-nav__item">
   <a href="#configuracio-servidor-mestreesclau" class="md-nav__link">
     Configuració servidor mestre/esclau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
   </a>
   
 </li>
@@ -616,6 +644,59 @@ Canviarem el nom del subdomini a utilitzar de <code>.sre.es.</code> a <code>nom_
 <p>Serà mestre de les zones del vostre subdomini (raul.es. en el meu cas) i esclau de les del vostre company (nombrealumne.es.). </p>
 <p>Això vol dir que l'arxiu “named.conf.local” tindrà zones de tipus mestre i esclau.</p>
 <p>Una vegada configurat, comproveu que tots dos des dels vostres clients podeu resoldre els noms de domini del company (recordeu afegir el subdomini del company en els noms de les consultes).</p>
+<h2 id="questions-finals">Questions finals</h2>
+<p>Continuant amb l'escenari d'esta pràctica, imagineu que ara també activem el servidor clon. Així doncs, el servidor principal estará conectar per la interfaz de la seua xarxa interna al seu client i al servidor clon. I per la interfaz de la seua interfaz LAN, al servidor del vostre company.</p>
+<p>Ara volem que el servidor del company transferisca les seues zones al nostre servidor principal (és lo que acabem de fer en esta pràctica) i, a més, al nostre servidor clon, dins de la xarxa interna.</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>En el servidor del company, indica quina IP haurem de posar dins del <code>named.conf.options</code> en les directives:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">allow-transfer { X.X.X.X };</span>
+<span class="l l-Scalar l-Scalar-Plain">also-notify { X.X.X.X; };</span>  
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Explica qué haurem de configurar dins el arxiu <code>named.conf.local</code> del clon i quina IP haurem de color dins de la directiva <code>masters{...}</code></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Recordem que el nostre server DNS principal/original és esclau del servidor DNS del company. El nostre server clon també ho serà ara, tras configurar-lo adequadament. Si volem poder resoldre direccions del domini del nostre company quan el nostre servidor principal no estiga funcionant, com s'ho farem saber als clients de la nostra xarxa interna?</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració correcta de la part del mestre/principal</td>
+<td align="center"><strong>1,5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de la part de l'esclau/secundari</td>
+<td align="center"><strong>1,5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Comprovació de la transferència de zones i resolucions DNS correctes</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Questions finals</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+</tbody>
+</table>
                 
               
               
