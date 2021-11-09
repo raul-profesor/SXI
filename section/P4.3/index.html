@@ -1,0 +1,1082 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Pràctica 4.3 - Proxy invers amb Nginx - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-43-proxy-invers-amb-nginx" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctica 4.3 - Proxy invers amb Nginx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 4.3 - Proxy invers amb Nginx
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-servidor-proxy" class="md-nav__link">
+    Què és un servidor proxy?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-que-es-diferencia-un-proxy-invers" class="md-nav__link">
+    En què es diferencia un proxy invers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasca" class="md-nav__link">
+    Tasca
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracions" class="md-nav__link">
+    Configuracions
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuracions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx-servidor-web" class="md-nav__link">
+    Nginx servidor web
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-proxy-invers" class="md-nav__link">
+    Nginx proxy invers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprovacions" class="md-nav__link">
+    Comprovacions
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprovacions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#afegint-capcaleres" class="md-nav__link">
+    Afegint capçaleres
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-servidor-proxy" class="md-nav__link">
+    Què és un servidor proxy?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-que-es-diferencia-un-proxy-invers" class="md-nav__link">
+    En què es diferencia un proxy invers?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasca" class="md-nav__link">
+    Tasca
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracions" class="md-nav__link">
+    Configuracions
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuracions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx-servidor-web" class="md-nav__link">
+    Nginx servidor web
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-proxy-invers" class="md-nav__link">
+    Nginx proxy invers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprovacions" class="md-nav__link">
+    Comprovacions
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprovacions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#afegint-capcaleres" class="md-nav__link">
+    Afegint capçaleres
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-43-proxy-invers-amb-nginx">Pràctica 4.3 – Proxy invers amb Nginx</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>La pràctica 4.1 ha d'estar funcionant correctament</li>
+<li>No començar la pràctica abans de tenir la 4.1 <ins><strong>funcionant i comprovada</strong></ins></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor web</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Proxy invers</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Client</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<h3 id="que-es-un-servidor-proxy">Què és un servidor proxy?</h3>
+<p>Un proxy de reexpedició, sovint anomenat proxy, servidor proxy o proxy web, és un servidor que es troba enfront d'un grup de màquines client. Quan aquestes màquines realitzen sol·licituds a llocs i servicis en Internet, el servidor proxy intercepta aquestes sol·licituds i després es comunica amb els servidors web en nom d'aquests clients, com un intermediari.</p>
+<p>Per exemple, prenguem com a exemple 3 màquines involucrades en una comunicació típica de proxy de reenviament:</p>
+<ul>
+<li>A: Aquesta és la màquina de la casa d'un usuari.</li>
+<li>B: Este és un servidor proxy de reenviament</li>
+<li>C: Este és el servidor d'origen d'un lloc web (on s'emmagatzemen les dades de l'lloc web)</li>
+</ul>
+<p><img alt="" src="../../img/4.1-7.png" /></p>
+<p>En una comunicació estàndard per Internet, la màquina A se comunicaria directament amb la màquina C, amb el client enviant sol·licituds al servidor d'origen i el servidor d'origen responent al client. </p>
+<p>Quan n'hi ha un proxy de reenviament, A enviarà sol·licituds a B, que després reexpedirà la sol·licitud a C. C enviarà una resposta a B, que reexpedirà la resposta a A.</p>
+<p>Per què agregar aquest intermediari addicional a la nostra activitat en Internet? Hi ha algunes raons per les quals un podria voler usar un proxy de reenviament:</p>
+<ul>
+<li>
+<p><ins><strong>Per evitar restriccions de navegació estatals o institucionals:</strong></ins> alguns governs, escoles i altres organitzacions usen firewalls per donar als seus usuaris accés a una versió limitada d'Internet. Es pot usar un proxy de reenviament per sortejar aquestes restriccions, ja que permeten que l'usuari es connecti al proxy en lloc de directament als llocs que està visitant.</p>
+</li>
+<li>
+<p><ins><strong>Per bloquejar l'accés a cert contingut:</strong></ins> al revés, els proxies també es poden configurar per bloquejar l'accés d'un grup d'usuaris a certs llocs. Per exemple, una xarxa escolar pot estar configurada per connectar-se a la web a través d'un proxy que habilita regles de filtrat de contingut, negant-se a reexpedir respostes de Facebook i altres llocs de xarxes socials.</p>
+</li>
+<li>
+<p><ins><strong>Per protegir la seva identitat en línia:</strong></ins> en alguns casos, els usuaris habituals d'Internet simplement desitgen un major anonimat en línia, però en altres casos, els usuaris d'Internet viuen en llocs on el govern pot imposar greus conseqüències als dissidents polítics. Criticar al govern en un fòrum web o a les xarxes socials pot donar lloc a multes o empresonament per a aquests usuaris. Si un d'aquests dissidents usa un proxy de reenviament per connectar-se a un lloc web on publica comentaris políticament sensibles, l'adreça IP utilitzada per publicar els comentaris serà més difícil de rastrejar fins al dissident. Solament estarà visible l'adreça IP del servidor proxy.</p>
+</li>
+</ul>
+<h3 id="en-que-es-diferencia-un-proxy-invers">En què es diferencia un proxy invers?</h3>
+<p>Estaríem parlant del cas oposat a l'anterior. </p>
+<p>Un proxy invers és un servidor que es troba enfront d'un o més servidors web, interceptant les sol·licituds dels clients. Això és diferent d'un proxy de reenviament, on el proxy es troba enfront dels clients. Amb un proxy invers, quan els clients envien sol·licituds al servidor d'un lloc web, aquestes sol·licituds són interceptades a la frontera de la xarxa pel servidor proxy invers. El servidor proxy invers enviarà sol·licituds i rebrà respostes del servidor de lloc web.</p>
+<p>La diferència entre un proxy directe i invers és subtil però important. Una forma simplificada de resumir seria dir que un proxy de reenviament es troba enfront d'un client i garanteix que cap servidor d'origen es comuniqui mai directament amb aquest client específic. </p>
+<p>D'altra banda, un proxy invers es troba enfront d'un servidor d'origen i garanteix que cap client es comuniqui mai directament amb aquest servidor d'origen.</p>
+<p>Una vegada més, il·lustrem nomenant les màquines involucrades:</p>
+<ul>
+<li>D: qualsevol nombre d'ordinadors domèstics dels usuaris</li>
+<li>I: est és un servidor proxy invers</li>
+<li>F: un o més servidors d'origen</li>
+</ul>
+<p><img alt="" src="../../img/4.1-8.png" /></p>
+<p>Normalment, totes les sol·licituds de D anirien directament a F, i F enviaria respostes directament a D. Amb un proxy invers, totes les sol·licituds de D aniran directament a I, i I enviarà les seves sol·licituds ai rebrà respostes de F. I després transmeti les respostes apropiades a D.</p>
+<p>A continuació es descriuen alguns dels beneficis d'un proxy invers:</p>
+<ul>
+<li>
+<p><ins><strong>Balanceig de càrrega:</strong></ins> és possible que un lloc web popular que rep milions d'usuaris tots els dies no pugui manejar tot el tràfic entrant del lloc amb un sol servidor d'origen. En canvi, el lloc es pot distribuir entre un grup de servidors diferents, tots manejant sol·licituds per al mateix lloc. En aquest cas, un proxy invers pot proporcionar una solució de balanceig de càrrega que distribuirà el tràfic entrant de manera uniforme entre els diferents servidors per evitar que un sol servidor se sobrecarregui. En el cas que un servidor falli per complet, altres servidors poden intensificar per manejar el tràfic.</p>
+</li>
+<li>
+<p><ins><strong>Protecció contra atacs:</strong></ins> amb un proxy invers en el seu lloc, un lloc web o servici mai necessita revelar l'adreça IP de la seva (s) servidor (és) d'origen. Això fa que sigui molt més difícil per als atacants aprofitar un atac dirigit contra ells, com un atac DdoS.</p>
+</li>
+<li>
+<p><ins><strong>Emmagatzematge en caché</strong></ins>: un proxy invers també pot emmagatzemar contingut en caché , la qual cosa resulta en un rendiment més ràpid. Per exemple, si un usuari a París visita un lloc web amb proxy invers amb servidors web a Los Angeles, l'usuari podria connectar-se a un servidor proxy invers local a París, que després haurà de comunicar-se amb un servidor d'origen a Los Angeles. El servidor proxy després pot emmagatzemar en caché (o guardar temporalment) les dades de resposta. Els usuaris parisencs posteriors que naveguin pel lloc obtindran la versió en caché local del servidor proxy invers parisenc, la qual cosa donarà com resultat un rendiment molt més ràpid.</p>
+</li>
+<li>
+<p><ins><strong>Xifrat SSL</strong></ins>- Xifrat i desxifrat SSL (o TLS comunicacions) per a cada client poden ser computacionalment car per a un servidor d'origen. Es pot configurar un proxy invers per desxifrar totes les sol·licituds entrants i xifrar totes les respostes sortints, alliberant valuosos recursos en el servidor d'origen.</p>
+</li>
+</ul>
+<h2 id="tasca">Tasca</h2>
+<p>Anem a configurar dos Ubuntu Server amb sengles servidors Nginx:</p>
+<ul>
+<li>Un servirà les pàgines web que ja hem configurat, així doncs utilitzarem el servidor que ja tenim configurat de la Pràctica 4.1.</li>
+<li>Un altre servidor clon Ubuntu Server amb tots els servicis parats a excepció de Nginx configurat com proxy invers → Ha de tenir IP fixa en el DHCP</li>
+<li>Realitzarem les peticions HTTP des del navegador web del nostre Xubuntu.</li>
+</ul>
+<p>El diagrama de xarxa quedaria així:</p>
+<p><img alt="" src="../../img/4.1-9.png" /></p>
+<p>Les tres màquines estaran a la nostra xarxa interna. Farem les peticions web al servidor proxy, que les redirigirà al nostre servidor web Nginx original. Aquest últim respondrà al proxy invers, que ens redirigirà la resposta al nostre client Xubuntu.
+Hem dit que un proxy invers és un servidor intermediari que hauria de ser invisible en la mesura del possible. Anem a veure què configuracions necessitem fer per aconseguir-ho.</p>
+<h3 id="configuracions">Configuracions</h3>
+<h4 id="nginx-servidor-web">Nginx servidor web</h4>
+<p>Per a que tot quede més diferenciat i vos quede més clar que la petició està passant pel proxy invers i arriba al servidor web destí, anem a fer que cadascun dels servidors escolti les peticions en un port diferent.</p>
+<ol>
+<li>En primer lloc, heu de canviar el nom que tingués vostra web pel de “webserver”:<ol>
+<li>Canviar el nom de l'arxiu de configuració</li>
+<li>Canviar el nom de l'lloc web dins d'aquest arxiu de configuració on faci mancada</li>
+<li>No us oblideu d'eliminar el link simbòlic antic  amb el comando “unlink nom_de el_link” i crear el nou per al nou nom d'arxiu.</li>
+</ol>
+</li>
+<li>En l'arxiu de configuració de l'lloc web, en lloc de fer que el servidor escolti en el port 80, canvieu-ho al 8080.</li>
+<li>Canviar el registre  CNAME del DNS (ara l'àlies no serà el nom antic de la vostra web, sinó el nou nom que hem posat, “webserver”)</li>
+<li>Reiniciar Nginx</li>
+</ol>
+<h4 id="nginx-proxy-invers">Nginx proxy invers</h4>
+<p>Ara, quan intentem accedir a http://exemple1 (o el nom que tingau de la vostra web), en realitat estarem accedint al proxy, que ens redirigirà a http://webserver:8080, el servidor web que acabem de configurar perquè escolti amb aquest nom en el port 8080.</p>
+<p>Per a això:</p>
+<ol>
+<li>Crear un arxiu de configuració en sites-available amb el nom exemple1 (o el que tinguéreu vosaltres)</li>
+<li>
+<p>Aquest arxiu de configuració serà més simple, tindrà la següent forma</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server {</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">listen __;</span>
+</span><span class="hll">        <span class="l l-Scalar l-Scalar-Plain">server_name ____________;</span>
+</span>        <span class="l l-Scalar l-Scalar-Plain">location / {</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">proxy_pass http://_________:____;</span>
+</span>        <span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+ On, <ins><strong><em>mirant el diagrama de xarxa i tenint en compte la configuració feta fins ara</em></strong></ins>, heu de completar:</p>
+<ul>
+<li>
+<p>El port on està escoltant el proxy invers</p>
+</li>
+<li>
+<p>El nom de domini o lloc web al que accedim en el proxy</p>
+</li>
+<li>
+<p>La directiva “proxy_pass” indica a on es van a redirigir les peticions, això és, al servidor web. Per tant, heu de posar el nou nom i nombre de port adequats de vostre lloc web configurat en l'apartat anterior.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Crear el link simbòlic pertinent</p>
+</li>
+<li>
+<p>Heu de crear dos registres nous en el DNS:</p>
+<ul>
+<li>
+<p>Un de tipus <code>A</code>, el nom del qual serà <code>proxy-server.nom_alumne.es.</code> i que apunta a la IP d'aquest segon servidor proxy invers</p>
+</li>
+<li>
+<p>Un altre registre tipus <code>CNAME</code>, de tal forma que exemple1 (o el nom de vostre lloc web) anotació al registre tipus A creat en el punt anterior. </p>
+</li>
+</ul>
+<p>Això és per simular la situació en la qual nosaltres, com a clients, quan accedim a nostre lloc web, no necessitem saber com està tot configurat, només necessitem saber el nom de la web. </p>
+<p>No obstant això, per identificar les màquines internament, nosaltres com a administradors les tindrem identificades amb altres noms (proxy-server i webserver/dnsserver).</p>
+</li>
+</ol>
+<h2 id="comprovacions">Comprovacions</h2>
+<p>Si accediu a vostre lloc web, heu de poder seguir accedint sense problemes.</p>
+<ul>
+<li>
+<p>Comproveu en els access.log dels dos servidors que arriba la petició</p>
+</li>
+<li>
+<p>Comproveu a més la petició i resposta amb les eines de desenvolupador de Firefox en Xubuntu. Prement F12 en el navegador us apareixeran aquestes eines:</p>
+</li>
+</ul>
+<p><img alt="" src="../../img/4.1-10.png" /></p>
+<p>En la primera petició (marcada en vermell), utilitzant l'apartat “Xarxa” (també marcat en vermell) i també en vermell està assenyalat on es pot veure la resposta de la petició GET HTTP (200 OK). </p>
+<p>També veiem les capçaleres que s'inclouen en la petició (mètode GET) i en la resposta a aquesta petició.</p>
+<h3 id="afegint-capcaleres">Afegint capçaleres</h3>
+<p>A més d'haver mirat els logs, anem a demostrar encara de forma més clara que la petició està passant pel proxy invers i que està arribant al servidor web i que torna pel mateix camí.</p>
+<p>Si recordeu de teoria, el servidor web és capaç d'afegir capçaleres en les respostes a les peticions. 
+Així doncs, anem a configurar tant el proxy invers com el servidor web perquè afegeixin cadascun la capçalera “Host” que també vam veure en teoria. </p>
+<p>Per afegir capçaleres, en l'arxiu de configuració de l'lloc web hem d'afegir dins del bloc <code>location / { … }</code> hem d'afegir la directiva:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">add_header Host “nom_del_host”</span>
+</code></pre></div>
+<ol>
+<li>Afegirem primer aquesta capçalera únicament en l'arxiu de configuració de l'lloc web del proxy invers. El Nom_del_host serà Proxy_invers_vostrenom. </li>
+<li>Reiniciem Nginx</li>
+<li>Comprovem que podem accedir a l'lloc web sense problemes</li>
+<li>
+<p>Amb les eines de desenvolupador comprovem que la petició ha passat pel proxy invers que ha afegit la capçalera en la resposta:</p>
+<p><img alt="" src="../../img/4.1-11.png" /></p>
+</li>
+<li>
+<p>Fem el propi amb el servidor web. Aquesta vegada el <code>nom_del_host</code> serà <code>servidor_web_vostrenom</code>.</p>
+<p>Si tot està configurat correctament, en examinar les peticions i respostes, us apareixeran les dues capçaleres que han inclòs en la resposta tant el proxy invers com el servidor web.</p>
+<p><img alt="" src="../../img/4.1-12.png" /></p>
+</li>
+</ol>
+<p>És <strong>molt important</strong> que per realitzar aquestes comprovacions tingueu marcat el checkbox “Desactivar caché”. </p>
+<p><img alt="" src="../../img/4.1-13.png" /></p>
+<p>Si no marqueu això, la pàgina es guardarà en la memòria caché del navegador i no estareu rebent la resposta del servidor sinó de la caché del navegador, la qual cosa pot donar lloc a resultats erronis.</p>
+<h2 id="questions-finals">Qüestions finals</h2>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
+</tr>
+<tr>
+<td align="left">Comprovació del correcte funcionament</td>
+<td align="center"><strong> punts</strong></td>
+</tr>
+<tr>
+<td align="left">Comprovació del registres del servidor</td>
+<td align="center"><strong> punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong> punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong> punt</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P4.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 4.2 - Autenticació en Nginx" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Pràctica 4.2 - Autenticació en Nginx
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P4.4/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

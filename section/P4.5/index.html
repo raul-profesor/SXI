@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 3.1 - Configuració d'un servidor DNS - Servicis en xarxa i Internet</title>
+        <title>Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-31-configuracio-dun-servidor-dns" class="md-skip">
+        <a href="#practica45-proxy-invers-i-balanceig-de-carrega-amb-ssl-en-nginx" class="md-skip">
           Salta el contingut
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 3.1 - Configuració d'un servidor DNS
+              Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
             
           </span>
         </div>
@@ -342,129 +342,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 3.1 - Configuració d'un servidor DNS
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
         Pràctica 3.1 - Configuració d'un servidor DNS
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installacio-de-servidor-dns" class="md-nav__link">
-    Instal·lació de servidor DNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració del servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-namedconfoptions" class="md-nav__link">
-    Configuració named.conf.options
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-namedconflocal" class="md-nav__link">
-    Configuració named.conf.local
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
-    Creació de l'arxiu de zona
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
-    Creació de l'arxiu de zona pera a la resolució inversa
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
-    Comprovació de les configuracions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
-    Comprovació de les resolucions i de les consultes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques-a-realitzar" class="md-nav__link">
-    Tasques a realitzar
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-finals" class="md-nav__link">
-    Questions finals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#avaluacio" class="md-nav__link">
-    Avaluació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -558,11 +440,128 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../P4.5/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificats" class="md-nav__link">
+    Certificats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasca" class="md-nav__link">
+    Tasca
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacio-del-certificat-autofirmat" class="md-nav__link">
+    Creació del certificat autofirmat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-ssl-en-el-proxy-invers" class="md-nav__link">
+    Configuració SSL en el proxy invers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacions" class="md-nav__link">
+    Comprovacions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redireccio-forcosa-a-https" class="md-nav__link">
+    Redirecció forçosa a HTTPS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -616,58 +615,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#installacio-de-servidor-dns" class="md-nav__link">
-    Instal·lació de servidor DNS
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
   </a>
   
-    <nav class="md-nav" aria-label="Configuració del servidor">
+    <nav class="md-nav" aria-label="Introducció">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuracio-namedconfoptions" class="md-nav__link">
-    Configuració named.conf.options
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-namedconflocal" class="md-nav__link">
-    Configuració named.conf.local
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
-    Creació de l'arxiu de zona
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
-    Creació de l'arxiu de zona pera a la resolució inversa
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
-    Comprovació de les configuracions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
-    Comprovació de les resolucions i de les consultes
+  <a href="#certificats" class="md-nav__link">
+    Certificats
   </a>
   
 </li>
@@ -678,15 +642,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tasques-a-realitzar" class="md-nav__link">
-    Tasques a realitzar
+  <a href="#tasca" class="md-nav__link">
+    Tasca
   </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacio-del-certificat-autofirmat" class="md-nav__link">
+    Creació del certificat autofirmat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-ssl-en-el-proxy-invers" class="md-nav__link">
+    Configuració SSL en el proxy invers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacions" class="md-nav__link">
+    Comprovacions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redireccio-forcosa-a-https" class="md-nav__link">
+    Redirecció forçosa a HTTPS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#questions-finals" class="md-nav__link">
-    Questions finals
+    Qüestions finals
   </a>
   
 </li>
@@ -711,129 +709,208 @@
               
                 
                 
-                <h1 id="practica-31-configuracio-dun-servidor-dns">Pràctica 3.1 - Configuració d'un servidor DNS</h1>
+                <h1 id="practica45-proxy-invers-i-balanceig-de-carrega-amb-ssl-en-nginx">Practica4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
 <div class="admonition danger">
 <p class="admonition-title">Atenció, molt important abans de començar!</p>
-<p>✔ Heu de tindre el servidor, el client i a més un clon de el client. Tots dins de la mateixa xarxa interna.</p>
-<p>✔ Heu de tindre configurat el servidor DHCP per que assigne adreces IP fixes als dos clients.</p>
-<p>✔ IMPORTANT: A l'clonar la màquina client, per poder assignar IPs fixes en el DHCP, necessiten tenir adreces MAC diferents:        </p>
-<p><img alt="" src="../../img/3.1.bind_0.png" /></p>
+<ul>
+<li>La pràctica 4.4 ha d'estar funcionant correctament</li>
+<li>No començar la pràctica abans de tenir la 4.3 <ins><strong>funcionant i comprovada</strong></ins></li>
+</ul>
 </div>
-<h2 id="installacio-de-servidor-dns">Instal·lació de servidor DNS</h2>
-<p>Bind és l'estàndard de facto per a servidors DNS. És una eina de programari lliure i es distribueix amb la majoria de plataformes Unix i Linux, on també se li coneix  amb el sobrenom de named (name daemon). Bind9 és la versió recomanada per a usar-se i és la que utilitzarem. </p>
-<p>Per instal·lar el servidor DNS en Ubuntu Server, farem servir els repositoris oficials. Per això, podrem instal·lar com qualsevol paquet a Ubuntu:</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install bind9 bind9utils bind9-doc 
-</code></pre></div>
-<h2 id="configuracio-del-servidor">Configuració del servidor</h2>
-<p>Ja que a classe només utilitzarem IPv4, anem a dir-ho a Bind, en el seu arxiu general de configuració. Aquest fitxer ("named") es troba en el directori:</p>
-<div class="highlight"><pre><span></span><code>/etc/default
-</code></pre></div>
-<p>I per indicar-li que només faci servir IPv4, hem de modificar la línia següent amb el text ressaltat:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">OPTIONS</span> <span class="o">=</span> <span class="s2">&quot;-u bind -4&quot;</span>
-</code></pre></div>
-<p>L'arxiu de configuració principal (named.conf) de Bind està en el directori:</p>
-<p><div class="highlight"><pre><span></span><code>/etc/bind
-</code></pre></div>
-Si ho consultem veurem el següent:</p>
-<p><img alt="" src="../../img/3.1.bind_1.png" /></p>
-<p>Aquest fitxer serveix simplement per aglutinar o agrupar els arxius de configuració que farem servir. Aquests 3 includes fan referència als 3 diferents arxius on haurem de realitzar l'autèntica configuració, ubicats en el mateix directori.</p>
-<h3 id="configuracio-namedconfoptions">Configuració <em>named.conf.options</em></h3>
-<p>És una bona pràctica que feu sempre una còpia de seguretat d'un arxiu de configuració cada vegada que aneu a realitzar algun canvi:.</p>
-<p><div class="highlight"><pre><span></span><code>sudo cp /etc/bind/named.conf.options /etc/bind/named.conf.options.backup
-</code></pre></div>
-Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem els següents continguts:</p>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor web</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Servidor web 2</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Proxy invers</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<p>A partir de les pràctiques anteriors hem arribat a un escenari on un proxy invers actua d'intermediari entre dos servidors web Nginx, balancejant la càrrega entre ells. </p>
+<p>Ja vam dir que una important funció que podia tenir un proxy invers era realitzar el xifrat i desxifrat de SSL per utilitzar HTTPS en els servidors web. D'aquesta forma s'alleujava la càrrega de treball dels servidors web, ja que és una tasca que consumeix recursos.</p>
+<p>En definitiva, tindríem un esquema com aquest:</p>
+<p><img alt="" src="../../img/4.1-16.png" /></p>
+<p>Podria arribar-se a pensar que en termes de seguretat no és adequat que el tràfic de xarxa entre el balanceador de càrrega i els servidors web vagi sense xifrar (HTTP). No obstant això, pensant en un cas real, la xarxa privada i el proxy invers/balanceador de càrrega, a més d'estar a la mateixa xarxa privada, solen estar administrats per les mateixes persones de la mateixa empresa, per la qual cosa no suposa un perill real que aquest tràfic vagi sense xifrar.</p>
+<p>Podria xifrar-se si fos necessari, però llavors perd sentit que el proxy invers s'encarregui del xifrat SSL para HTTPS, ja que faríem el mateix treball dues vegades.</p>
+<p>Així les coses, ens quedarem amb l'esquema de la imatge de més amunt per a la pràctica.</p>
+<h3 id="certificats">Certificats</h3>
+<p>HTTPS es basa en l'ús de certificats digitals.</p>
+<p>Grosso modo, quan entrem en una web via HTTPS, aquesta ens presenta un certificat digital per assegurar que és qui diu ser. Com sabem que aquest certificat és vàlid? Hem de consultar a l'Autoritat de Certificació (CA) que va emetre aquest certificat si és vàlid.</p>
+<p>Les CA són entitats que emeten certificats i el seu funcionament es basa en la confiança. Confiem que els certificats emesos i signats per aquestes entitats són reals i funcionals. </p>
+<p><img alt="" src="../../img/4.1-17.png" /></p>
+<p>Els navegadors web tenen precargadas les Autoritats de Certificació en les quals confien per defecte a l'hora de navegar per webs HTTPS:</p>
+<p><img alt="" src="../../img/4.1-18.png" /></p>
+<p>Si accedim a una web que el seu certificat no hagi estat emès i signat per una d'aquestes entitats, ens saltarà el famós avís:</p>
+<p><img alt="" src="../../img/4.1-19.png" /></p>
+<p>Ja que si el certificat no ha estat emès i signat per una CA de confiança, pot ser que es tracti d'una web maliciosa que ens suposi un risc de seguretat, com bé diu l'avís.</p>
+<h2 id="tasca">Tasca</h2>
+<p>Partim de la configuració exacta de la pràctica anterior, que recordem era aquesta:</p>
+<p><img alt="" src="../../img/4.1-20.png" /></p>
+<p>Pel que en aquesta pràctica simplement hem d'afegir la configuració SSL per al xifrat en el Proxy Invers:</p>
+<p><img alt="" src="../../img/4.1-21.png" /></p>
+<p>Tal com quedarà la configuració, des del client encara podríem accedir als dos servidors web amb HTTP (podeu provar-ho) però és alguna cosa que solucionarem en següents temes, configurant un firewall perquè només la IP del proxy invers pugui accedir per HTTP als servidors web i ningú més.</p>
+<h3 id="creacio-del-certificat-autofirmat">Creació del certificat autofirmat</h3>
+<p>Nosaltres no utilitzarem certificats de cap CA de confiança, bàsicament perquè:</p>
 <ul>
 <li>
-<p>Per motius de seguretat, anem a incloure una llista d'accés perquè només puguin fer consultes recursives a servidor aquells hosts que nosaltres decidim.</p>
-<p>En el nostre cas, els hosts fiables seran els de la xarxa 172.1.X.0/24. Així doncs, just abans del bloc "options {...}", al principi de l'arxiu, afegirem alguna cosa així:</p>
-<p><img alt="" src="../../img/3.1.bind_2.png" /></p>
+<p>Els nostres servicis no estan publicats en Internet</p>
+</li>
+<li>
+<p>Aquests certificats son de pagament</p>
 </li>
 </ul>
-<p>Si ens fixem el servidor per defecte ja ve configurat per a ser un DNS caché. El directori on es cachearan o guardaran les zones és:</p>
-<div class="highlight"><pre><span></span><code>/var/cache/bind
-</code></pre></div>
-<p>Ara hem de configurar els següents aspectes dins de l'bloc "options {...}":</p>
-<ul>
-<li>
-<p>Que només es permeten les consultes recursives als hosts que hem decidit en la llista d'accés anterior.</p>
-</li>
-<li>
-<p>No permetre transferència de zones a ningú, de moment.</p>
-</li>
-<li>
-<p>Configurar el servidor perquè escolti consultes DNS al port 53 (per defecte DNS utilitza port 53 UDP) ia la IP de la seva interfície de la xarxa privada. Haureu col·locar la IP de la interfície connectada a la xarxa privada de servidor, ja que resoldrà les consultes DNS de el client/s d'aquesta xarxa.</p>
-</li>
-<li>
-<p>Permetre les consultes recursives, ja que en el primer punt ja li hem dit que només puguin fer-les els hosts de l'ACL.</p>
-</li>
-<li>
-<p>A més, comentarem la línia que posa "listen-on-v6 {any; }; " ja que no anem a respondre a consultes d'IPv6. Per a comentar-la n'hi ha prou amb afegir al principi de la línia dues barres (//).</p>
-<p><img alt="" src="../../img/3.1.bind_3.png" /></p>
-</li>
-</ul>
-<p>Podem comprovar si la nostra configuració és correcta amb el comando:</p>
-<p><img alt="" src="../../img/3.1.bind_4.png" /></p>
-<p>Si hi ha algun error, ens ho farà saber. En cas contrari, ens torna a la línia de comandos.</p>
-<p>Reiniciem el servidor i comprovem el seu estat:</p>
-<p><img alt="" src="../../img/3.1.bind_5.png" /></p>
-<h3 id="configuracio-namedconflocal">Configuració <em>named.conf.local</em></h3>
-<p>En aquest arxiu configurarem aspectes relatius a les nostres zones. Declararem la zona "sre.es". Per ara simplement indicarem que el servidor DNS és mestre per a aquesta zona i on estarà ubicat el fitxer de zona que crearem més endavant:</p>
-<p><img alt="" src="../../img/3.1.bind_6.png" /></p>
-<h3 id="creacio-de-larxiu-de-zona">Creació de l'arxiu de zona</h3>
-<p>Crearem l'arxiu de zona de resolució directa justament en el directori que hem indicat abans i amb el mateix nom que hem indicat abans.</p>
-<p>El contingut serà una cosa així (procureu respectar el format):</p>
-<p><img alt="" src="../../img/3.1.bind_7.png" /></p>
-<p>Recordeu de teoria que els registres SOA són per a detallar aspectes de la zona autoritativa, els NS per indicar els servidors DNS de la zona i els A les IPs respectives.</p>
-<p>On apareixen les X heu de posar les vostres IPs privades corresponents, tant del vostre servidor com del vostre client.</p>
-<h3 id="creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa">Creació de l'arxiu de zona pera a la resolució inversa</h3>
-<p>Recordeu que hi ha d'haver dos arxius de zona, un per a la resolució directa i un altre per a la inversa. Anem doncs a crear l'arxiu de zona inversa.</p>
-<p>En primer lloc, hem d'afegir les línies corresponents a aquesta zona inversa a l'arxiu named.conf.local, igual que hem fet abans amb la zona de resolució directa:</p>
-<p><img alt="" src="../../img/3.1.bind_8.png" /></p>
-<p>On la X es el tercer byte de la vostra xarxa interna.</p>
-<p>Y la configuración de la zona de resolució inversa:</p>
-<p><img alt="" src="../../img/3.1.bind_9.png" /></p>
-<p>Podem comprovar que la configuració de les zones es correcta amb el comando adequat.</p>
-<h3 id="comprovacio-de-les-configuracions">Comprovació de les configuracions</h3>
-<p>Per a comprovar la configuració de la zona de resolució directa:</p>
-<p><img alt="" src="../../img/3.1.bind_10.png" /></p>
-<p>Y per a comprovar la configuració de la zona de resolució inversa:</p>
-<p><img alt="" src="../../img/3.1.bind_11.png" /></p>
-<p>Si tot ha anat bé, retornarà OK. En cas de que haja qualsevol error, ens n'informarà.</p>
-<p>Reiniciem el servici y comprovem l'estat:</p>
-<p><img alt="" src="../../img/3.1.bind_12.png" /></p>
+<p>Així doncs, nosaltres crearem els nostres propis certificats i els signarem nosaltres mateixos com si anéssim una CA autèntica per poder simular aquest escenari.</p>
 <div class="admonition warning">
-<p class="admonition-title">Atenció!</p>
-<p>És molt important que el client estiga configurat per utilitzar com a servidor DNS el que acabem d'instal·lar i configurar.</p>
-<p>Però, com podem fer això? Cal recordar que e lclienteestà configurat per DHCP i que DHCP permetia una completa configuració de xarxa, a més de la IP.Consulteu al Tema 2 que "option" dins de la declaració de la subnet a fitxer dhcpd.conf ens permetía enviar-li a el client la IP de servidor DNS.</p>
+<p class="admonition-title">Warning</p>
+<p>Això provocarà que quan accedim per HTTPS a nostre lloc web per primera vegada, ens vaig saltar l'avís de seguretat que es comentava en la introducció.</p>
 </div>
-<h3 id="comprovacio-de-les-resolucions-i-de-les-consultes">Comprovació de les resolucions i de les consultes</h3>
-<p>Podem comprovar des dels clients, amb dig o nslookup les resolucions directes i inverses:</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Resolucions nom del server</label><div class="tabbed-content">
-<p><img alt="" src="../../img/3.1.bind_13.png" /></p>
+<p>En aquest cas no hi haurà perill donat que estem 100% segurs de que aquest certificat ho hem emès nosaltres per a aquesta pràctica, no hi ha dubtes.</p>
+<p>Veiem doncs el procés per generar els certificats i les claus associades a ells (privada/pública). En primer lloc hem de crear el següent directori:</p>
+<p><code>/etc/nginx/ssl/balanceig</code></p>
+<p>Podem crear el certificat i les claus de forma simultània amb un únic comando, on:</p>
+<ul>
+<li>
+<p><strong>openssl</strong>: aquesta és l'eina per línia de comandos bàsica per crear i administrar certificats, claus i altres arxius OpenSSL. </p>
+</li>
+<li>
+<p><strong>req</strong>: aquest subcomando s'utilitza per generar una sol·licitud de certificats i també sol·licituds de signatura de certificats (CSR).</p>
+</li>
+<li>
+<p><strong>-x509</strong>: Això modifica encara més el subcomando anterior en dir-li a l'eina que volem crear un certificat autofirmat en lloc de generar una sol·licitud de signatura de certificat, com succeiria normalment. </p>
+</li>
+<li>
+<p><strong>-nodes</strong>: Això li diu a OpenSSL que ometi l'opció d'assegurar el nostre certificat amb contrasenya. Necessitem que Nginx puga llegir l'arxiu sense la intervenció de l'usuari quan s'inicia el servidor. Una contrasenya evitaria que això passés ja que hauríem de introduir-la a mà després de cada reinici. </p>
+</li>
+<li>
+<p><strong>-days 365</strong>: aquesta opció estableix el temps durant el qual el certificat es considerarà vàlid. Ho configurem pa r a un any.</p>
+</li>
+<li>
+<p><strong>-newkey rsa</strong>: 2048 : Això especifica que volem generar un nou certificat i una nova clau al mateix temps. No vam crear la clau necessària per signar el certificat en un pas anterior, per la qual cosa hem de crear-la juntament amb el certificat. La rsa:2048part li diu que creï una clau RSA de 2048 bits de longitud. </p>
+</li>
+<li>
+<p><strong>-keyout</strong>: aquest paràmetre li diu a OpenSSL on col·locar l'arxiu de clau privada generat que estem creant. </p>
+</li>
+<li>
+<p><strong>-out</strong>: Això li diu a OpenSSL on col·locar el certificat que estem creant. </p>
+</li>
+</ul>
+<p>El comando complet seria així:</p>
+<p><img alt="" src="../../img/4.1-22.png" /></p>
+<p>Vos sol·licitarà que introduïu una sèrie de paràmetres, com veieu en el requadre vermell de baix de la imatge. Heu d'introduir els mateixos paràmetres que en la imatge excepte en el “Organizational Unit Name” que veieu en el requadre en groc. Ací haureu de posar <code>2SMR – SRE - Vostrenom</code></p>
+<h3 id="configuracio-ssl-en-el-proxy-invers">Configuració SSL en el proxy invers</h3>
+<p>De la pràctica anterior, dins del directori <code>/etc/nginx/sites-available</code> ja heu de tenir l'arxiu de configuració anomenat <em>“balanceig”</em>. És precisament aquí on realitzarem la configuració perquè l'accés  a l'lloc web es realitzi mitjançant SSL (HTTPS).</p>
+<p>Dins del bloc <code>server {…}</code> heu d'afegir, sense llevar res, les següents línies de configuració:</p>
+<p><img alt="" src="../../img/4.1-23.png" /></p>
+<p>On li esteu dient que:</p>
+<ul>
+<li>
+<p>Escolti en el port 443 → Port per defecte d'HTTPS</p>
+</li>
+<li>
+<p>El directori on està el certificat que heu generat anteriorment</p>
+</li>
+<li>
+<p>El directori on està la clau que heu generat anteriorment</p>
+</li>
+<li>
+<p>Els protocols i tipus de xifrats que es poden utilitzar → Aquestes són les versions de protocols i els tipus de xifrats considerats assegurances a dia d'avui (hi ha molts més però no es consideren assegurances actualment)</p>
+</li>
+<li>
+<p><code>server_name</code> ja ho teníeu de la pràctica anterior, no fa mancada tocar-ho</p>
+</li>
+<li>
+<p>L'arxiu on es guarden els logs canvia de nom, ara serà https_access.log.</p>
+</li>
+</ul>
+<p>Recordeu que després de modificar qualsevol configuració d'un servici, cal reiniciar el servici, en aquest cas Nginx.</p>
+<h3 id="comprovacions">Comprovacions</h3>
+<ul>
+<li>
+<p>Si accediu ara a https://balanceig us hauria de saltar un avís de seguretat a causa que el nostre certificat és autofirmat, com comentàvem anteriorment.</p>
+</li>
+<li>
+<p>Si afegiu una una excepció podreu accedir a l'lloc web i recarregant repetidament la pàgina amb F5, veureu que el balanceig de càrrega es fa correctament accedint mitjançant HTTPS.</p>
+</li>
+<li>
+<p>Per comprovar que les dades del certificat són, efectivament, els vostres podeu comprovar-ho així. Prement en el cadenat de la barra de recerca:</p>
+</li>
+</ul>
+<p><img alt="" src="../../img/4.1-24.png" /></p>
+<p>Amb més informació:
+<img alt="" src="../../img/4.1-25.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Ací també podreu eliminar l'excepció que heu afegit a la pàgina de l'advertiment de seguretat, per si necessiteu reiniciar les proves.</p>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Resolucions nom del client</label><div class="tabbed-content">
-<p><img alt="" src="../../img/3.1.bind_14.png" /></p>
+<p>I finalment, veure certificat:</p>
+<p><img alt="" src="../../img/4.1-26.png" /></p>
+<p>I podrem veure els detalls:
+<img alt="" src="../../img/4.1-27.png" /></p>
+<p>Si ara intenteu accedir a <strong><code>http://balanceig</code></strong>, hauríeu de poder accedir? Comproveu-ho i descriviu què passa i per què.</p>
+<h3 id="redireccio-forcosa-a-https">Redirecció forçosa a HTTPS</h3>
+<p>Perquè, indistintament de la forma per la qual accedim a l'lloc web balancejo, sempre es forci a utilitzar HTTPS, necessitarem una configuració addicional.</p>
+<p>Necessitem afegir un bloc “server” addicional i separat de l'altre, a l'arxiu de configuració de “balanceig”. Alguna cosa així:</p>
+<p><img alt="" src="../../img/4.1-28.png" /></p>
+<p>Amb aquesta configuració li estem dient que:</p>
+<ul>
+<li>
+<p>Escolti en el port 80 (HTTP)</p>
+</li>
+<li>
+<p>Que el nom al que respondrà el servidor/lloc web és balanceig</p>
+</li>
+<li>
+<p>Què guardi els logs d'aquest bloc en aquest directori i amb aquest nom</p>
+</li>
+<li>
+<p>Quan es rep una petició amb les dues condicions anteriors, es retorna un codi HTTP 301:</p>
+<ul>
+<li>
+<p><strong>HTTP 301 Moved Permanently</strong> (Mogut permanentment en valencià) és un codi d'estat d'HTTP que indica que el host ha estat capaç de comunicar-se amb el servidor però que el recurs sol·licitat ha estat mogut a una altra adreça permanentementeEs molt important configurar les redireccions 301 en els llocs web i per a això hi ha diferents mètodes i sintaxis per realitzar la redirecció 301.</p>
+<ul>
+<li>La <strong>redirecció 301</strong> és un codi o comando inserit per un Webmaster que permet redirigir als usuaris i cercadors d'un lloc web d'un lloc a un altre</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Aclaració</p>
+<p>És a dir, la qual cosa estem fent és que quan es rebi una petició HTTP (port 80) en <code>http://balanceig</code>, es redirigeixi a <code>https://balanceig</code> (HTTPS)</p>
 </div>
+</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<ul>
+<li>Elimineu de l'altre bloc <code>server{…}</code> la línies que facin referència a escoltar en el port 80 (<code>listen 80…</code>).</li>
+<li>Reinicieu el servici</li>
+<li>Comproveu ara que quan entreu en <code>http://balanceig</code>, automàticament us redirigeix a la versió segura de la web.</li>
+<li>Comproveu que quan realitzeu una petició en l'arxiu de log <code>http_access.log</code> apareix la redirecció 301 i que, de la mateixa manera, apareix una petició GET en <code>https_access.log</code>.</li>
+</ul>
 </div>
-<h2 id="tasques-a-realitzar">Tasques a realitzar</h2>
-<p>Seguint els mateixos passos, introdueix en els arxius de zona al client clonat. Posa-li el nom XubuntuClon i comprova, de la mateixa manera, que també es resol bé el seu nom i és possible fer-li ping per nom.</p>
-<div class="admonition caution">
-<p class="admonition-title">Atenció per a l'informe</p>
-<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
-</div>
-<h2 id="questions-finals">Questions finals</h2>
-<div class="admonition task">
-<p class="admonition-title">Questió 1</p>
-<p>Qué passarà si un client d'una xarxa diferent a la teua intenta fer ús del teu DNS d'alguna manera, li funcionarà? Per qué, en quina part de la configuració es pot vore?</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Questió 2</p>
-<p>Per què hem de permetre les consultes recursives en la configuració?</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Questió 3</p>
-<p>El servidor DNS que acabeu de muntar, es autoritatiu? Per què?</p>
-</div>
+<h2 id="questions-finals">Qüestions finals</h2>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
 <thead>
@@ -844,24 +921,28 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
 </thead>
 <tbody>
 <tr>
-<td align="left">Configuració correcta del servidor DNS</td>
-<td align="center"><strong>2 punts</strong></td>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
 </tr>
 <tr>
-<td align="left">Configuració correcta de la zona DNS</td>
-<td align="center"><strong>3 punts</strong></td>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
 </tr>
 <tr>
-<td align="left">Evidències de les comprovacions del correcte funcionament</td>
-<td align="center"><strong>2 punts</strong></td>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
 </tr>
 <tr>
-<td align="left">Questions finals</td>
-<td align="center"><strong>2 punts</strong></td>
+<td align="left"></td>
+<td align="center"><strong> punts</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
-<td align="center"><strong>1 punt</strong></td>
+<td align="center"><strong> punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong> punt</strong></td>
 </tr>
 </tbody>
 </table>
@@ -889,7 +970,7 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../P2.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 2.2 - DHCP Relay" rel="prev">
+        <a href="../P4.4/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -898,20 +979,20 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Pràctica 2.2 - DHCP Relay
+              Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
             </div>
           </div>
         </a>
       
       
         
-        <a href="../P3.2/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració" rel="next">
+        <a href="../P5.1/" class="md-footer__link md-footer__link--next" aria-label="Següent: Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Següent
               </span>
-              Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+              Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
             </div>
           </div>
           <div class="md-footer__button md-icon">
