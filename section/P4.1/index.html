@@ -741,6 +741,10 @@ On el nom de domini serà el nom del jugador que tinga el mateix número que el 
 <p>Recordeu, no heu de posar punts ni espais en el nom de domini.</p>
 </div>
 <p>Ací, dins d'aquesta carpeta html, heu de descomprimir un dels zip amb tots els arxius per al lloc web d'exemple que us he proporcionat.</p>
+<div class="admonition warning">
+<p class="admonition-title">Nota</p>
+<p><strong>NO</strong> és el mateix el vostre domini de zona de DNS, que el vostre domini per al vostre lloc web (bàsicament el nom que posem en la URL).</p>
+</div>
 <p>Per descomprimir, instal·leu-vos el paquet unzip:</p>
 <p><div class="highlight"><pre><span></span><code>apt get install unzip
 </code></pre></div>
@@ -786,17 +790,13 @@ I el contingut d'aquest arxiu de configuració:</p>
 <p>Ruta → /var/www/exemple2/html/2016_soft_landing</p>
 </div>
 <p>I crearem un arxiu simbòlic entre aquest arxiu i el de llocs que estan habilitats, perquè es doni d'alta automàticament.</p>
-<div class="highlight"><pre><span></span><code>sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
+<div class="highlight"><pre><span></span><code>sudo ln -s /etc/nginx/sites-available/vostre_domain /etc/nginx/sites-enabled/
 </code></pre></div>
 <h2 id="configuracio-del-dns">Configuració del DNS</h2>
 <p>Per a poder accedir a vostre lloc web, necessitareu afegir una entrada en l'arxiu de zona del vostre DNS.</p>
 <p>Necessiteu afegir un parell de registres del tipus CNAME, de tal forma que els dominis o noms de la vostra pàgina web (<em>vostre_domini</em> i <em>www.vostre_domini</em>), en realitat apuntin a dnsserver.<em>vostre_nom</em>.es. (recordeu que en l'última pràctica del Tema 3 vau canviar el domini sre.es. Per vostre_nom.es.)</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>No és el mateix el vostre domini de zona de DNS, que el vostre domini per al vostre lloc web (bàsicament el nom que posem en la URL).</p>
-</div>
 <p>Per a configurar un CNAME podeu buscar informació de com fer-ho en algun d'aquests llocs:</p>
-<p><a href="https://web.mit.edu/rhel-doc/4/rh-docs/rhel-rg-es-4/s1-bind-zone.html">Lloc 1</a></p>
+<p><a href="https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/registro-cname/">Lloc 1</a></p>
 <p><a href="https://www.nominalia.com/asistencia/que-es-como-se-configura-zona-dns-dominio/">Lloc 2</a></p>
 <p><a href="https://www.marblestation.com/?p=543">Lloc 3</a></p>
 <p>I reiniciem el servidor per aplicar la configuració:</p>
@@ -821,6 +821,26 @@ http://www.vostre_domini
 <p>El nou nom de domini serà el cognom del jugador que tinga el dorsal amb el mateix número que el vostre número d'ordinador, de la següent plantilla:</p>
 <p><a href="https://www.transfermarkt.es/fc-st-pauli/kader/verein/35">St. Pauli</a></p>
 <h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>De quina altra forma alternativa podría resoldre el nom del meu domini web amb el servici DNS sense fer ús del register CNAME?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Què passa si no faig el link simbòlic entre <code>sites-available</code> i <code>sites-enabled</code> del meu lloc web?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Qué passa si no li done els permisos adeqüats a <code>/var/www/vostre_domini</code>? </p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+<p>Podeu accedir desde la LAN (el vostre Lliurex) a la vostra web? Tant si es afirmatiu com negatiu, explica el motiu.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 5</p>
+<p>Si no ficarem cap entrada DNS a l'arxiu de zona, podrieu accedir encara a les vostres webs? Tant si es afirmatiu com negatiu, explica el motiu.</p>
+</div>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
 <thead>
@@ -831,28 +851,32 @@ http://www.vostre_domini
 </thead>
 <tbody>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta del servidor web</td>
+<td align="center"><strong>1 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta del DNS</td>
+<td align="center"><strong>2 punts</strong></td>
 </tr>
 <tr>
 <td align="left">Comprovació del correcte funcionament</td>
-<td align="center"><strong> punts</strong></td>
+<td align="center"><strong>1 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Comprovació del registres del servidor</td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta i comprovació del funcionament de una segona web</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>3 punts</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0,5 punt</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0,5 punt</strong></td>
 </tr>
 </tbody>
 </table>
