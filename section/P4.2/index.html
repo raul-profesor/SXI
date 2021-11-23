@@ -860,7 +860,7 @@ Una vegada acabada la configuració, reiniciem el servei perquè apliqui la nost
 <p><img alt="" src="../../img/4.1-5.png" /></p>
 <p>L'accés només es garantirà a la IP <code>192.168.1.1/24</code>, excloent a l'adreça <code>192.168.1.2</code>.</p>
 <p>Cal tenir en compte que les directives allow i deny s'aniran aplicant en l'ordre en el qual apareixen l'arxiu. </p>
-<p>Ací apliquen sobre la <code>location /api</code>, però podrien aplicar sobre qualsevol, inclòs tot el lloc web, la location arrel (/).</p>
+<p>Ací apliquem sobre la <code>location /api</code> (es només un exemple), però podriem aplicar sobre qualsevol, inclòs tot el lloc web, la location arrel (/).</p>
 <p>L'última directiva <code>deny all</code> vol dir que per defecte denegarem l'accés a tothom. Per això cal posar els allow i deny més específics just abans d'aquesta, perquè en avaluar-se en ordre d'aparició, si els posàrem baix es denegaria l'accés a tothom, ja que <code>deny all</code> seria el primer que s'avaluaria.</p>
 </li>
 <li>
