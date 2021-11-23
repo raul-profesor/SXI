@@ -891,6 +891,73 @@ Una vegada acabada la configuració, reiniciem el servei perquè apliqui la nost
 <p>Configura Nginx ara per a que deixe accedir si es té una IP vàlida o també si l'usuari introduït és correcte. Comprova que ara sí poden accedir tots dos clients, per què?</p>
 </div>
 <h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, equivocant-me al posar usuari i contrasenya. Podré accedir?</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy all;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny  all;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic &quot;Questió final 1&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, introduïnt correctament usuari i contrasenya. Podré accedir?  </p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy all;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  all;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic &quot;Questió final 2</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">The revenge&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="err">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, introduïnt correctament usuari i contrasenya. Podré accedir?</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy any;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic           &quot;Questió final 3</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">The final combat&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="err">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+<p>A lo millor no sabeu que tinc una web per a documentar totes les meues excursions a l’espai amb Jeff Bezos, és aquesta: <a href="https://freewebsitetemplates.com/preview/space-science/index.html">Jeff Bezos i jo</a></p>
+<p>Suposem que vull restringir l’accés al directori de projectes perquè es molt secret, això vol dir afegir autenticació bàsica a la URL: <a href="https://freewebsitetemplates.com/preview/space-science/projects.html">Projectes</a></p>
+<p>Completa la configuració per a aconseguir-ho:</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">server {</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen 80;</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen [::]:80;</span>
+        <span class="l l-Scalar l-Scalar-Plain">root /var/www/freewebsitetemplates.com/preview/space-science;</span>
+        <span class="l l-Scalar l-Scalar-Plain">index index.html index.htm index.nginx-debian.html;</span>
+        <span class="l l-Scalar l-Scalar-Plain">server_name freewebsitetemplates.com www.freewebsitetemplates.com;</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">location              {</span>
+</span><span class="hll">
+</span>            <span class="l l-Scalar l-Scalar-Plain">try_files $uri $uri/ =404;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
 <thead>
@@ -901,28 +968,28 @@ Una vegada acabada la configuració, reiniciem el servei perquè apliqui la nost
 </thead>
 <tbody>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta de l'autorització bàsica d'Nginx, comprovació i identificació de l'error</td>
+<td align="center"><strong>2 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Captures correctes del log</td>
+<td align="center"><strong>1 punt</strong></td>
 </tr>
 <tr>
-<td align="left">Comprovació del correcte funcionament</td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta de l'autorització bàsica al "portofolio"</td>
+<td align="center"><strong>2.5 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Comprovació del registres del servidor</td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Correcta configuració i comprovació de les tasques d'autenticació bàsica i restricció per IP</td>
+<td align="center"><strong>3 punts</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>1 punt</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0.5 punt</strong></td>
 </tr>
 </tbody>
 </table>
