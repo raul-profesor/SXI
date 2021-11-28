@@ -733,7 +733,7 @@ Per completar la instal·lació, us farà 3 preguntes amb les quals generarà l'
 <p>Com aneu a redirigir-les per la interfície de la LAN cap al server del vostre company, heu d'indicar-li l'adreça IP de la interfície LAN del server del vostre company.</p>
 <p><img alt="" src="../../img/2.2relay2.png" /></p>
 <p>Aquí us pregunta en quina interfície va a rebre peticions DHCP dels clients. </p>
-<p>La lògica dicta que com només té clients en la interfície de la xarxa interna, aquesta anés l'única interfície que poséssim aquí. No obstant això, si fem això, el servidor descartaria les respostes que provenen del servidor del vostre company, ja que arriben per l'altra interfície, per la LAN (observeu el dibuix amb deteniment per poder entendre-ho).</p>
+<p>La lògica dicta que com només té clients en la interfície de la xarxa interna, aquesta sigués l'única interfície que poséssim aquí. No obstant això, si fem això, el servidor descartaria les respostes que provenen del servidor del vostre company, ja que arriben per l'altra interfície, per la LAN (observeu el dibuix amb deteniment per poder entendre-ho).</p>
 <p>Així doncs, perquè funcioni correctament tot, heu de posar el nom d'ambdues interfícies separades per un espai.</p>
 <p><img alt="" src="../../img/2.2relay3.png" /></p>
 <p>Finalment us pregunta si voleu executar el programa amb alguna opció. Heu d'indicar-li que amb l'opció -D perquè s'executi com a dimoni.</p>
@@ -794,7 +794,7 @@ en el client per forçar-li a que torne a intentar buscar IP.</p>
 <div class="admonition task">
 <p class="admonition-title">Questió 1</p>
 </div>
-<p>Si l'<em>alumne 1</em> està fent de <strong>servidor DHCP</strong> i l'<em>alumne 2</em> està fent de <strong>relay</strong>, imaginem que l'alumne 2 afegix al ser Ubuntu server (que, recordem, fa de relay) una interfície que es crida <ins>enp0s15</ins>. </p>
+<p>Si l'<em>alumne 1</em> està fent de <strong>servidor DHCP</strong> i l'<em>alumne 2</em> està fent de <strong>relay</strong>, imaginem que l'alumne 2 afegix al seu Ubuntu server (que, recordem, fa de relay) una interfície que es crida <ins>enp0s15</ins>. </p>
 <p>En aquesta interfície, l'alumne 2 decidix crear la nova xarxa 10.10.10.0/24 amb un sol client Xubuntu, on la interfície del router té la IP 10.10.10.1 i el client Xubuntu la IP 10.10.10.2</p>
 <p>Explica detalladament tot el que hauríem de configurar per tal de que el server DHCP de l'alumne 1 puga donar IP també en el rang d'eixa nova xarxa del company i, concretament, en el rang 10.10.10.50 - 10.10.10.150</p>
 <div class="admonition task">
