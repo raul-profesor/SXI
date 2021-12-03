@@ -864,10 +864,10 @@ Hem dit que un proxy invers és un servidor intermediari que hauria de ser invis
 <li>Reiniciar Nginx</li>
 </ol>
 <h4 id="nginx-proxy-invers">Nginx proxy invers</h4>
-<p>Ara, quan intentem accedir a http://exemple1 (o el nom que tingau de la vostra web), en realitat estarem accedint al proxy, que ens redirigirà a http://webserver:8080, el servidor web que acabem de configurar perquè escolti amb aquest nom en el port 8080.</p>
+<p>Ara, quan intentem accedir a http://jugador (o el nom que tingau de la vostra web), en realitat estarem accedint al proxy, que ens redirigirà a http://webserver:8080, el servidor web que acabem de configurar perquè escolti amb aquest nom en el port 8080.</p>
 <p>Per a això:</p>
 <ol>
-<li>Crear un arxiu de configuració en sites-available amb el nom exemple1 (o el que tinguéreu vosaltres)</li>
+<li>Crear un arxiu de configuració en sites-available amb el nom jugador (o el que tinguéreu vosaltres)</li>
 <li>
 <p>Aquest arxiu de configuració serà més simple, tindrà la següent forma</p>
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server {</span>
@@ -901,7 +901,7 @@ Hem dit que un proxy invers és un servidor intermediari que hauria de ser invis
 <p>Un de tipus <code>A</code>, el nom del qual serà <code>proxy-server.nom_alumne.es.</code> i que apunta a la IP d'aquest segon servidor proxy invers</p>
 </li>
 <li>
-<p>Un altre registre tipus <code>CNAME</code>, de tal forma que exemple1 (o el nom de vostre lloc web) anotació al registre tipus A creat en el punt anterior. </p>
+<p>Un altre registre tipus <code>CNAME</code>, de tal forma que jugador (o el nom de vostre lloc web) anotació al registre tipus A creat en el punt anterior. </p>
 </li>
 </ul>
 <p>Això és per simular la situació en la qual nosaltres, com a clients, quan accedim a nostre lloc web, no necessitem saber com està tot configurat, només necessitem saber el nom de la web. </p>
