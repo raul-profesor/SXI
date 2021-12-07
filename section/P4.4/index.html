@@ -892,7 +892,7 @@ El diagrama de xarxa quedaria així:</li>
 <p>De pràctiques anteriors existeix un registre en el DNS de tipus CNAME (que fa referència al servidor que venim utilitzant des de principi de curs amb tots els servicis) per al nom <code>webserver</code>. Heu de canviar-ho a <code>webserver1</code> que és com es dirà ara.</p>
 </li>
 <li>
-<p>Un registre CNAME perquè balancejo sigui un àlies de <code>proxy-server.dominio.es.</code>, tal com vau fer en la pràctica anterior.</p>
+<p>Un registre CNAME per a que <code>balanceig</code> sigui un àlies de <code>proxy-server.dominio.es.</code>, tal com vau fer en la pràctica anterior.</p>
 <ul>
 <li>Això permetrà que quan accedim via navegador a <code>http://balanceig</code>, el DNS resolgui que la IP d'aquest domini és la del proxy invers.</li>
 </ul>
@@ -979,6 +979,19 @@ On:</p>
 </li>
 </ul>
 <h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Busca informació de quins altres mètodes de balanceig es poden aplicar amb Nginx i descriu almenys 3 d'ells.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Si vull afegir 2 servidors webs més al balanceig de càrrega, descriu detalladament quina configuració hauré d'afegir i a on.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Descriu tots els passos que haurieu de seguir i configurar per tal de fer el balanceig de càrrega amb una de les vostres web de les pràctiques anteriors. </p>
+<p>Indiqueu la configuració de totes les màquines (webservers, proxy...) i dels seus servicis.</p>
+</div>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
 <thead>
@@ -989,28 +1002,32 @@ On:</p>
 </thead>
 <tbody>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta i completa del servidor web 1</td>
+<td align="center"><strong>1 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta i completa del servidor web 1</td>
+<td align="center"><strong>1 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Comprovació del correcte funcionament</td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta i completa del DNS</td>
+<td align="center"><strong>2.5 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Comprovació del registres del servidor</td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta i completa del proxy invers</td>
+<td align="center"><strong>1 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>3 punts</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>1 punt</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0.5 punt</strong></td>
 </tr>
 </tbody>
 </table>
