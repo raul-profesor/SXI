@@ -14,7 +14,7 @@
     
     
       
-        <title>Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx - Servicis en xarxa i Internet</title>
+        <title>Practica 5.2 - SSH amb MFA (Autenticació Multifactor) - Servicis en xarxa i Internet</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-44-balanceig-de-carrega-amb-proxy-invers-en-nginx" class="md-skip">
+        <a href="#practica-52-ssh-amb-mfa-autenticacio-multifactor" class="md-skip">
           Salta el contingut
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+              Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
             
           </span>
         </div>
@@ -428,168 +428,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
         Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
-    Requisits abans de començar la pràctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-    <nav class="md-nav" aria-label="Introducció">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#proxy-invers" class="md-nav__link">
-    Proxy invers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#balancejadors-de-carrega" class="md-nav__link">
-    Balancejadors de càrrega
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasca" class="md-nav__link">
-    Tasca
-  </a>
-  
-    <nav class="md-nav" aria-label="Tasca">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuracions" class="md-nav__link">
-    Configuracions
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuracions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginx-servidor-web-1" class="md-nav__link">
-    Nginx Servidor Web 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx-servidor-web-2" class="md-nav__link">
-    Nginx Servidor Web 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-dns" class="md-nav__link">
-    Configuració DNS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx-proxy-invers" class="md-nav__link">
-    Nginx Proxy Invers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comprovacions" class="md-nav__link">
-    Comprovacions
-  </a>
-  
-    <nav class="md-nav" aria-label="Comprovacions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-del-balanceig-de-carrega-quan-cau-un-servidor" class="md-nav__link">
-    Comprovació del balanceig de càrrega quan cau un servidor
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-finals" class="md-nav__link">
-    Qüestions finals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#avaluacio" class="md-nav__link">
-    Avaluació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -627,11 +470,141 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../P5.2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-lautenticacio-multifactor" class="md-nav__link">
+    Què és l'autenticació multifactor?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#com-ho-implementem" class="md-nav__link">
+    Com ho implementem?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-de-mfa-per-a-openssh" class="md-nav__link">
+    Instal·lació i configuració de MFA per a OpenSSH
+  </a>
+  
+    <nav class="md-nav" aria-label="Instal·lació i configuració de MFA per a OpenSSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-del-modul-pam-de-google" class="md-nav__link">
+    Instal·lació i configuració del mòdul PAM de Google
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-openssh" class="md-nav__link">
+    Configurar OpenSSH
+  </a>
+  
+    <nav class="md-nav" aria-label="Configurar OpenSSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor" class="md-nav__link">
+    Fent que SSH sigui conscient de l'autenticació multifactor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afegint-un-tercer-factor-dautenticacio" class="md-nav__link">
+    Afegint un tercer factor d'autenticació
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -686,15 +659,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proxy-invers" class="md-nav__link">
-    Proxy invers
+  <a href="#que-es-lautenticacio-multifactor" class="md-nav__link">
+    Què és l'autenticació multifactor?
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#balancejadors-de-carrega" class="md-nav__link">
-    Balancejadors de càrrega
+  <a href="#com-ho-implementem" class="md-nav__link">
+    Com ho implementem?
   </a>
   
 </li>
@@ -705,51 +678,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tasca" class="md-nav__link">
-    Tasca
+  <a href="#installacio-i-configuracio-de-mfa-per-a-openssh" class="md-nav__link">
+    Instal·lació i configuració de MFA per a OpenSSH
   </a>
   
-    <nav class="md-nav" aria-label="Tasca">
+    <nav class="md-nav" aria-label="Instal·lació i configuració de MFA per a OpenSSH">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuracions" class="md-nav__link">
-    Configuracions
+  <a href="#installacio-i-configuracio-del-modul-pam-de-google" class="md-nav__link">
+    Instal·lació i configuració del mòdul PAM de Google
   </a>
-  
-    <nav class="md-nav" aria-label="Configuracions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nginx-servidor-web-1" class="md-nav__link">
-    Nginx Servidor Web 1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx-servidor-web-2" class="md-nav__link">
-    Nginx Servidor Web 2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-dns" class="md-nav__link">
-    Configuració DNS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx-proxy-invers" class="md-nav__link">
-    Nginx Proxy Invers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -759,16 +698,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comprovacions" class="md-nav__link">
-    Comprovacions
+  <a href="#configurar-openssh" class="md-nav__link">
+    Configurar OpenSSH
   </a>
   
-    <nav class="md-nav" aria-label="Comprovacions">
+    <nav class="md-nav" aria-label="Configurar OpenSSH">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#comprovacio-del-balanceig-de-carrega-quan-cau-un-servidor" class="md-nav__link">
-    Comprovació del balanceig de càrrega quan cau un servidor
+  <a href="#fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor" class="md-nav__link">
+    Fent que SSH sigui conscient de l'autenticació multifactor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afegint-un-tercer-factor-dautenticacio" class="md-nav__link">
+    Afegint un tercer factor d'autenticació
   </a>
   
 </li>
@@ -805,13 +751,20 @@
               
                 
                 
-                <h1 id="practica-44-balanceig-de-carrega-amb-proxy-invers-en-nginx">Pràctica 4.4 – Balanceig de càrrega amb proxy invers en Nginx</h1>
+                <h1 id="practica-52-ssh-amb-mfa-autenticacio-multifactor">Pràctica 5.2 – SSH amb MFA (Autenticació Multifactor)</h1>
 <h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
 <div class="admonition danger">
 <p class="admonition-title">Atenció, molt important abans de començar!</p>
 <ul>
-<li>La pràctica 4.3 ha d'estar funcionant correctament</li>
-<li>No començar la pràctica abans de tenir la 4.3 <ins><strong>funcionant i comprovada</strong></ins></li>
+<li>
+<p>Heu de tenir el servici SSH funcionant correctament i preferiblement haver fet la pràctica 5.1 completa</p>
+</li>
+<li>
+<p>Heu de baixar-vos la app “Latch” al mòbil o, en el seu defecte, “Google Authenticator”</p>
+</li>
+<li>
+<p>Heu de canviar en l'arxiu sshd_config el port d'escolta de nou al 22 (1 punt)</p>
+</li>
 </ul>
 </div>
 <div class="admonition info">
@@ -826,15 +779,11 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">Servidor web</td>
+<td align="left">Client SSH</td>
 <td align="center">172.1.X.X</td>
 </tr>
 <tr>
-<td align="left">Servidor web 2</td>
-<td align="center">172.1.X.X</td>
-</tr>
-<tr>
-<td align="left">Proxy invers</td>
+<td align="left">Servidor SSH</td>
 <td align="center">172.1.X.X</td>
 </tr>
 <tr>
@@ -845,168 +794,171 @@
 </table>
 </div>
 <h2 id="introduccio">Introducció</h2>
-<p>Els servidors proxy inversos i els balancejadores de càrrega són components d'una arquitectura informàtica client-servidor. Tots dos actuen com a intermediaris en la comunicació entre els clients i els servidors, realitzant funcions que milloren l'eficiència. </p>
-<p>Les definicions bàsiques són simples:</p>
+<h3 id="que-es-lautenticacio-multifactor">Què és l'autenticació multifactor?</h3>
+<p>L'autenticació multifactor (MFA) és un mètode en el qual es proporciona accés a un sistema o servici sol després que puguis demostrar que efectivament ets tu qui dius ser. Ho faràs presentant dos o més evidències (o factors).</p>
+<p>Aquests poden ser una <strong>contrasenya</strong> que tingui un codi de verificació secundari, un certificat digital instal·lat en l'equip, una pregunta personal, etc. És clar que quantes més capes de protecció posis millor vas a poder protegir els teus comptes.</p>
+<p>Normalment se solen compaginar els següents factors:</p>
 <ul>
 <li>
-<p>Un <a href="https://www-nginx-com.translate.goog/resources/glossary/reverse-proxy-server?_x_tr_sl=en&amp;_x_tr_tl=ca&amp;_x_tr_hl=es&amp;_x_tr_pto=nui">proxy invers</a> accepta una sol·licitud d'un client, la reenvía a un servidor que pot complir-la i retorna la resposta del servidor al client. </p>
+<p><strong>Alguna cosa que conec:</strong> una contrasenya, resposta a una pregunta, un PIN, etc.</p>
 </li>
 <li>
-<p>Un <a href="https://www-nginx-com.translate.goog/resources/glossary/load-balancing?_x_tr_sl=en&amp;_x_tr_tl=ca&amp;_x_tr_hl=es&amp;_x_tr_pto=nui">balancejador de càrrega</a> distribueix les sol·licituds entrants del client entre un grup de servidors, en cada cas retornant la resposta del servidor seleccionat al client apropiat. </p>
-</li>
-</ul>
-<p>Suenan bastant similars, veritat? Tots dos tipus d'aplicacions se situen entre clients i servidors, acceptant sol·licituds del primer i lliurant respostes del segon. No és d'estranyar que hi hagi confusió sobre què és un proxy invers i un balancejador de càrrega. Per ajudar a diferenciar-los, explorem quan i per què normalment s'implementen en un lloc web.</p>
-<h3 id="proxy-invers">Proxy invers</h3>
-<p>Ja coneixem aquest concepte de la pràctica anterior.</p>
-<p>Mentre que implementar un balancejador de càrrega solament té sentit quan es tén diversos servidors, sovint té sentit implementar un proxy invers fins i tot amb un sol servidor web o servidor d'aplicacions. </p>
-<p>Es pot pensar en el proxy invers com la "cara pública" d'un lloc web. La seva adreça és la que s'anuncia per al lloc web i es troba a la frontera de la xarxa del lloc per acceptar sol·licituds de navegadors web i aplicacions mòbils per al contingut allotjat en el lloc web. </p>
-<h3 id="balancejadors-de-carrega">Balancejadors de càrrega</h3>
-<p>Els balancejadores de càrrega s'implementen amb major freqüència quan un lloc necessita diversos servidors perquè el volum de sol·licituds és massa perquè un sol servidor ho manegi de manera eficient. </p>
-<p>La implementació de diversos servidors també elimina un sol punt de falla, la qual cosa fa que el lloc web sigui més confiable. En general, tots els servidors allotgen el mateix contingut, i el treball del balancejador de càrrega és distribuir la càrrega de treball  de manera que  es faci el millor ús de la capacitat de cada servidor, eviti la sobrecàrrega en qualsevola de ells i doni com resultat la resposta més ràpida possible al client. </p>
-<p><ins>Un balancejador de càrrega també pot millorar l'experiència de l'usuari en reduir la quantitat de respostes d'error que veu el client. Ho fa detectant quan els servidors cauen i desviant les sol·licituds d'ells als altres servidors del grup</ins>. En la implementació més simple, el balancejador de càrrega detecta l'estat del servidor en interceptar les respostes d'error a les sol·licituds regulars. </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>En aquesta pràctica tindrem l'escenari on Nginx farà tant de proxy invers com de balancejador de càrrega al mateix temps.</p>
-</div>
-<h2 id="tasca">Tasca</h2>
-<p>Anem a configurar dos servidors web Nginx amb dues màquines Ubuntu Server, a més de reutilitzar el proxy invers Nginx configurat en la pràctica anterior. Partirem per tant de la configuració de la pràctica anterior, afegint el necessari:</p>
-<ul>
-<li>Cada servidor web presentarà un lloc web específic per a aquesta pràctica<ul>
-<li>El webserver2 ha de tenir la IP assignada de forma fixa mitjançant la configuració DHCP.</li>
-</ul>
-</li>
-<li>Il proxy invers que ja teníem configurat, hi haurà ara que configurar-ho perquè realitzi el balanceig de càrrega que desitgem</li>
-<li>Realitzarem les peticions HTTP des del navegador web del nostre Xubuntu.
-El diagrama de xarxa quedaria així:</li>
-</ul>
-<p><img alt="" src="../../img/4.1-14.png" /></p>
-<p>Les tres màquines estaran a la nostra xarxa interna. Farem les peticions web des del navegador al proxy invers, que les repartirà entre els dos servidors web que tenim. </p>
-<p>Accedirem a <code>http://balanceig</code> i hem d'observar que les peticions, efectivament, es van repartint entre el servidor 1 i el 2.</p>
-<h3 id="configuracions">Configuracions</h3>
-<h4 id="nginx-servidor-web-1">Nginx Servidor Web 1</h4>
-<p>El primer servidor web serà el servidor principal que hem vingut utilitzant fins ara durant el curs, on tenim instal·lats ja els servicis DNS, DHCP i Web.</p>
-<p>Hem de configurar aquest servidor web perquè servicixi el següent index.html que heu de crear dins de la carpeta <strong><code>/var/www/webserver1/html</code></strong>:</p>
-<p><img alt="" src="../../img/4.1-15.png" /></p>
-<ul>
-<li>El nom de l'lloc web que heu d'utilitzar en els arxius corresponents (sites-available…) que heu de crear per Nginx és <strong><code>webserver1</code></strong>, així com en les seues configuracions. Fixeu-vos en les configuracions que vau fer en pràctiques anteriors a manera de referència.</li>
-<li>El lloc web ha d'escoltar en el port 8080.</li>
-<li>Heu d'afegir una capçalera que es crida <code>Serv_Web1_vostrenom</code>.</li>
-</ul>
-<h4 id="nginx-servidor-web-2">Nginx Servidor Web 2</h4>
-<p>Ha de ser una màquina Ubuntu Server amb tots els servicis parats excepte Nginx.</p>
-<ul>
-<li>En aquest servidor web hem de realitzar una configuració idèntica al servidor web 1 però canviant <code>webserver1</code> per <code>webserver2</code> (també en el index.html), així com el nom de la capçalera afegida, que serà <code>Serv_Web2_vostrenom</code></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>És important que no quede cap referència a webserver1 per cap arxiu, d'una altra forma vos donarà resultats erronis i vos dificultarà molt trobar l'error.</p>
-</div>
-<h4 id="configuracio-dns">Configuració DNS</h4>
-<p>Hem d'afegir dos nous registres a la nostra zona:</p>
-<ol>
-<li>
-<p>De pràctiques anteriors existeix un registre en el DNS de tipus CNAME (que fa referència al servidor que venim utilitzant des de principi de curs amb tots els servicis) per al nom <code>webserver</code>. Heu de canviar-ho a <code>webserver1</code> que és com es dirà ara.</p>
+<p><strong>Alguna cosa que obtinc:</strong> una notificació que rebo en el mòbil, un codi de seguretat, etc. </p>
 </li>
 <li>
-<p>Un registre CNAME per a que <code>balanceig</code> sigui un àlies de <code>proxy-server.dominio.es.</code>, tal com vau fer en la pràctica anterior.</p>
-<ul>
-<li>Això permetrà que quan accedim via navegador a <code>http://balanceig</code>, el DNS resolgui que la IP d'aquest domini és la del proxy invers.</li>
-</ul>
-</li>
-<li>
-<p>ja que webserver2 és una màquina nova i independent, no podem afegir cap àlies per a ella. </p>
-<ul>
-<li>En aquest cas hem d'afegir un registre de tipus A perquè aquest nom apunti a la IP que tingui la màquina.</li>
-</ul>
-</li>
-</ol>
-<h4 id="nginx-proxy-invers">Nginx Proxy Invers</h4>
-<p>Ja disposem dels dos servidors web entre els quals es van a repartir les peticions que realitzi el client des del navegador. 
-Anem, per tant, a configurar el proxy invers perquè realitzi aquest repartiment de peticions:</p>
-<ul>
-<li>En sites-available heu de crear l'arxiu de configuració amb el nom <strong><code>balanceig</code></strong></li>
-<li>Aquest arxiu tindrà el següent format:</li>
-</ul>
-<p><div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">upstream backend_hosts {</span>
-                <span class="l l-Scalar l-Scalar-Plain">random;</span>
-                <span class="l l-Scalar l-Scalar-Plain">server ________:____;</span>
-                <span class="l l-Scalar l-Scalar-Plain">server ________:____;</span>
-                <span class="l l-Scalar l-Scalar-Plain">}</span>
-            <span class="l l-Scalar l-Scalar-Plain">server {</span>
-                <span class="l l-Scalar l-Scalar-Plain">listen 80;</span>
-                <span class="l l-Scalar l-Scalar-Plain">server_name ________;</span>      
-                <span class="l l-Scalar l-Scalar-Plain">location / {</span>
-                    <span class="l l-Scalar l-Scalar-Plain">proxy_pass http://backend_hosts;</span>
-                <span class="l l-Scalar l-Scalar-Plain">}</span>
-</code></pre></div>
-On:</p>
-<ul>
-<li>
-<p>El bloc upstream → són els servidors entre els quals es va a repartir la càrrega, que són els dos que hem configurat anteriorment. </p>
-<ol>
-<li>
-<p>Si mireu el diagrama i teniu en compte la configuració que heu fet fins ara, aquí haureu de col·locar el nom de cada servidor, així com el port on està escoltant les peticions web.</p>
-</li>
-<li>
-<p>A aquest grup de servidors li posem un nom, que és <code>backend_hosts</code></p>
-<div class="admonition quote">
-<p class="admonition-title">Aclaració</p>
-<p>En un lloc web, el backend s'encarrega de tots els processos necessaris perquè la web funcioni de forma correcta. Aquests processos o funcions no són visibles, però tenen molta importància en el bon funcionament d'un lloc web</p>
-</div>
-</li>
-<li>
-<p>El paràmetre random el que fa és repartir les peticions HTTP que arriben al proxy invers de forma completament aleatòria entre el grup de servidors que s'hagi definit en el bloc upstream (en el nostre cas només hi ha dos).</p>
-<ul>
-<li>Posarem random perquè és el més fàcil per comprovar que tot funciona bé en la pràctica, però hi ha diferents formes de repartir la càrrega (les peticions HTTP).</li>
-</ul>
-</li>
-</ol>
+<p><strong>Alguna cosa únic que tinc:</strong> en aquest cas és la biometria, com la teva empremta digital i/o el reconeixement facial. </p>
 </li>
 </ul>
+<h3 id="com-ho-implementem">Com ho implementem?</h3>
+<p>Anem a partir de la pràctica anterior, on ja podem connectar-nos per SSH al nostre proxy invers.</p>
+<p>Necessitarem instal·lar en el nostre mòbil l'aplicació Latch d'Elevin Paths. També podríem utilitzar l'aplicació Google Authenticator.</p>
+<p>No obstant això, l'elecció de Latch enfront de Google Authenticator està basada en <a href="https://www-elladodelmal-com.translate.goog/2016/10/latch-cloud-totp-versus-google.html?_x_tr_sl=es&amp;_x_tr_tl=ca&amp;_x_tr_hl=es">diverses consideracions de seguretat</a>. Google Authenticator:</p>
+<ul>
+<li>
+<p>No garanteix un únic dispositiu</p>
+</li>
+<li>
+<p>La llavor es podia robar del backup</p>
+</li>
+<li>
+<p>En Google Authenticator s'indica l'usuari</p>
+</li>
+<li>
+<p>En Google no implementen correctament les alertes TOTP (Time-based One-Time Password algorithm)</p>
+</li>
+</ul>
+<h2 id="installacio-i-configuracio-de-mfa-per-a-openssh">Instal·lació i configuració de MFA per a OpenSSH</h2>
+<h3 id="installacio-i-configuracio-del-modul-pam-de-google">Instal·lació i configuració del mòdul PAM de Google</h3>
+<p>Ara que ja hem configurat SSH para no necessitar introduir el password cada vegada que fem login, anem a implementar el 2FA o segon factor d'autenticació per a major seguretat. Això és el que es coneix com fer “hardening” o fortificació de servidors.</p>
 <div class="admonition danger">
-<p class="admonition-title">Ull!</p>
-<p>És importan que només <code>webserver1</code> (antic dnsserver) tinga tots els servicis habilitats</p>
-<p><code>Webserver2</code> i <code>proxy-invers</code> només han de tindre nginx habilitat.</p>
+<p class="admonition-title">Atenció</p>
+<p>Ens connectarem per SSH al proxy invers i realitzarem tota la configuració d'aquesta pràctica estant connectats per SSH.</p>
+<p>Si necessiteu fer proves de noves connexions, podeu obrir una altra pestanya del terminal sense desconnectar-vos.</p>
 </div>
-<h2 id="comprovacions">Comprovacions</h2>
-<p>Si accediu a vostre lloc web, heu de poder seguir accedint sense problemes.</p>
+<p>Els passos que s'han de seguir són els següents:</p>
 <ul>
 <li>
-<p>Comproveu donant-li repetidament a F5, que accediu cada vegada a un dels servidors. Se us mostrarà el contingut del index.html del servidor corresponent cada vegada.</p>
-<ul>
-<li>Per a una doble comprovació, utilitzant les eines de desenvolupador, mostreu que la web que se us mostra coincideix amb la capçalera que ha afegit el servidor web en la resposta HTTP.</li>
-</ul>
+<p>Fer un update del sistema:</p>
+<p><img alt="" src="../../img/5.2-1.png" /></p>
+</li>
+<li>
+<p>Instal·lar el mòdul d'autenticació de Google per a Ubuntu:</p>
+<p><img alt="" src="../../img/5.2-2.png" /></p>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Recordatori</p>
-<p>Recordeu que és <ins><strong>molt important</strong></ins> que per realitzar aquestes comprovacions tingueu marcat el checkbox “Desactivar caché”. </p>
-<p><img alt="" src="../../img/4.1-13.png" /></p>
-<p>Si no marqueu això, la pàgina es guardarà en la memòria caché del navegador i no estareu rebent la resposta del servidor sinó de la caché del navegador, la qual cosa pot donar lloc a resultats erronis.</p>
+<div class="admonition failure">
+<p class="admonition-title">Avís</p>
+<p>Nota: si rebeu aquest missatge “I: Unable to locate package libpam-google-authenticator”, cal activar el repositori Universe amb el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="nv">$sudo</span> add-apt-repository universe   
+</code></pre></div>
 </div>
-<h3 id="comprovacio-del-balanceig-de-carrega-quan-cau-un-servidor">Comprovació del balanceig de càrrega quan cau un servidor</h3>
-<p>El nostre balancejador de càrrega està constantment monitorizando “la salut” dels servidors web. D'aquesta forma, si un deixa de funcionar per qualsevol raó, sempre enviarà les sol·licituds als quals quedin “vius”. Anem a comprovar-ho:</p>
 <ul>
 <li>
-<p>Per al servici Nginx en el servidor web 1 i comprova, de la mateixa forma que en l'apartat anterior, que totes les sol·licituds s'envien ara al servidor web 2</p>
-</li>
-<li>
-<p>Després d'iniciar de nou Nginx en el servidor web 1, repeteix el procés amb el servidor web 2. </p>
+<p>Una vegada instal·lat, s'executa:</p>
+<p><img alt="" src="../../img/5.2-3.png" /></p>
 </li>
 </ul>
+<p>I vos anirà fent una sèrie de preguntes que heu de respondre. La primera us pregunta si el codi deu canviar aleatòriament en el temps, a la qual cosa heu de respondre sí. Us generarà el codi QR que heu d'escanejar amb el mòbil i els codis de recuperació.</p>
+<p><img alt="" src="../../img/5.2-4.png" /></p>
+<p>En la app Latch heu d'anar a la secció “TOTP” i “Afegir compte”:</p>
+<p><img alt="" src="../../img/5.2-5.png" style="height:600px;width:300px" /></p>
+<p>I després escanejar el codi QR que us ha aparegut abans:</p>
+<p><img alt="" src="../../img/5.2-6.png" style="height:600px;width:300px" /></p>
+<p>La següent pregunta és si voleu que actualitze automàticament l'arxiu <code>google_authenticator</code>, cosa necessària perquè funcione el 2FA, ergo heu de respondre sí novament:</p>
+<p><img alt="" src="../../img/5.2-7.png" /></p>
+<p>En la següent pregunta, en respondre que sí, li indiqueu que el codi que useu caduqui en aquest mateix instant. Això vol dir que només es podrà realitzar un login cada 30 segons però augmentarà la protecció enfront d'atacs automatitzats:</p>
+<p><img alt="" src="../../img/5.2-8.png" /></p>
+<p>Per defecte els codis es generen cada 30 segons, deixant un petit marge temporal on el codi anterior i el posterior seguiran sent vàlids. Això és per compensar certs desajustaments temporals entre l'hora del servidor i del client. </p>
+<p>Aquí respondrem que no doncs aquest marge és suficient i podria comprometre la seguridad de l'augmentar-ho:</p>
+<p><img alt="" src="../../img/5.2-9.png" /></p>
+<p>Per protegir el nostre servidor contra atacs de força bruta respondrem que sí a la pregunta de permetre un màxim de 3 intents de login cada 30 segons:</p>
+<p><img alt="" src="../../img/5.2-10.png" /></p>
+<h2 id="configurar-openssh">Configurar OpenSSH</h2>
+<div class="admonition tip">
+<p class="admonition-title">Nota important</p>
+<p>Ja que realitzarem canvis per SSH estant connectats per SSH, és molt important no tancar mai la connexió SSH inicial per no córrer el risc de perdre l'accés al servidor. </p>
+</div>
+<p>Per fer proves, establirem una nova connexió SSH i quan comprovem que tot funciona, podran tancar-se totes les sessions.</p>
+<p>Ara hem de configurar el servici d'autenticació de Linux perquè sigui conscient que pot utilitzar l'autenticació de Google. Editem l'arxiu <code>/etc/pam.d/sshd</code>:</p>
+<p><img alt="" src="../../img/5.2-11.png" /></p>
+<p>I afegirem al final de l'arxiu la línia:</p>
+<p><img alt="" src="../../img/5.2-12.png" /></p>
+<p>El <code>nullok</code> del final servicix per indicar-li al mecanisme d'autorització centralitzat de Linux, PAM (Pluggable Authentication Modulis) que aquest mètode d'autenticació és opcional. D'aquesta forma permetrem que els usuaris que no utilitzin el 2FA, puguin seguir fent login encara usant les seves claus.</p>
+<p>A continuació hem de configurar l'arxiu de configuració del servici SSH perquè suporti aquest tipus de autenticación:</p>
+<p><img alt="" src="../../img/5.2-13.png" />
+<img alt="" src="../../img/5.2-14.png" /></p>
+<p>Guardem l'arxiu i reiniciem el servici:</p>
+<p><img alt="" src="../../img/5.2-15.png" /></p>
+<h3 id="fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor">Fent que SSH sigui conscient de l'autenticació multifactor</h3>
+<p>Reobrim l'arxiu de configuració del servici ssh:</p>
+<p><img alt="" src="../../img/5.2-16.png" /></p>
+<p>I afegim aquesta línia al final de l'arxiu, per indicar-li al SSH que mètodes d'autenticació es requereixen. Això li indica a SSH que necessitem o una clau SSH, o un password o un codi de verificació (o les tres coses):</p>
+<p><img alt="" src="../../img/5.2-17.png" /></p>
+<p>Tanquem i guardem aquest arxiu.</p>
+<p>Ara tornem a obrir l'arxiu de configuració de PAM:</p>
+<p><img alt="" src="../../img/5.2-18.png" /></p>
+<p>Hem de buscar i comentar la línia indicada per dir-li a PAM que no mostri l'opció d'introduir password:</p>
+<p><img alt="" src="../../img/5.2-19.png" /></p>
+<p>Guardem i tanquem l'arxiu. </p>
+<p>Tot seguit reiniciem el servici:</p>
+<p><img alt="" src="../../img/5.2-20.png" /></p>
+<p>Ara heu d'intentar fer login de nou en el server. En aquesta ocasió hauria de demanar-vos el codi de verificació. </p>
+<p>Aquest codi de verificació és el que apareix en Latch cada 30 segons, així que haureu de consultar-ho en el mòbil, introduir-ho i si tot va bé, estareu logueats.</p>
+<p><img alt="" src="../../img/5.2-21.png" /></p>
+<p><img alt="" src="../../img/5.2-22.png" style="height:600px;width:300px" /></p>
+<p>A pesar que no s'explicita, s'han usat tant les claus SSH com el codi de verificació, és a dir, dos factors. Per verificar-ho, feu el ssh amb l'opció -v (de verbose) per poder comprovar-ho:</p>
+<p><img alt="" src="../../img/5.2-23.png" /></p>
+<p>En <strong>1</strong> podeu veure que es produeix l'autenticació mitjançant claus, resultant en una autenticació parcial. </p>
+<p>Quedaria la segona part, que es correspon amb la part configurada com a interactiva amb el teclat (<em>keyboard-interactive</em>), que no és mes que introduir el codi temporal de Latch, com us diu en <strong>2</strong>.</p>
+<div class="admonition task">
+<p class="admonition-title">Comprovació del doble factor d'autenticació</p>
+<p>Comprova-ho connectant-te per SSH des de l'ordinador amfitrió (Lliurex o Windows) utilitzant la IP de la LAN i també des del client Xubuntu utilitzant el nom del DNS (proxy-server).</p>
+<p>Adjunta unes captures de pantalles, utilitzant l'opció “-v” i indica, recuadrant-lo, on es pot veure que ha utilitzat tots dos factors d'autenticació.</p>
+</div>
+<h3 id="afegint-un-tercer-factor-dautenticacio">Afegint un tercer factor d'autenticació</h3>
+<p>En la fase 3 hem llistat diversos tipus d'autenticació permeses, en l'arxiu de configuració sshd_config:</p>
+<ul>
+<li>
+<p>Claus públiques (publickey)</p>
+</li>
+<li>
+<p>Password (password publickey)</p>
+</li>
+<li>
+<p>Codi de verificació (keyboard-interactive)</p>
+</li>
+</ul>
+<p>Però malgrat això, només hem permès el login mitjançant clau pública + codi de verificació.</p>
+<p>Si volguéssim tenir els tres factors, es podria realitzar amb un canvi ràpid. Simplement caldria descomentar la línia que hem comentat abans en l'arxiu <code>/etc/pam.d/sshd</code>:</p>
+<p><img alt="" src="../../img/5.2-24.png" /></p>
+<p>I reiniciar el servici.</p>
+<p>Després d'això, en intentar fer el ssh, ens demanarà el password a més del codi de verificació:</p>
+<p><img alt="" src="../../img/5.2-25.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Comprovación de login correcte amb els tres factors d'autenticació</p>
+<p>Comprova-ho connectant-te per SSH des de l'ordinador amfitrió (Lliurex o Windows) utilitzant la IP de la LAN i també des del client Xubuntu utilitzant el nom del DNS (proxy-server).</p>
+<p>Adjunta una captura amb l'opció “-v” on indiquis, amb un requadre, on s'estan utilitzant cadascun dels tres factors.</p>
+</div>
+<p><img alt="" src="../img/5.2-26.png" /></p>
 <h2 id="questions-finals">Qüestions finals</h2>
 <div class="admonition task">
 <p class="admonition-title">Questió 1</p>
-<p>Busca informació de quins altres mètodes de balanceig es poden aplicar amb Nginx i descriu almenys 3 d'ells.</p>
+<p>Descriu de quina manera podríem recuperar l'accés al servidor en cas de:</p>
+<ul>
+<li>
+<p>Perdre les claus (SSH o TOTP)</p>
+</li>
+<li>
+<p>Perdre l'accés a l'aplicació Latch</p>
+</li>
+</ul>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-ubuntu-16-04">Pista</a></p>
 </div>
 <div class="admonition task">
-<p class="admonition-title">Questió 2</p>
-<p>Si vull afegir 2 servidors webs més al balanceig de càrrega, descriu detalladament quina configuració hauré d'afegir i a on.</p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Questió 3</p>
-<p>Descriu tots els passos que haurieu de seguir i configurar per tal de fer el balanceig de càrrega amb una de les vostres web de les pràctiques anteriors. </p>
-<p>Indiqueu la configuració de totes les màquines (webservers, proxy...) i dels seus servicis.</p>
+<p class="admonition-title">Qüestió 2</p>
+<p>Imagina que tenim un usuari al sistema únicament per realitzar tasques automatitzades mitjançant SFTP. Aquest usuari, òbviament, no serà capaç d'introduir cap codi de verificació ja que forma part d'unes tasques teòriques automatitzades per algun script.</p>
+<p>Indica què faries perquè només aquest usuari estigués exempt d'introduir el codi de verificació, deixant-lo activat per a la resta. </p>
+<p>Pista: <code>user exempt ssh 2FA exception</code></p>
 </div>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
@@ -1018,32 +970,24 @@ On:</p>
 </thead>
 <tbody>
 <tr>
-<td align="left">Configuració correcta i completa del servidor web 1</td>
-<td align="center"><strong>1 punts</strong></td>
+<td align="left">Instal·lació, configuració de 2FA per a OpenSSH i comprovació</td>
+<td align="center"><strong>4 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Configuració correcta i completa del servidor web 1</td>
-<td align="center"><strong>1 punts</strong></td>
+<td align="left">Afegir un 3er factor d'autenticació de forma correcta i comprovacions</td>
+<td align="center"><strong>3.5 punts</strong></td>
 </tr>
 <tr>
-<td align="left">Configuració correcta i completa del DNS</td>
-<td align="center"><strong>2.5 punts</strong></td>
-</tr>
-<tr>
-<td align="left">Configuració correcta i completa del proxy invers</td>
-<td align="center"><strong>1 punts</strong></td>
-</tr>
-<tr>
-<td align="left">Qüestions finals</td>
-<td align="center"><strong>3 punts</strong></td>
-</tr>
-<tr>
-<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="left">Fer configuració íntegrament vía SSH</td>
 <td align="center"><strong>1 punt</strong></td>
 </tr>
 <tr>
-<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
-<td align="center"><strong>0.5 punt</strong></td>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>0.5 punts</strong></td>
 </tr>
 </tbody>
 </table>
@@ -1071,7 +1015,7 @@ On:</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../P4.3/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 4.3 - Proxy invers amb Nginx" rel="prev">
+        <a href="../P5.1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1080,26 +1024,11 @@ On:</p>
               <span class="md-footer__direction">
                 Anterior
               </span>
-              Pràctica 4.3 - Proxy invers amb Nginx
+              Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../P4.5/" class="md-footer__link md-footer__link--next" aria-label="Següent: Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Següent
-              </span>
-              Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
