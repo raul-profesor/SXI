@@ -911,6 +911,31 @@
 </ul>
 </div>
 <h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Hem configurat el nostre proxy invers amb tot lo que ens fa falta però no ens funciona i ens dona un error del tipus <code>This site can't provide a secure connection, ERR_SSL_PROTOCOL_ERROR.</code></p>
+<p>Dins del nostre server block tenim això:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server {</span>
+    <span class="l l-Scalar l-Scalar-Plain">listen 443;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_certificate /etc/nginx/ssl/enrico-berlinguer/server.crt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_certificate_key /etc/nginx/ssl/enrico-berlinguer/server.key;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_protocols                   TLSv1.3;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_ciphers                     ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;</span>
+    <span class="l l-Scalar l-Scalar-Plain">server_name enrico-berlinguer;</span>
+    <span class="l l-Scalar l-Scalar-Plain">access_log /var/log/nginx/https_access.log;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">location / {</span>
+        <span class="l l-Scalar l-Scalar-Plain">proxy_pass http://red-party;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Qüestió 2</p>
+<p>Imagineu que intentem accedir al nostre lloc web HTTPS i ens trobem el següent error:</p>
+<p><img alt="" src="../../img/Your-connection-isnt-private-NET-ERR_CERT_REVOKED.png" /></p>
+<p>Investigueu què està passant i com s'ha de solucionar.</p>
+</div>
 <h2 id="avaluacio">Avaluació</h2>
 <table>
 <thead>
@@ -921,28 +946,32 @@
 </thead>
 <tbody>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Creació correcta del certificat</td>
+<td align="center"><strong>1 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració SSL correcta del proxy</td>
+<td align="center"><strong>3 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Comprovacions</td>
+<td align="center"><strong>2 punts</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
-<td align="center"><strong> punts</strong></td>
+<td align="left">Configuració correcta de la redirecció forçosa a HTTPS i comprovacions</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1 punt</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0.5 punt</strong></td>
 </tr>
 <tr>
 <td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
-<td align="center"><strong> punt</strong></td>
+<td align="center"><strong>0.5 punt</strong></td>
 </tr>
 </tbody>
 </table>
