@@ -807,53 +807,48 @@ No obstant això, anem a afegir els nostres propis arxius de logs per fer-ho mé
 <p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">include &quot;/etc/bind/named.conf.logging&quot;;</span>
 </code></pre></div>
 Hem de crear, ara sí, l'arxiu “named.conf.logging” amb el següent contingut:</p>
-<p>```yaml hl_lines="8 16"f
-logging {
-    channel errors_syslog {
-          syslog daemon;
-          severity warning;
-        };
-// Per loggear totes les consultes DNS al servidor
-     channel queries_log {
-          file "/var/log/named/queries.log" versions 600 size 20m;
-          print-time yes;
-          print-category yes;
-          print-severity yes;
-          severity dynamic;
-        };
-//Per loggear tots els errors en realitzar consultes al servidor
-     channel query-errors_log {
-          file "/var/log/named/query-errors.log" versions 5 size 20m;
-          print-time yes;
-          print-category yes;
-          print-severity yes;
-          severity dynamic;
-        };
-//Definim les categories associades als channels
-        category lame-servers { null; };
-        category edns-disabled { null; };
-        category resolver { null; };
-        category dnssec { errors_syslog; };
-        category default { errors_syslog; default_debug; };
-        category unmatched { null; };
-        category queries { queries_log; };
-        category query-errors { query-errors_log; };
-};
-<div class="highlight"><pre><span></span><code>Fixeu-vos en les parts destacades en groc. Li estem indicant que aquests van a ser els arxius de log on es bolcarà tota la informació corresponent. 
-
-No obstant això, comproveu que aquest directori i aquests fitxers no existeixen.
-
-* Creeu aquest directori amb aquests fitxers
-* Després de fer-ho, heu de canviar la propietat de l&#39;arxiu a l&#39;usuari “bind”, que és el corresponent al servidor DNS:
-
-  ```shell
-  sudo chown bind.bind nom_de_fitxer
-  ```
-
-Finalment, a la configuració de Bind cal dir-li que sigui capaç de registrar la informació relativa a les queries o consultes DNS. Per a això modifiquem l&#39;arxiu d&#39;opcions “named.conf.options” i afegim, dins de “options {...}” la línia:
-
-```yaml
-querylog yes;
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">logging {</span>
+    <span class="l l-Scalar l-Scalar-Plain">channel errors_syslog {</span>
+          <span class="l l-Scalar l-Scalar-Plain">syslog daemon;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity warning;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">// Per loggear totes les consultes DNS al servidor</span>
+     <span class="l l-Scalar l-Scalar-Plain">channel queries_log {</span>
+<span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/queries.log&quot; versions 600 size 20m;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-time yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">//Per loggear tots els errors en realitzar consultes al servidor</span>
+     <span class="l l-Scalar l-Scalar-Plain">channel query-errors_log {</span>
+<span class="hll">          <span class="l l-Scalar l-Scalar-Plain">file &quot;/var/log/named/query-errors.log&quot; versions 5 size 20m;</span>
+</span>          <span class="l l-Scalar l-Scalar-Plain">print-time yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-category yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">print-severity yes;</span>
+          <span class="l l-Scalar l-Scalar-Plain">severity dynamic;</span>
+        <span class="l l-Scalar l-Scalar-Plain">};</span>
+<span class="l l-Scalar l-Scalar-Plain">//Definim les categories associades als channels</span>
+        <span class="l l-Scalar l-Scalar-Plain">category lame-servers { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category edns-disabled { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category resolver { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category dnssec { errors_syslog; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category default { errors_syslog; default_debug; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category unmatched { null; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category queries { queries_log; };</span>
+        <span class="l l-Scalar l-Scalar-Plain">category query-errors { query-errors_log; };</span>
+<span class="l l-Scalar l-Scalar-Plain">};</span>
+</code></pre></div>
+Fixeu-vos en les parts destacades en groc. Li estem indicant que aquests van a ser els arxius de log on es bolcarà tota la informació corresponent. </p>
+<p>No obstant això, comproveu que aquest directori i aquests fitxers no existeixen.</p>
+<ul>
+<li>Creeu aquest directori amb aquests fitxers</li>
+<li>Després de fer-ho, heu de canviar la propietat de l'arxiu a l'usuari “bind”, que és el corresponent al servidor DNS:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo chown bind.bind nom_de_fitxer
+</code></pre></div>
+<p>Finalment, a la configuració de Bind cal dir-li que sigui capaç de registrar la informació relativa a les queries o consultes DNS. Per a això modifiquem l'arxiu d'opcions “named.conf.options” i afegim, dins de “options {...}” la línia:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">querylog yes;</span>
 </code></pre></div>
 I reiniciem el servici de bind (named).</p>
 <div class="admonition question">
