@@ -214,7 +214,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
       
@@ -247,6 +249,8 @@
         
           
             
+          
+        
           
         
           
@@ -610,6 +614,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -622,128 +640,6 @@
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
-    Requisits abans de començar la pràctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-    <nav class="md-nav" aria-label="Introducció">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#que-es-lautenticacio-multifactor" class="md-nav__link">
-    Què és l'autenticació multifactor?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#com-ho-implementem" class="md-nav__link">
-    Com ho implementem?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installacio-i-configuracio-de-mfa-per-a-openssh" class="md-nav__link">
-    Instal·lació i configuració de MFA per a OpenSSH
-  </a>
-  
-    <nav class="md-nav" aria-label="Instal·lació i configuració de MFA per a OpenSSH">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installacio-i-configuracio-del-modul-pam-de-google" class="md-nav__link">
-    Instal·lació i configuració del mòdul PAM de Google
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configurar-openssh" class="md-nav__link">
-    Configurar OpenSSH
-  </a>
-  
-    <nav class="md-nav" aria-label="Configurar OpenSSH">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor" class="md-nav__link">
-    Fent que SSH sigui conscient de l'autenticació multifactor
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#afegint-un-tercer-factor-dautenticacio" class="md-nav__link">
-    Afegint un tercer factor d'autenticació
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-finals" class="md-nav__link">
-    Qüestions finals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#avaluacio" class="md-nav__link">
-    Avaluació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           <div class="md-content" data-md-component="content">
@@ -1029,6 +925,21 @@
         </a>
       
       
+        
+        <a href="../proj/" class="md-footer__link md-footer__link--next" aria-label="Següent: Projecte final - Configuració de servicis" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Projecte final - Configuració de servicis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
     </nav>
   
   <div class="md-footer-meta md-typeset">
@@ -1052,7 +963,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>

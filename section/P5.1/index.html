@@ -214,7 +214,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
       
@@ -247,6 +249,8 @@
         
           
             
+          
+        
           
         
           
@@ -875,6 +879,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -887,393 +905,6 @@
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
-    Requisits abans de començar la pràctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduccio" class="md-nav__link">
-    Introducció
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installacio-i-configuracio-de-openssh" class="md-nav__link">
-    Instal·lació i configuració de OpenSSH
-  </a>
-  
-    <nav class="md-nav" aria-label="Instal·lació i configuració de OpenSSH">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installacio" class="md-nav__link">
-    Instal·lació
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#quins-arxius-de-configuracio-tinc" class="md-nav__link">
-    Quins arxius de configuració tinc?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#principals-directrius-de-la-configuracio" class="md-nav__link">
-    Principals directrius de la configuració
-  </a>
-  
-    <nav class="md-nav" aria-label="Principals directrius de la configuració">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directriu-port" class="md-nav__link">
-    Directriu Port
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-listenaddress" class="md-nav__link">
-    Directriu ListenAddress
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-protocol" class="md-nav__link">
-    Directriu Protocol
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-logingracetime" class="md-nav__link">
-    Directriu LoginGraceTime
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-permitrootlogin" class="md-nav__link">
-    Directriu PermitRootLogin
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-strictmodes" class="md-nav__link">
-    Directriu StrictModes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-maxauthtries" class="md-nav__link">
-    Directriu MaxAuthTries
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-maxstartups" class="md-nav__link">
-    Directriu MaxStartups
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-maxauthtries_1" class="md-nav__link">
-    Directriu MaxAuthTries
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-maxstartups_1" class="md-nav__link">
-    Directriu MaxStartups
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directrius-per-autenticar-amb-password" class="md-nav__link">
-    Directrius per autenticar amb password
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directrius-per-permetre-lus-de-x11" class="md-nav__link">
-    Directrius per permetre l'ús de X11
-  </a>
-  
-    <nav class="md-nav" aria-label="Directrius per permetre l'ús de X11">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#directriu-allowusers" class="md-nav__link">
-    Directriu AllowUsers
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-usedns" class="md-nav__link">
-    Directriu UseDNS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-hostkey" class="md-nav__link">
-    Directriu HostKey
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-printmotd" class="md-nav__link">
-    Directriu PrintMotd
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-banner" class="md-nav__link">
-    Directriu banner
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directrius-de-registre-desdeveniments-logs" class="md-nav__link">
-    Directrius de registre d'esdeveniments (logs)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-rsaauthentication" class="md-nav__link">
-    Directriu RSAAuthentication
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-pubkeyauthentication" class="md-nav__link">
-    Directriu PubkeyAuthentication
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-authorizedkeysfile" class="md-nav__link">
-    Directriu AuthorizedKeysFile
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-ignoreuserknownhosts" class="md-nav__link">
-    Directriu IgnoreUserKnownHosts
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-allowtcpforwarding" class="md-nav__link">
-    Directriu AllowTcpForwarding
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-printlastlog" class="md-nav__link">
-    Directriu PrintLastLog
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-tcpkeepalive" class="md-nav__link">
-    Directriu TCPKeepAlive
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-useprivilegeseparation" class="md-nav__link">
-    Directriu UsePrivilegeSeparation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-clientaliveinterval" class="md-nav__link">
-    Directriu ClientAliveInterval
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-clientalivecountmax" class="md-nav__link">
-    Directriu ClientAliveCountMax
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-pidfile" class="md-nav__link">
-    Directriu PidFile
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-subsystem" class="md-nav__link">
-    Directriu Subsystem
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-permitblacklistedkeys" class="md-nav__link">
-    Directriu PermitBlacklistedKeys
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-ignorerhosts-i-rhostsrsaauthentication" class="md-nav__link">
-    Directriu IgnoreRhosts i RhostsRSAAuthentication
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-hostbasedauthentication" class="md-nav__link">
-    Directriu HostbasedAuthentication
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#directriu-usepam" class="md-nav__link">
-    Directriu UsePAM
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bastionathardeningfortificacio-del-servici-ssh" class="md-nav__link">
-    Bastionat/hardening/fortificació del servici SSH
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generacio-de-claus-configuracio-y-comprovacio" class="md-nav__link">
-    Generació de claus, configuració y comprovació
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proteccio-amb-sshguard" class="md-nav__link">
-    Protecció amb sshguard
-  </a>
-  
-    <nav class="md-nav" aria-label="Protecció amb sshguard">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#installacio-de-sshguard" class="md-nav__link">
-    Instal·lació de sshguard
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-de-sshguard" class="md-nav__link">
-    Configuració de sshguard
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio" class="md-nav__link">
-    Comprovació
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-finals" class="md-nav__link">
-    Qüestions finals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#avaluacio" class="md-nav__link">
-    Avaluació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           <div class="md-content" data-md-component="content">
@@ -1877,7 +1508,7 @@ Si sshguard, per la raó que siga, us bloqueja la IP permanentment i no la desbl
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>

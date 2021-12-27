@@ -214,7 +214,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
       
@@ -247,6 +249,8 @@
         
           
             
+          
+        
           
         
           
@@ -598,6 +602,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -610,116 +628,6 @@
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Taula de continguts
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installacio-de-servidor-dns" class="md-nav__link">
-    Instal·lació de servidor DNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuracio-del-servidor" class="md-nav__link">
-    Configuració del servidor
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuració del servidor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-namedconfoptions" class="md-nav__link">
-    Configuració named.conf.options
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuracio-namedconflocal" class="md-nav__link">
-    Configuració named.conf.local
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona" class="md-nav__link">
-    Creació de l'arxiu de zona
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creacio-de-larxiu-de-zona-pera-a-la-resolucio-inversa" class="md-nav__link">
-    Creació de l'arxiu de zona pera a la resolució inversa
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-configuracions" class="md-nav__link">
-    Comprovació de les configuracions
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comprovacio-de-les-resolucions-i-de-les-consultes" class="md-nav__link">
-    Comprovació de les resolucions i de les consultes
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tasques-a-realitzar" class="md-nav__link">
-    Tasques a realitzar
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions-finals" class="md-nav__link">
-    Questions finals
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#avaluacio" class="md-nav__link">
-    Avaluació
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           <div class="md-content" data-md-component="content">
@@ -958,7 +866,7 @@ Ara editarem l'arxiu <strong><em>named.conf.options</em></strong> i inclourem el
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>

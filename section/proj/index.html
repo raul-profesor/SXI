@@ -1,0 +1,1337 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Projecte final - Configuració de servicis - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#projecte-final-configuracio-de-servicis" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Projecte final - Configuració de servicis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Projecte final - Configuració de servicis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Projecte final - Configuració de servicis
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-i-motivacio-del-projecte" class="md-nav__link">
+    Introducció i motivació del projecte
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-xarxa-i-servicis-a-configurar" class="md-nav__link">
+    Diagrama de xarxa i servicis a configurar
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagrama de xarxa i servicis a configurar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#webserver1" class="md-nav__link">
+    Webserver1
+  </a>
+  
+    <nav class="md-nav" aria-label="Webserver1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-xarxa" class="md-nav__link">
+    Interfaces de xarxa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    DHCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webserver2" class="md-nav__link">
+    Webserver2
+  </a>
+  
+    <nav class="md-nav" aria-label="Webserver2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-xarxa_1" class="md-nav__link">
+    Interfaces de xarxa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_1" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-server" class="md-nav__link">
+    Proxy-server
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy-server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-xarxa_2" class="md-nav__link">
+    Interfaces de xarxa
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp_1" class="md-nav__link">
+    DHCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns_1" class="md-nav__link">
+    DNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_2" class="md-nav__link">
+    SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http_2" class="md-nav__link">
+    HTTP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#client-xubuntu" class="md-nav__link">
+    Client Xubuntu
+  </a>
+  
+    <nav class="md-nav" aria-label="Client Xubuntu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-de-xarxa_3" class="md-nav__link">
+    Interfaces de xarxa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#firewall" class="md-nav__link">
+    Firewall
+  </a>
+  
+    <nav class="md-nav" aria-label="Firewall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-firewall" class="md-nav__link">
+    Què és un firewall?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firwalls-en-linux" class="md-nav__link">
+    Firwalls en Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#com-funciona-nftables" class="md-nav__link">
+    Com funciona nftables?
+  </a>
+  
+    <nav class="md-nav" aria-label="Com funciona nftables?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-les-taules" class="md-nav__link">
+    Creació de les taules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacio-de-les-cadenes" class="md-nav__link">
+    Creació de les cadenes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flux-daccions-quan-un-paquet-arriba-al-firewall" class="md-nav__link">
+    Flux d'accions quan un paquet arriba al firewall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-nat" class="md-nav__link">
+    Què és el NAT?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-de-nftables" class="md-nav__link">
+    Configuració de nftables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-cal-lliurar" class="md-nav__link">
+    Què cal lliurar?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="projecte-final-configuracio-de-servicis">Projecte final - Configuració de servicis</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>
+<p>Heu de tenir funcionant totes les pràctiques del curs, fins a la 5.2, per poder començar adequadament aquesta pràctica</p>
+</li>
+<li>
+<p>Comprovar que <strong>REALMENT</strong> tot està funcionant</p>
+</li>
+<li>
+<p>Tenir a mà els informes de pràctiques anteriors, per consultar-los</p>
+</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Per a aquest projecte, les IP que han de tenir les màquines són:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Webserver1</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Webserver2</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Proxy invers</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">- Interfaz de la xarxa <strong>172.1.X.0/24</strong>: <code>172.1.X.3</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">- Interfaz de la xarxa <strong>10.X.0.0/16</strong>: <code>10.X.0.1</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="center">- Interfaz de la <strong>LAN</strong>:<code>La que vos assigne el router de classe/casa</code></td>
+</tr>
+<tr>
+<td align="left">Client Xubuntu</td>
+<td align="center"><code>10.X.0.2</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio-i-motivacio-del-projecte">Introducció i motivació del projecte</h2>
+<p>En aquest projecte integrarem tots els servicis que hem vist durant el curs en un escenari semblant al que utilitzem en les darreres pràctiques del tema 4.</p>
+<p>Com a afegit, protegirem tots els servicis de la nostra xarxa, una cosa summament important a la vida real, utilitzant un firewall.</p>
+<p>En primera instància, configurarem la nostra xarxa i els servicis de cada màquina. Un cop estiguin funcionant i així ho haguem comprovat, llavors i només llavors, passarem a configurar les regles del nostre firewall.</p>
+<p>Aquest projecte intenta simular, en la mesura que sigui possible, un escenari real del món laboral.</p>
+<h2 id="diagrama-de-xarxa-i-servicis-a-configurar">Diagrama de xarxa i servicis a configurar</h2>
+<p>Després de muntar i configurar adequadament cada màquina, l'escenari final que hem d'aconseguir és el que es veu a la imatge de baix:</p>
+<p><img alt="" src="../../img/pf1.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A continuació, els aspectes a considerar per a la a configuració</p>
+</div>
+<ol>
+<li>
+<p>Fixeu-vos que hi ha tres xarxes diferents, la 172.1.X.0/24, la 10.0.0.0/16 i la xarxa LAN, que serà del tipus 192.168.XX/24 (les X depenen de si esteu a l'institut o a casa).</p>
+</li>
+<li>
+<p>Tot i estar en xarxes diferents, serà el webserver1 el que, mitjançant DHCP, assigni la IP al client Xubuntu → <strong>El proxy invers actuarà per tant com a DHCP-RELAY</strong></p>
+</li>
+<li>
+<p>El servidor DNS del client Xubuntu serà el servidor intermediari invers. No obstant això, el servidor DNS que resoldrà tots els noms de les màquines (webserver1, dnsserver, servidor intermediari, balanceig…), serà webserver1 → <strong>El proxy invers actuarà com a DNS FORWARDER</strong>, redirigint les peticions al webserver1 oa altres, segons calgui</p>
+</li>
+<li>
+<p>Podrem connectar-nos per SSH a qualsevol dels 3 servidors, tant des del client Xubuntu com des de la LAN (el nostre ordinador físic)</p>
+</li>
+<li>
+<p>La pràctica 4.5 ha de continuar funcionant perfectament, és a dir, haurem d'accedir sempre a https://balanceig (o que ens redirigeixi si accedim mitjançant http://balanceig) i comprovar que, efectivament, aquest balanceig es produeix. </p>
+</li>
+</ol>
+<p>Partirem doncs de les màquines que hem anat creant al llarg del curs. A continuació us detalle què ha de tindre configurat cada màquina.</p>
+<h3 id="webserver1">Webserver1</h3>
+<p>Aquest servidor ha de conservar els servicis que ja teniu configurat (DHCP, DNS, HTTP). Tot i això, hem de modificar alguns punts.</p>
+<h4 id="interfaces-de-xarxa">Interfaces de xarxa</h4>
+<p>Heu de configurar netplan perquè es complisca:</p>
+<ol>
+<li>
+<p>Només ha de tenir 1 interfaz de xarxa, que serà una xarxa interna amb nom “Xarxa_172”</p>
+</li>
+<li>
+<p>Com que un servidor DHCP no pot assignar-se una IP a si mateix, la IP estarà configurada manualment a netplan (això ja ho hauríeu de tenir així)</p>
+</li>
+<li>
+<p>Perquè aquesta màquina pugui accedir a qualsevol lloc i altres màquines hi puguin accedir, necessita un gateway per defecte o porta d'enllaç. </p>
+<ul>
+<li>
+<p>Com que la IP és manual, no ho podem assignar amb el DHCP com solem fer</p>
+</li>
+<li>
+<p>La solució és configurar-lo al fitxer de netplan. Heu de canviar el que està en les línies marcades en groc:</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nt">enp0sX</span><span class="p">:</span>
+</span>    <span class="c1">#Assignem IP manualment</span>
+<span class="hll">    <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">172.1.X.1/24</span><span class="p p-Indicator">]</span>
+</span>    <span class="c1">#Configurem servidor DNS i domini manualment</span>
+    <span class="nt">nameservers</span><span class="p">:</span>
+<span class="hll">        <span class="nt">addresses</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">172.1.X.1</span><span class="p p-Indicator">]</span>
+</span>        <span class="nt">search</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">sre.es</span><span class="p p-Indicator">]</span>
+        <span class="c1">#Afegim una ruta estàtica</span>
+        <span class="c1">#to: 0.0.0.0/0 fa referència a la ruta per accedir a qualsevol xarxa que existeixi</span>
+        <span class="c1">#via: XXXX ← aquí heu de posar quina serà la porta d&#39;enllaç sempre per</span>
+        <span class="c1"># qualsevol ruta</span>
+        <span class="nt">routes</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">to</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+<span class="hll">        <span class="nt">via</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">XXXX</span>
+</span></code></pre></div>
+<h4 id="dhcp">DHCP</h4>
+<p>Heu de configurar el servidor DHCP perquè es compleixi:</p>
+<ol>
+<li>El servidor DHCP ha de donar una IP fixa al <code>webserver2</code> ia la interfaz del proxy invers que està a la xarxa <code>172.1.X.0/24</code> (això ja ho hauríeu de tindre configurat)</li>
+<li>
+<p>Heu de definir la nova subnet <code>10.X.0.0/16</code> amb tots els paràmetres necessaris (option-routers, domain-name-servers, domain-name…) i assignar una IP fixa (<code>10.X.0.2</code>) d'aquesta subxarxa al client Xubuntu.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Com a referència, teniu la pràctica 2.1.</p>
+</div>
+</li>
+</ol>
+<h4 id="dns">DNS</h4>
+<ol>
+<li>
+<p>Hem d'afegir les dades adequades al fitxer <code>named.conf.options</code></p>
+<ul>
+<li>A l'ACL <code>confiables</code> hem d'afegir la IP de la interfaz corresponent del proxy invers, per permetre que faci consultes sobre aquest servidor Bind9.</li>
+</ul>
+</li>
+</ol>
+<h4 id="ssh">SSH</h4>
+<ol>
+<li>Instal·larem openssh-server sense cap configuració addicional</li>
+</ol>
+<h4 id="http">HTTP</h4>
+<ol>
+<li>Com s'ha comentat, Nginx no necessita cap configuració addicional, simplement ha de continuar funcionant correctament</li>
+</ol>
+<h3 id="webserver2">Webserver2</h3>
+<h4 id="interfaces-de-xarxa_1">Interfaces de xarxa</h4>
+<p>Heu de configurar <code>netplan</code> perquè es compleixi:</p>
+<ol>
+<li>
+<p>Només ha de tenir 1 interfaz de xarxa, que serà una xarxa interna amb nom <code>Xarxa_172</code></p>
+</li>
+<li>
+<p>Aquesta màquina ha de tenir assignada una IP fixa mitjançant el DHCP de <code>Webserver1</code> i amb gateway o porta d'enllaç la interfaz de la <code>Xarxa_172</code> del proxy-invers (això ja hauríeu de tenir-ho configurat). </p>
+</li>
+</ol>
+<h4 id="ssh_1">SSH</h4>
+<ol>
+<li>Instal·larem openssh-server sense cap configuració addicional</li>
+</ol>
+<h4 id="http_1">HTTP</h4>
+<ol>
+<li>Com s'ha comentat, Nginx no necessita cap configuració addicional, simplement ha de continuar funcionant correctament</li>
+</ol>
+<h3 id="proxy-server">Proxy-server</h3>
+<h4 id="interfaces-de-xarxa_2">Interfaces de xarxa</h4>
+<p>Heu de configurar netplan perquè es compleixi:</p>
+<ol>
+<li>
+<p><strong>Ha de tenir 3 interfaces de xarxa</strong></p>
+<p>(a) Una pertanyerà a la xarxa interna “Xarxa_172”</p>
+<p>(b) Una tercera serà un adaptador en mode bridge o pont, amb la LAN</p>
+<p>(c) Una altra pertanyerà a la xarxa interna “Red_10”</p>
+</li>
+<li>
+<p>La primera interfaz <code>(a)</code> estarà configurada al fitxer de netplan perquè obtingui la IP mitjançant DHCP (el de <code>webserver1</code>)</p>
+<p>No obstant això, cal afegir alguna cosa en aquesta configuració. L'apartat corresponent a aquesta interfaz ha de lluir així:</p>
+<p><img alt="" src="../../img/pf2.png" /></p>
+<p>Això és perquè aquesta interfaz ha de tenir assignada per DHCP la IP <code>172.1.1.3</code> però a l'arxiu de configuració del DHCP també us enviem que la porta d'enllaç sigui <code>172.1.1.3</code>, és a dir, ell mateix. Això dóna problemes, principalment amb el NAT, que veurem més endavant.</p>
+<p>Amb <code>dhcp4-overrides</code> li estem dient que ignore determinats paràmetres que li arribin des del DHCP. Amb <code>use-routes: no</code> el que li diem és que el paràmetre a ignorar serà <code>option routers 172.1.1.3</code>, és a dir, la porta d'enllaç.</p>
+</li>
+<li>
+<p>La segona interfaz <code>(b)</code> estarà configurada per obtenir la seva IP mitjançant DHCP (en aquest cas serà del router de classe/casa).</p>
+</li>
+<li>
+<p>La tercera interfaz de xarxa <code>(c)</code> en comptes d'obtenir la seva IP per DHCP, la tindrà configurada de forma manual al fitxer de netplan. Només caldrà configurar la IP, cap paràmetre més.</p>
+</li>
+</ol>
+<h4 id="dhcp_1">DHCP</h4>
+<p>El proxy invers separa 3 xarxes unes de les altres i actua com a router. Aquestes tres xarxes són la <code>172.1.X.0/24</code>, la <code>10.X.0.0/16</code> i la <code>192.168.X.0/24</code>.</p>
+<p>Si mirem una vegada més el diagrama de xarxa, el client Xubuntu ha d'obtindre una IP fixa mitjançant el servidor DHCP que funciona a webserver1 → Són xarxes diferents → Necessitem fer <strong>DHCP RELAY</strong>. </p>
+<p>Així doncs:</p>
+<ol>
+<li>
+<p>Hem d'instal·lar, si no en tenim ja, l'isc-dhcp-relay</p>
+</li>
+<li>
+<p>Per configurar-ho podeu agafar com a referència la pràctica 2.1:</p>
+<ul>
+<li>
+<p>Mireu el diagrama de xarxa per veure quines interfaces cal posar a l'arxiu de configuració del relay</p>
+</li>
+<li>
+<p>Poseu la IP correcta del servidor DHCP principalPer configurar-ho podeu agafar com a referència la pràctica 2.1.</p>
+</li>
+<li>
+<p>S'ha d'executar com a dimoni a background (-D)</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="dns_1">DNS</h4>
+<ol>
+<li>
+<p>Hem d'instal·lar, si no el tenim ja, Bind9 al nostre proxy invers (en cas de tenir-lo instal·lat, compte amb la configuració que tingués d'abans, ja que no ens servirà)</p>
+</li>
+<li>
+<p>Cal configurar aquest servidor DNS perquè sigui únicament forwarder, és a dir, perquè l'únic que faci sigui redirigir les consultes DNS del client Xubuntu al dnsserver/webserver1.</p>
+<p>A l'arxiu <code>named.conf.options</code>:</p>
+<ul>
+<li>
+<p>Heu de crear-vos una <strong>acl</strong> que s'anomeni <code>confiables</code>. Dins us heu de dir que les xarxes que s'inclouran en aquesta acl, que seran dels que s'acceptin les consultes i respostes de trànsit DNS,seran la xarxa on són els webservers i la xarxa on hi ha el client Xubuntu (teniu com a referència la pràctica 3.1).</p>
+</li>
+<li>
+<p>A l'apartat de forwarders, en lloc d'afegir els servidors de Cloudflare i d'Opendns, com vam fer a la pràctica 3.2, posarem únicament la IP del dnsserver/webserver1, perquè només es redirigeixin consultes a aquest servidor des del servidor intermediari invers.</p>
+</li>
+<li>
+<p>Prenent com a referència les configuracions del tema 3, haureu de permetre les consultes recursives i també heu d'indicar-vos que només les permeteu des de les xarxes que estan dins de l'acl fiables.</p>
+</li>
+<li>
+<p>Finalment, haureu de configurar que escolteu al port 53 de les dues interfaces corresponents, tant la de la xarxa del client Xubuntu, com la de la xarxa on són els webservers.</p>
+<p>Per això heu de posar les IP de les dues interfaces del proxy invers que són a cadascuna de les dues xarxes.</p>
+</li>
+<li>
+<p>Com que és un servidor DNS del tipus forwarder (només es dedica a redirigir consultes i respostes), <ins><strong>no cal configurar cap zona</strong></ins>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="ssh_2">SSH</h4>
+<ol>
+<li>Com a configuració SSH, el proxy invers ha de conservar la que es va realitzar a les pràctiques del tema 5 (les directives adequades i autenticació multifactor).</li>
+</ol>
+<h4 id="http_2">HTTP</h4>
+<ol>
+<li>La configuració de NGINX no caldrà tocar-la, serà la mateixa que ja deixem funcionant al tema 4 (balanceig de càrrega, redirecció forçosa a https…).</li>
+</ol>
+<h3 id="client-xubuntu">Client Xubuntu</h3>
+<h4 id="interfaces-de-xarxa_3">Interfaces de xarxa</h4>
+<ol>
+<li>No canviarem la configuració, ha de continuar rebent la IP del servidor DHCP de <code>webserver1</code></li>
+</ol>
+<h2 id="firewall">Firewall</h2>
+<h3 id="que-es-un-firewall">Què és un firewall?</h3>
+<p>Un firewall és un dispositiu de seguretat de la xarxa que monitoritza el trànsit entrant i sortint i decideix si ha de permetre o bloquejar un trànsit específic segons un conjunt de restriccions de seguretat ja definides.</p>
+<p>Els firewalls han estat la primera línia de defensa en seguretat de la xarxa durant més de 25 anys. Estableixen una barrera entre les xarxes internes segures, controlades i fiables i les xarxes externes poc fiables com ara Internet.</p>
+<p><img alt="" src="../../img/pf3.png" /></p>
+<p>Un firewall pot ser maquinari, programari o tots dos. En el nostre cas, implementarem el firewall mitjançant programari al nostre proxy invers.</p>
+<p>Si el trànsit entrant o sortint compleix amb una sèrie de <strong>regles</strong> que nosaltres podem especificar, llavors el trànsit podrà accedir o sortir de la nostra xarxa o ordinador sense cap restricció. En cas de no complir les regles, el trànsit entrant o sortint serà bloquejat.</p>
+<p>Per tant a partir de la definició podem assegurar que amb un firewall ben configurat podem evitar intrusions no desitjades a la nostra xarxa i ordinador així com també bloquejar cert tipus de trànsit sortint del nostre ordinador o la nostra xarxa.</p>
+<p>Per clarificar aquest concepte farem servir una metàfora molt senzilla: un firewall és a una xarxa informàtica el que una porta a una casa. Aquesta porta impedeix l'entrada de persones desconegudes a casa nostra igual que un tallafocs bloqueja l'arribada d'usuaris no autoritzats a una xarxa privada.</p>
+<p>La funció d'un firewall és molt important, ja que, si no fos per ell, un ordinador –o xarxa d'ordinadors– podria ser atacat i infectat amb força freqüència. </p>
+<h3 id="firwalls-en-linux">Firwalls en Linux</h3>
+<p>Hi ha diversos firewalls per a Linux, però potser el més conegut i utilitzat és <strong>iptables</strong>, ja que ve instal·lat per defecte a la majoria de distribucions.</p>
+<p>A dia de hui, iptables porta un temps considerat obsolet (tot i que pot continuar utilitzant-se) i és <strong>nftables</strong> el firewall de referència actual, destinat a substituir-lo.</p>
+<p>Un frontend és un programa que gestiona i/o administra les regles del firewall. Suposadament fa més fàcil la configuració i el manteniment. Hi ha dos frontends importants per a firewalls a Linux:</p>
+<ul>
+<li>
+<p><ins>Firewalld:</ins> Desenvolupat per l'empresa Red Hat, ve instal·lat per defecte en distribucions com ara RHEL, Fedora, Suse o OpenSuse. 
+    Al principi gestionava les regles d'iptables, avui dia gestiona les de nftables.</p>
+</li>
+<li>
+<p><ins>UFW (Uncomplicated Firewall):</ins> Ve instal·lat per defecte en distribucions Debian i derivats (Ubuntu, Mint…). Podeu gestionar les regles d'iptables i nftables.</p>
+</li>
+</ul>
+<p>En el nostre cas nosaltres no farem servir un frontend que pugui arribar a resultar encara més confús. Configurarem directament el firewall nftables.</p>
+<p>Tot i que les regles de nftables es poden ficar per línia d'ordres una a una, nosaltres ho farem d'una manera una mica més “professional”, usant un script amb totes les regles per poder establir-les de cop sempre que ho necessitem.</p>
+<h3 id="com-funciona-nftables">Com funciona nftables?</h3>
+<p>Nftables té configurades unes taules on es emmagatzemen les regles que regulen els tipus d'operacions es realitzaran sobre els paquets.</p>
+<p>Cada taula conté llistes de regles anomenades cadenes. El tallafoc utilitza cadenes estàndard per manejar paquets en funció de circumstàncies predefinides. 
+L'administrador pot crear altres cadenes.</p>
+<p>Quan un paquet arriba al firewall, consulta les taules que té creades per saber què fer amb ell. </p>
+<p>Una de les diferències d'usar nftables és que les taules i les cadenes són totalment configurables. En nftables el primer que hem de fer és crear les taules (són les zones on crearem les diferents regles del tallafocs classificades en cadenes). A continuació crearem les diferents cadenes a les taules (que ens permet classificar les regles).</p>
+<h4 id="creacio-de-les-taules">Creació de les taules</h4>
+<p>En el nostre cas crearem dues taules, una trucada <strong><em>filtrat</em></strong> per filtrar els paquets i una altra que s'anomeni nat per dur a terme el <strong><em>nat</em></strong>, que explicarem més endavant.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># TAULES</span>
+<span class="c1">#==============</span>
+<span class="c1"># Creem les taules</span>
+<span class="l l-Scalar l-Scalar-Plain">add table ip filtrat</span>
+<span class="l l-Scalar l-Scalar-Plain">add table ip nat</span>
+</code></pre></div>
+<h4 id="creacio-de-les-cadenes">Creació de les cadenes</h4>
+<p>A continuació crearem les cadenes de la taula filtrat Per crear una cadena hem d'indicar diversos paràmetres:</p>
+<ul>
+<li>
+<p><strong>type</strong>: És la classe de cadena que crearem, per exemple filtre (per filtrar) o nat (per fer NAT). </p>
+</li>
+<li>
+<p><strong>hook</strong>: Determina el tipus de paquet que s'analitzarà. Per exemple:</p>
+<ul>
+<li>
+<p><ins>input</ins>: Paquets que tenen com a destinació la mateixa màquina. </p>
+</li>
+<li>
+<p><ins>output</ins>: Paquets que tenen origen la pròpia màquina.</p>
+</li>
+<li>
+<p><ins>forward</ins>: Paquets que passen per la màquina</p>
+</li>
+<li>
+<p><ins>prerouting</ins>: Paquets que entren a la màquina abans d'enrutar-los. Ens permeten fer DNAT</p>
+<ul>
+<li>DNAT o NAT de destinació permet cambiar l'adreça de destinació d'un paquet (també podeu especificar el port de destinació).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>priority</strong>: Ens permet ordenar les cadenes dins una mateixa taula. Les cadenes més prioritàries són les que tenen un nombre més petit.</p>
+</li>
+<li>
+<p><strong>policy</strong>: S'indica la política per defecte. Si el conjunt de regles avaluades no s'ajusta al paquet, s'executa la política per defecte. Per defecte la política ésacceptper això s'accepten tots els paquets que no s'ajustin al conjunt de regles. Quan desenvolupem un tallafocs la política sol serdrop no acceptant els paquets que no s'ajusten a capuna regla. </p>
+</li>
+</ul>
+<p>Nosaltres crearem 5 cadenes:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># CADENES</span>
+<span class="c1">#=================================================</span>
+<span class="c1"># Creem les cadenes per a les taules que, per defecte, bloquejaran el trànsit</span>
+add chain ip filtratge INPUT <span class="o">{</span> <span class="nb">type</span> filter hook input priority <span class="m">0</span><span class="p">;</span> policy drop<span class="p">;</span> <span class="o">}</span>
+add chain ip filtratge FORWARD <span class="o">{</span> <span class="nb">type</span> filter hook forward priority <span class="m">0</span><span class="p">;</span> policy drop<span class="p">;</span> <span class="o">}</span>
+add chain ip filtratge OUTPUT <span class="o">{</span> <span class="nb">type</span> filter hook output priority <span class="m">0</span><span class="p">;</span> policy drop<span class="p">;</span> <span class="o">}</span>
+add chain ip nat POSTROUTING <span class="o">{</span> <span class="nb">type</span> nat hook postrouting priority <span class="m">100</span><span class="p">;</span> <span class="o">}</span>
+add chain ip nat PREROUTING <span class="o">{</span> <span class="nb">type</span> nat hook prerouting priority <span class="m">0</span><span class="p">;</span>
+</code></pre></div>
+Quan tingam configurat la taula i les cadenes del nostre tallafocs, podem començar a configurar regles per configurar el nostre tallafocs personal, que filtrarà la comunicació a la nostra pròpia màquina.</p>
+<h3 id="flux-daccions-quan-un-paquet-arriba-al-firewall">Flux d'accions quan un paquet arriba al firewall</h3>
+<p>Aquest esquema representa què passa quan el trànsit arriba al firewall, en quin ordre es consulten les taules que tenim i quines accions podem fer amb les cadenes d'aquestes taules:</p>
+<p><img alt="" src="../../img/pf4.png" /></p>
+<p>Ja sabem que el servidor intermediari invers el fem servir per separar les 3 xarxes a les que està connectat, les dues privades i la LAN externa de casa/classe. </p>
+<p>Com que separa xarxes, actua com a router. Així doncs, quan el trànsit va dirigit directament al mateix proxy (una connexió SSH cap a ell, una consulta DNS al vostre servidor bind9, un accés http a http://balanceig…), és un procés local.</p>
+<p>En canvi, quan el trànsit ha de travessar el proxy i ha de ser encaminat pel proxy (tràfic http entre els webservers i el client Xubuntu, p. ex.), estarem parlant de la taula FORWARD.</p>
+<h3 id="que-es-el-nat">Què és el NAT?</h3>
+<p>La idea és senzilla, fer que xarxes d'ordinadors utilitzen un rang dadreças especials (IPs privades) i es connectin a Internet usant una única adreça IP (IP pública). </p>
+<p>Gràcies a aquest “parxe”, les grans empreses només utilitzarien una adreça IP i no tantes com màquines hi hagués en aquesta empresa. També es fa servir per connectar xarxes domèstiques a Internet.</p>
+<p><img alt="" src="../../img/pf5.png" /></p>
+<h2 id="configuracio-de-nftables">Configuració de nftables</h2>
+<p>En primer lloc hem d'instal·lar nftables si no el tenim instal·lat ja:</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install nftables
+</code></pre></div>
+<p>I comprovar que està actiu:</p>
+<div class="highlight"><pre><span></span><code>$ systemctl status nft
+</code></pre></div>
+<p>Al directori arrel del vostre servidor creareu el directori fw i dins, creareu l'arxiu reglas_fw.sh, que serà l'script on configurarem tot allò referent a nftables. 
+Per crear aquest fitxer heu d'utilitzar la plantilla que us proporciono i que anirem completant a classe.</p>
+<p>Coses que anirem configurant en aquest script:</p>
+<ol>
+<li>
+<p>Definirem les IP que utilitzarem, utilitzant noms fàcils d'identificar i comprendre, per no haver de posar la IP a cadascuna de les regles</p>
+</li>
+<li>
+<p>Definirem noms per agrupar diversos ports, de manera que no haurem d'introduir la mateixa regla diverses vegades per a diferents ports, sinó que els aplicarem a l'agrupament.</p>
+</li>
+<li>
+<p>Anem a netejar les regles de nftables que pogués haver configurades prèviament, per tal d'evitar-nos errors</p>
+<div class="admonition warning">
+<p class="admonition-title">Nota important</p>
+<p>Si la configuració del firewall és errònia perquè us heu equivocat amb les regles, podeu eliminar-les totes amb l'ordre (al terminal):
+<div class="highlight"><pre><span></span><code>$ nft flush ruleset
+</code></pre></div></p>
+</div>
+</li>
+<li>
+<p>Creem les taules</p>
+</li>
+<li>
+<p>Creem les cadenes</p>
+</li>
+</ol>
+<p>A partir d'aquí comencem a configurar les regles que formarà cadascuna de les cadenes:</p>
+<ol>
+<li>
+<p>Regles per al NAT: així permetrem que el client Xubuntu pugui tenir accés a internet</p>
+</li>
+<li>
+<p>Regles per permetre les consultes DNS del client al servidor intermediari invers. També, ja que el servidor intermediari invers no és més que un DNS forwarder, hem d'incloure regles que permetin al servidor intermediari consultar al webserver1</p>
+</li>
+<li>
+<p>Regles que permetin connectar-nos al servidor intermediari invers per SSH, tant des de la LAN com des del client Xubuntu</p>
+</li>
+<li>
+<p>Permetre que els paquets siguin encaminats a través del proxy invers. Trànsit que passa a través d'aquest servidor intermediari:</p>
+<ul>
+<li>
+<p>Tràfic del NAT: permet que el client Xubuntu pugui navegar per Internet. És a dir, permet el trànsit HTTP del client a través del proxy invers i cap a internet.</p>
+</li>
+<li>
+<p>Tràfic SSH des del client Xubuntu als webservers</p>
+</li>
+<li>
+<p>Tràfic SSH des de la xarxa LAN cap als webservers</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Finalment, des de la LAN només ens podem connectar per SSH (port 22) al proxy invers però no als webservers, ja que estan en una xarxa interna privada.</p>
+<ul>
+<li>
+<p>Crearem una regla del firewall que escolti als ports 8001 i 8002. Quan ens intentem connectar per SSH a aquests ports, ens redirigirà automàticament als ports 22 de webserver1 i webserver2, respectivament.</p>
+</li>
+<li>
+<p>Això vol dir que abans que el proxy invers, com a router que és, prengui la decisió d'on encamineu el paquet, canvieu l'adreça destinació per la de webserver1/2 i el port destinació pel 22.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Per executar l'script i que apliqui totes les cadenes de regles que hem configurat, hem d'executar:</p>
+<div class="highlight"><pre><span></span><code>$ nft -f regles_fw.sh
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Recordatori</p>
+<p>Si volem netejar les regles i desactivar el tallafoc:</p>
+<div class="highlight"><pre><span></span><code>$ sudo nft flush ruleset
+$ sudo systemctl stop nftables
+</code></pre></div>
+<p>Si volem llistar les regles configurades:</p>
+<div class="highlight"><pre><span></span><code>$ sudo nft list ruleset
+</code></pre></div>
+<p>Per veure els comptadors en temps real:</p>
+<div class="highlight"><pre><span></span><code>$ watch nft list ruleset
+</code></pre></div>
+</div>
+<h2 id="que-cal-lliurar">Què cal lliurar?</h2>
+<p>Cal documentar TOTA la pràctica, així que un informe on vos hagiu fet:</p>
+<ol>
+<li>
+<p>Documentar totes les configuracions noves i/o canvis de configuració que s'hagin fet, adjuntant captures de pantalla</p>
+</li>
+<li>
+<p>Per demostrar que els servicis funcionen correctament → <strong>ARXIUS DE LOG</strong> de les peticions i/o respostes del servei</p>
+</li>
+<li>
+<p>Captura de la sortida de l'ordre <code>$ sudo nft list ruleset</code> on es vegi que s'han utilitzat o aplicat totes les regles, és a dir, que <strong><em>TOTS ELS COMPTADORS SÓN &gt; 0.</em></strong></p>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P5.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Practica 5.2 - SSH amb MFA (Autenticació Multifactor)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
