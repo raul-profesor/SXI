@@ -1235,7 +1235,7 @@ L'única forma de desactivar aquest motd per defecte és impedint que s'executin
 <p>Deshabilitar TCPKeepAlive</p>
 </li>
 <li>
-<p>Només es permet fer login a l'usuari <code>raul</code> des de <code>clixubuntu.raul.es</code> (des de la seua IP) i a l'usuari <code>raul</code> des de la IP de la LAN (classe o casa).</p>
+<p>Només es permet fer login a l'usuari <code>raul</code> des de la IP de l'equip <code>clixubuntu.raul.es</code> (des de la seua IP) i a l'usuari <code>raul</code> des de la IP de la LAN (classe o casa).</p>
 <div class="admonition task">
 <p class="admonition-title">Comprovació</p>
 <ul>
@@ -1281,26 +1281,24 @@ chsh -s /bin/bash cognom
 <p>Per crear un parell de claus pública/privada en el client, executarem el comando:</p>
 <p><div class="highlight"><pre><span></span><code>ssh-keygen -b <span class="m">4096</span>
 </code></pre></div>
-Si deixeu les opcions per defecte, us crearà una clau privada (aneu_rsa) i una clau pública (aneu_rsa.pub) en el directori home/el vostre_usuari/.ssh</p>
+Si deixeu les opcions per defecte, us crearà una clau privada (id_rsa) i una clau pública (id_rsa.pub) en el directori home/el vostre_usuari/.ssh</p>
 <p>Us demanarà un password per protegir la vostra clau privada. Si recordeu el mòdul de Seguretat Informàtica, la clau privada associada a la pública ha de ser protegida convenientment perquè ningú més que l'usuari tingui accés a ella.</p>
 <ol>
-<li>
-<p>Li posem el password a la clau privada perquè l'anem a guardar xifrada en el disc i aquesta serà la contrasenya necessària per desxifrar-la i poder utilitzar-la, <strong>¡RECORDEU-LA!</strong>
-   <img alt="" src="../../img/5.1-5.png" /></p>
-</li>
-<li>
-<p>Per copiar la clau pública al servidor, podem fer-ho manualment o utilitzant SSH (més fàcil):</p>
-<ul>
+<li>Li posem el password a la clau privada perquè l'anem a guardar xifrada en el disc i aquesta serà la contrasenya necessària per desxifrar-la i poder utilitzar-la, <strong>¡RECORDEU-LA!</strong></li>
+</ol>
+<p><img alt="" src="../../img/5.1-5.png" /></p>
+<ol>
+<li>Per copiar la clau pública al servidor, podem fer-ho manualment o utilitzant SSH (més fàcil):<ul>
 <li><ins>Utilitzant SSH:</ins>
-    <div class="highlight"><pre><span></span><code>ssh-copy-aneu usuari_servidor@ip_servidor
+    <div class="highlight"><pre><span></span><code>ssh-copy-id usuari_servidor@ip_servidor
 </code></pre></div></li>
 <li>
 <p><ins>Manualment:</ins>
     Copieu el valor de la clau.</p>
-<p><div class="highlight"><pre><span></span><code>cat /.ssh/aneu_rsa.pub
+<p><div class="highlight"><pre><span></span><code>cat /.ssh/id_rsa.pub
 </code></pre></div>
 Feu login per SSH al servidor i copieu aquest valor de la clau en el següent arxiu (creeu-ho si no existeix):</p>
-<p><div class="highlight"><pre><span></span><code>/home/el vostre_usuari/.ssh/authorized_keys
+<p><div class="highlight"><pre><span></span><code>/home/el_vostre_usuari/.ssh/authorized_keys
 </code></pre></div>
 Si tinguèreu qualsevol problema de permisos, podeu posar els permisos adequats als directoris amb els següents comandos:</p>
 <div class="highlight"><pre><span></span><code>chmod <span class="m">700</span> /.ssh
