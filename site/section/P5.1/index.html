@@ -1,0 +1,1533 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-51-installacio-i-hardening-bastionat-de-servici-ssh" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-de-openssh" class="md-nav__link">
+    Instal·lació i configuració de OpenSSH
+  </a>
+  
+    <nav class="md-nav" aria-label="Instal·lació i configuració de OpenSSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio" class="md-nav__link">
+    Instal·lació
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quins-arxius-de-configuracio-tinc" class="md-nav__link">
+    Quins arxius de configuració tinc?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principals-directrius-de-la-configuracio" class="md-nav__link">
+    Principals directrius de la configuració
+  </a>
+  
+    <nav class="md-nav" aria-label="Principals directrius de la configuració">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directriu-port" class="md-nav__link">
+    Directriu Port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-listenaddress" class="md-nav__link">
+    Directriu ListenAddress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-protocol" class="md-nav__link">
+    Directriu Protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-logingracetime" class="md-nav__link">
+    Directriu LoginGraceTime
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-permitrootlogin" class="md-nav__link">
+    Directriu PermitRootLogin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-strictmodes" class="md-nav__link">
+    Directriu StrictModes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-maxauthtries" class="md-nav__link">
+    Directriu MaxAuthTries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-maxstartups" class="md-nav__link">
+    Directriu MaxStartups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-maxauthtries_1" class="md-nav__link">
+    Directriu MaxAuthTries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-maxstartups_1" class="md-nav__link">
+    Directriu MaxStartups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directrius-per-autenticar-amb-password" class="md-nav__link">
+    Directrius per autenticar amb password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directrius-per-permetre-lus-de-x11" class="md-nav__link">
+    Directrius per permetre l'ús de X11
+  </a>
+  
+    <nav class="md-nav" aria-label="Directrius per permetre l'ús de X11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directriu-allowusers" class="md-nav__link">
+    Directriu AllowUsers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-usedns" class="md-nav__link">
+    Directriu UseDNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-hostkey" class="md-nav__link">
+    Directriu HostKey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-printmotd" class="md-nav__link">
+    Directriu PrintMotd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-banner" class="md-nav__link">
+    Directriu banner
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directrius-de-registre-desdeveniments-logs" class="md-nav__link">
+    Directrius de registre d'esdeveniments (logs)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-rsaauthentication" class="md-nav__link">
+    Directriu RSAAuthentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-pubkeyauthentication" class="md-nav__link">
+    Directriu PubkeyAuthentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-authorizedkeysfile" class="md-nav__link">
+    Directriu AuthorizedKeysFile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-ignoreuserknownhosts" class="md-nav__link">
+    Directriu IgnoreUserKnownHosts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-allowtcpforwarding" class="md-nav__link">
+    Directriu AllowTcpForwarding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-printlastlog" class="md-nav__link">
+    Directriu PrintLastLog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-tcpkeepalive" class="md-nav__link">
+    Directriu TCPKeepAlive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-useprivilegeseparation" class="md-nav__link">
+    Directriu UsePrivilegeSeparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-clientaliveinterval" class="md-nav__link">
+    Directriu ClientAliveInterval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-clientalivecountmax" class="md-nav__link">
+    Directriu ClientAliveCountMax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-pidfile" class="md-nav__link">
+    Directriu PidFile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-subsystem" class="md-nav__link">
+    Directriu Subsystem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-permitblacklistedkeys" class="md-nav__link">
+    Directriu PermitBlacklistedKeys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-ignorerhosts-i-rhostsrsaauthentication" class="md-nav__link">
+    Directriu IgnoreRhosts i RhostsRSAAuthentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-hostbasedauthentication" class="md-nav__link">
+    Directriu HostbasedAuthentication
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directriu-usepam" class="md-nav__link">
+    Directriu UsePAM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bastionathardeningfortificacio-del-servici-ssh" class="md-nav__link">
+    Bastionat/hardening/fortificació del servici SSH
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generacio-de-claus-configuracio-y-comprovacio" class="md-nav__link">
+    Generació de claus, configuració y comprovació
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proteccio-amb-sshguard" class="md-nav__link">
+    Protecció amb sshguard
+  </a>
+  
+    <nav class="md-nav" aria-label="Protecció amb sshguard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-de-sshguard" class="md-nav__link">
+    Instal·lació de sshguard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-de-sshguard" class="md-nav__link">
+    Configuració de sshguard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacio" class="md-nav__link">
+    Comprovació
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-51-installacio-i-hardening-bastionat-de-servici-ssh">Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>Treballarem sobre l'escenari que ens va quedar al final del tema 4, que si recordeu era un proxy invers i dos servidors web</li>
+<li>Configurarem el servidor SSH en el proxy invers</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Client SSH</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Servidor SSH</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<p>Aprendrem a instal·lar i a configurar un servici SSH per poder connectar-nos de forma remota. </p>
+<p>El primer serà configurar una interfície addicional en aquest proxy invers. Serà un adaptador de xarxa tipus pont o bridge. Això ens proporcionarà el següent escenari:</p>
+<p><img alt="" src="../../img/5.1-1.png" /></p>
+<p>Quan tot estiga ben configurat, podrem connectar-nos via SSH tant des del client Xubuntu com des de la vostra màquina host o física. Això us proporcionarà l'avantatge de poder iniciar el proxy invers amb VirtualBox en format sense pantalla, connectar-vos via SSH i fer les pràctiques directament des del terminal de Lliurex. Això té avantatges com que deixarà copiar i pegar sense problemes.</p>
+<h2 id="installacio-i-configuracio-de-openssh">Instal·lació i configuració de OpenSSH</h2>
+<h3 id="installacio">Instal·lació</h3>
+<p>Per instal·lar el nostre servidor SSH no tenim més que:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install openssh-server
+</code></pre></div>
+<p>Per comprovar l'estat del servici:
+<div class="highlight"><pre><span></span><code>systemctl status ssh
+</code></pre></div></p>
+<p>Linux ja ve amb un client SSH preinstal·lat, per la qual cosa no seria necessària major configuració en el client. Ja hauríeu de poder connectar-vos de forma remota al proxy invers amb el següent comando:
+<div class="highlight"><pre><span></span><code>ssh nom_usuari_proxy@IP_proxy
+</code></pre></div></p>
+<ol>
+<li>
+<p>Proveu que podeu connectar-vos des del client Xubuntu usant òbviament la IP de la interfície de la xarxa interna del proxy</p>
+</li>
+<li>
+<p>Proveu a connectar-vos per la interfície de la LAN del proxy utilitzant el vostre ordinador de classe o de casa (en estar en adaptador pont, estareu a la mateixa xarxa vosaltres i la màquina virtual)</p>
+<ul>
+<li>Per connectar-vos des d'un ordinador amb Windows haureu d'instal·lar-vos un client SSH com Putty: 
+<a href="https://www.aemilius.net/ayuda/articulos/acceso-ssh-ssl-secure-shell-telnet-putty.html">Client Windows</a></li>
+</ul>
+</li>
+</ol>
+<p>La primera vegada que us connecteu, us apareixerà alguna cosa com això:</p>
+<p><img alt="" src="../../img/5.1-2.png" /></p>
+<p>Se'ns està informant que l'equip al que ens estem connectant per SSH podria no ser el nostre o el que pensem que és. Per estar 100% segurs, caldria anar al proxy-server, comprovar la seua “petjada” (fingerprint) que ho identifica i comparar-la amb la qual aquí se'ns mostra.</p>
+<p>Atès que això és una pràctica acadèmica, que el nostre escenari és molt senzill i podem estar segurs que el proxy-server és la nostra màquina, simplement li direm “yes” i continuarem la connexió.</p>
+<p>Aquesta acció afegirà al proxy-server a l'arxiu <strong>known_hosts</strong>.</p>
+<h3 id="quins-arxius-de-configuracio-tinc">Quins arxius de configuració tinc?</h3>
+<ol>
+<li>
+<p><code>/etc/ssh/sshd_config</code>: Arxiu principal de configuració del servidor SSH (configura el dimoni o servici).</p>
+</li>
+<li>
+<p><code>/etc/ssh/ssh_config</code>: Arxiu principal de configuració dels clients SSH. </p>
+</li>
+<li>
+<p><code>/.ssh/config</code>: Arxiu personal de cada usuari. 
+    Conté la configuració utilitzada pels clients SSH. Permet a l'usuari local utilitzar una configuració diferent a la definida en l'arxiu /etc/ssh/ssh_config. </p>
+</li>
+<li>
+<p><code>/.ssh/known_hosts</code>: Arxiu personal de cada usuari. Conté les signatures digitals dels servidors SSH als quals es connecten els clients. Quan aquestes signatures canvien, es poden actualitzar executant el comando ssh-keygen -R, passant el nom de l'amfitrió o la IP de l'amfitrió com a argument. Aquest comando elimina l'entrada corresponent en l'arxiu /.ssh/known_hosts i, permet afegir de nou a l'amfitrió amb una nova signatura digital.</p>
+</li>
+<li>
+<p><code>/.ssh/authorized_keys</code>: Arxiu personal per a cada usuari. Conté els certificats dels clients SSH, per permetre autenticació cap a servidors SSH sense requerir contrasenya. </p>
+</li>
+</ol>
+<h3 id="principals-directrius-de-la-configuracio">Principals directrius de la configuració</h3>
+<p>Quan parlem de fer hardening d'un servici, ho podríem traduir com a fortificació o bastionat. És a dir, es configura un servici de tal manera que es protegeix el màxim possible de qualsevol fallada o atac a aquest servici.</p>
+<p>Després de la instal·lació procedirem a la configuració del servidor, per a això, editarem el fitxer de configuració <code>/etc/ssh/sshd_config</code>.</p>
+<p>Vegem detalladament les directrius que poden aparèixer en aquest arxiu:</p>
+<h4 id="directriu-port">Directriu Port</h4>
+<p>De forma predeterminada, el servici SSH escolta pel port 22. La directriu per defecte seria:</p>
+<p><code>Port 22</code></p>
+<p>Una forma d'elevar la seguretat del servidor SSH, consisteix a canviar el nombre de port predeterminat per un altre que només l'administrador del sistema conegui. A aquest tipus de tècniques se'ls coneix com a <a href="https://es.wikipedia.org/wiki/Seguridad_por_oscuridad">seguretat per foscor</a>. Encara que no es considera ni recomanable ni suficient.</p>
+<p>Els atacants buscaran servidors que estiguin escoltant pel port 22. Canviar de port disminueix considerablement la possibilitat d'una intrusió. </p>
+<h4 id="directriu-listenaddress">Directriu ListenAddress</h4>
+<p>De forma predeterminada, el servici SSH escoltarà peticions a través de totes les adrecis IP corresponents a totes les interfícies de xarxa del sistema. La directriu per defecte seria:</p>
+<p><code>ListenAddress 0.0.0.0</code></p>
+<p>Es pot configurar perquè només escolti per una de les interfícies.</p>
+<h4 id="directriu-protocol">Directriu Protocol</h4>
+<p>Permet indicar què versió del protocol utilitzar. Ja vam dir que la versió segura avui dia és la 2:</p>
+<p><code>Protocol 2</code></p>
+<h4 id="directriu-logingracetime">Directriu LoginGraceTime</h4>
+<p>En aquesta directriu s'estableix el temps, en segons, durant el qual la pantalla de login estarà disponible perquè l'usuari introdueixi el seu nom d'usuari i contrasenya, si no ho fa durant aquest període de temps el login es tancarà, evitant així deixar per temps indeterminat pantalles de login sense que ningú les usi, o que algú est intentant mitjançant un script endevinar un usuari i la seua contrasenya. </p>
+<p>Si el valor és 0, no hi ha límit de temps perquè un usuari s'autentiqui, la qual cosa no és recomanable ja que d'aquesta forma un atacant podria utilitzar atacs de força bruta o usant mètodes de diccionari per endevinar la contrasenya, per tant no és recomanable deixar aquesta directriu a 0. </p>
+<h4 id="directriu-permitrootlogin">Directriu PermitRootLogin</h4>
+<p>Probablement sigui la directriu de seguretat més important que podem establir per assegurar el nostre servidor SSH. En els sistemes Unix i Linux es crea per defecte a l'usuari root, amb privilegis de adnimistrador. </p>
+<p>Molts atacs de força bruta es concentren a atacar a l'usuari root amb l'esperança que tingui una contrasenya feble. Sabent una part de l'equació (root) solament serà qüestió de temps perquè algú amb paciència i sort vulneri el sistema. En aquesta directriu deneguem l'accés a l'usuari root i per tant, qualsevol intent d'atac directe a l'usuari root serà inútil.</p>
+<p>En denegar l'accés a l'usuari root, cada vegada que necessitem realitzar tasques administratives, accedirem com un usuari normal i una vegada dins, utilitzant algun dels comandos el seu o sudopodrem realitzar aquestes tasques administratives. Per tant, denegant l'accés a l'usuari root, l'atacant haurà d'encertar tant el nom d'un usuari del sistema com la seua contrasenya, alguna cosa que disminueix notablement la probabilitat d'una intrusió.</p>
+<p><code>PermitRootLogin yes/no</code></p>
+<h4 id="directriu-strictmodes">Directriu StrictModes</h4>
+<p>En aquesta directriu s'estableix que <strong>sshd (el servici ssh)</strong> revisés els modes i permisos dels arxius dels usuaris i el directori $HOME de l'usuari abans d'acceptar la sessió.</p>
+<p>Això és normalment desitjable perquè de vegades alguns usuaris deixen els seus directoris, accidentalment, amb permís d'escriptura per a qualsevol. El valor predeterminat és <strong>yes</strong>, per tant, ho deixarem amb el seu valor predeterminat.</p>
+<p><code>StrictModes yes/no</code></p>
+<h4 id="directriu-maxauthtries">Directriu MaxAuthTries</h4>
+<p>El valor d'aquesta directriu estableix el màxim nombre d'intents d'autenticació permesos per connexió, és a dir, la quantitat de vegades que podem equivocar-nos en ingressar l'usuari i/o contrasenya. Una vegada que els intents aconsegueixen la meitat d'aquest valor, les connexions fallides següents seran registrades. </p>
+<p>Després del màxim nombre d'intents es tancarà la connexió. És possible tornar a intentar-ho, però el límit d'intents per vegada evita atacs basats en la persistència de la connexió.</p>
+<p><code>MaxAuthTries 5</code></p>
+<h4 id="directriu-maxstartups">Directriu MaxStartups</h4>
+<p>El valor d'aquesta directriu estableix el màxim nombre de connexions simultaneges de login que permetrà el <strong>servidor SSH</strong> per cada <strong>IP</strong> que intenti connectar-se. </p>
+<p>Hi ha atacs molt efectius que divideixen l'atac en una gran quantitat de connexions de login. És a dir, l'atacant divideix en una gran quantitat de logins els intents per ingressar, augmentant les seves possibilitats d'endevinar abans a l'usuari i la seua contrasenya.</p>
+<p><code>MaxStartups 5</code></p>
+<h4 id="directriu-maxauthtries_1">Directriu MaxAuthTries</h4>
+<p>El valor d'aquesta directriu estableix el màxim nombre d'intents d'autenticació permesos per connexió, és a dir, la quantitat de vegades que podem equivocar-nos en ingressar l'usuari i/o contrasenya. Una vegada que els intents aconsegueixen la meitat d'aquest valor, les connexions fallides següents seran registrades. </p>
+<p>Després del màxim nombre d'intents es tancarà la connexió. És possible tornar a intentar-ho, però el límit d'intents per vegada evita atacs basats en la persistència de la connexió.</p>
+<p><code>MaxAuthTries 5</code></p>
+<h4 id="directriu-maxstartups_1">Directriu MaxStartups</h4>
+<p>El valor d'aquesta directriu estableix el màxim nombre de connexions simultaneges de login que permetrà el <strong>servidor SSH</strong> per cada <strong>IP</strong> que intenti connectar-se. </p>
+<p>Hi ha atacs molt efectius que divideixen l'atac en una gran quantitat de connexions de login. És a dir, l'atacant divideix en una gran quantitat de logins els intents per ingressar, augmentant les seves possibilitats d'endevinar abans a l'usuari i la seua contrasenya.</p>
+<p><code>MaxStartups 5</code></p>
+<h4 id="directrius-per-autenticar-amb-password">Directrius per autenticar amb password</h4>
+<p>La directriu <code>PasswordAuthentication</code> habilita o deshabilita l'autenticació amb contrasenyes. Per defecte està permesa l'autenticació amb contrasenya. </p>
+<p>Si establim el valor <strong>no només</strong> es permetrà l'accés a través de <strong>signatures digitals</strong>. És molt important no canviar el valor d'aquesta directriu a no fins a haver instal·lat la nostra signatura digital.</p>
+<p><code>PasswordAuthentication yes/no</code></p>
+<p>La directriu <code>PermitEmptyPasswords</code> especifica si es permet l'ús de contrasenyes buides, és a dir, autenticar-se sense contrasenya (no recomanable per motius de seguretat). Aquesta directriu és vàlida quan s'usa conjuntament amb PasswordAuthenticacion yes.</p>
+<p><code>PermitEmptyPasswords yes/no</code></p>
+<h4 id="directrius-per-permetre-lus-de-x11">Directrius per permetre l'ús de X11</h4>
+<p>La directriu X11Forwarding estableix si es permetrà l'execució remota d'aplicacions gràfiques que utilitzin el servidor X11. És necessari que el valor estigui establert a yes per poder executar aplicacions gràfiques.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">X11Forwarding yes/no</span>
+<span class="l l-Scalar l-Scalar-Plain">X11DisplayOffset 10</span>
+<span class="l l-Scalar l-Scalar-Plain">X11UseLocalhost yes/no</span>
+</code></pre></div>
+<h5 id="directriu-allowusers">Directriu AllowUsers</h5>
+<p>Amb aquesta directriu establim que usuaris del sistema poden ingressar via SSH. Solament els usuaris llistats en aquesta directriu podran accedir.</p>
+<p><code>AllowUsers raul professor administrador otroprofesor</code></p>
+<p>Els usuaris raul, professor, administrador i otroprofesor podran accedir des de qualsevol ordinador, no es valida el <strong>host</strong> des del qual es connecten. Si es vol més seguretat, és possible indicar també el <strong>host</strong> o <strong>hosts</strong> (des dels quals l'usuari es pot connectar) mitjançant el símbol @. Vegem els següents exemples:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">AllowUsers raul@192.168.10.2          (Solament des de la IP indicada)</span>
+<span class="l l-Scalar l-Scalar-Plain">AllowUsers raul@172.1.1.            (Tota la xarxa indicada)</span>
+<span class="l l-Scalar l-Scalar-Plain">AllowUsers raul@.raul.es      (Tot el domini indicat)</span>
+<span class="l l-Scalar l-Scalar-Plain">AllowUsers raul@cliXubuntu.raul.es (Solament l&#39;equip del domini indicat)</span>
+</code></pre></div>
+Combinació de vàries:
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">AllowUsers raul@192.168.10.2 professor@172.1.1. administrador@.raul.es otroprofesor</span>
+</code></pre></div></p>
+<h4 id="directriu-usedns">Directriu UseDNS</h4>
+<p>Quan un client SSH realitza una connexió cap a un servidor SSH, el servidor intentarà resoldre l'adreça IP del client. Si el servidor DNS predeterminat del sistema manca d'una zona de resolució inversa que resolgui un nom per a l'adreça IP del client, la connexió es demorarà alguns segons més del normal. </p>
+<p>Podem deshabilitar aquesta directriu per agilitar les connexions SSH en xarxes on es manca de servidors DNS que tinguin zones de reexpedició per resoldre els noms o zones de resolució inversa per resoldre les adrecis IP dels segments de xarxa local. </p>
+<p>Ja que nosaltres tenim el nostre DNS on totes els registres de la zona de resolució directa han de tenir la seua equivalència a la zona de resolució inversa, ho podem deixar activat.</p>
+<p><code>UseDNS yes/no</code></p>
+<h4 id="directriu-hostkey">Directriu HostKey</h4>
+<p>Estudiem les següents línies:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># HostKey for protocol version 1</span>
+<span class="c1"># HostKey /etc/ssh/ssh_host_key</span>
+<span class="c1"># HostKeys for protocol version 2</span>
+<span class="c1"># HostKey /etc/ssh/ssh_host_rsa_key</span>
+<span class="c1"># HostKey /etc/ssh/ssh_host_dsa_key</span>
+<span class="c1"># HostKey /etc/ssh/ssh_host_ecdsa_key</span>
+</code></pre></div>
+<p>La directriu HostKey ens indica la ubicació de les claus públiques per al servidor sshd, tant per al protocol SSHv1 i SSHv2 de SSH. Com en el nostre exemple solament usarem el protocol SSHv2, eliminarem (o comentarem) les línies corresponents al protocol SSHv1.</p>
+<p>Si volguéssim usar l'algorismes RSA per a les nostres claus, hauríem de deixar alguna cosa així:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># HostKeys for protocol version 2</span>
+<span class="l l-Scalar l-Scalar-Plain">HostKey /etc/ssh/ssh_host_rsa_key</span>
+</code></pre></div>
+<h4 id="directriu-printmotd">Directriu PrintMotd</h4>
+<p>Aquesta directriu estableix si es presentarà o no el missatge del dia (MOTD). </p>
+<p>El motd de Linux és un arxiu que conté un missatge del dia que es mostra a tots els usuaris que es connecten a la màquina per terminal. Normalment s'usa per informar als usuaris sobre l'estat del servidor o simplement per donar la benvinguda a la màquina. La ruta a l'arxiu és <code>/etc/mtod</code>. </p>
+<p>Es tracta d'un arxiu de text pla el qual podem personalitzar. Cal tenir en compte que si el motd ja està habilitat per als usuaris del sistema, si ho habilitem en <code>/etc/ssh/sshd_config</code>, en iniciar sessió en el servidor SSH, este apareixerà duplicat. </p>
+<p>El motd es mostra després d'autenticar-nos en el servidor.</p>
+<p><code>PrintMotd yes/no</code></p>
+<h4 id="directriu-banner">Directriu banner</h4>
+<p>Per mitjà d'aquesta directriu podem presentar un banner d'accés que ens permetrà mostrar un missatge abans de l'autenticació. Ensenyar un cartell d'advertiment exposant temes legals d'un accés no autoritzat.</p>
+<p>El banner d'accés no és més que el contingut d'un fitxer de text pla situat en algun lloc del sistema i que podrem personalitzar al nostre gust. El banner d'accés es presenta abans d'autenticar-nos en el servidor.</p>
+<p><code>banner /etc/ssh/ssh_pre-login</code></p>
+<h4 id="directrius-de-registre-desdeveniments-logs">Directrius de registre d'esdeveniments (logs)</h4>
+<p>El registre d'esdeveniments del servici és important així com la ruta on guardar-los, un atacant experimentat intentarà netejar els logs per evitar ser atrapat.
+En aquestes directrius s'especifiquen els paràmetres per al registre d'esdeveniments:</p>
+<ul>
+<li>
+<p><strong>SyslogFacility </strong>especifica el tipus de registres que generarà, en aquest cas és AUTH, és a dir, de les autenticacions que es fan contra el servidor. El paràmetre AUTH és el predeterminat. </p>
+</li>
+<li>
+<p><strong>LogLevel</strong> amb el valor INFO és el valor predeterminat. Altres paràmetres estan especificats a la <a href="https://www.freebsd.org/cgi/man.cgi?sshd_config(5)">pàgina del manual de sshd_config (mansshd_config)</a>, els paràmetres DEBUG2 i DEBUG3 cadascun d'ells especifiquen el nivell més alt de registre. Guardar registres amb el nivell DEBUG viola la privadesa dels usuaris i per tant no és recomanable. </p>
+</li>
+</ul>
+<p>En el nostre exemple el registre d'esdeveniments quedaria configurat de la següent manera:
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">SyslogFacility AUTH</span>
+<span class="l l-Scalar l-Scalar-Plain">LogLevel INFO</span>
+</code></pre></div></p>
+<h4 id="directriu-rsaauthentication">Directriu RSAAuthentication</h4>
+<p>Amb aquesta directriu deshabilitem l'autenticació amb RSA.</p>
+<p><code>RSAAuthentication yes/no</code></p>
+<h4 id="directriu-pubkeyauthentication">Directriu PubkeyAuthentication</h4>
+<p>Aquesta directriu especifica l'ús d'autenticació per mitjà de la clau pública. </p>
+<p><code>PubkeyAuthentication yes/no</code></p>
+<h4 id="directriu-authorizedkeysfile">Directriu AuthorizedKeysFile</h4>
+<p>Aquesta directriu s'usa en conjunt quan s'usa autenticació per clau pública, i especifica on es guarden les claus en el host remot.</p>
+<p>El valor per defecte és <code>/.ssh/authorized_keys</code> aquesta ruta és per defecte per al protocol SSHv2 de SSH.</p>
+<p><code>AuthorizedKeysFile %h/.ssh/authorized_keys</code></p>
+<h4 id="directriu-ignoreuserknownhosts">Directriu IgnoreUserKnownHosts</h4>
+<p>Aquesta directriu especifica si s'ignorés o no l'ús de l'arxiu <code>/.ssh/known_hosts</code> en el qual s'agreguen les claus dels servidors SSH als quals ens connectem i confiem. Per tant deu estar en no per no ignorar aquest arxiu.</p>
+<p><code>IgnoreUserKnownHosts yes/no</code></p>
+<h4 id="directriu-allowtcpforwarding">Directriu AllowTcpForwarding</h4>
+<p>Especifica si es permet fer redireccionamiento de protocols basats en TCP. Permet crear túnels a connexions de protocols no segurs, enviant la informació en text pla per un túnel xifrat. </p>
+<p>Molt usada en connexions POP3 o IMAP, es recomana deixar-ho per defecte.</p>
+<p><code>AllowTcpForwarding yes/no</code></p>
+<h4 id="directriu-printlastlog">Directriu PrintLastLog</h4>
+<p>Aquí s'especifica si es mostrarà un missatge mostrant l'adreça IP d'on es va conectar l'usuari la ultima vegada. Molt útil per saber si algú més s'està connectant amb un usuari en concret.</p>
+<p><code>PrintLastLog yes/no</code></p>
+<h4 id="directriu-tcpkeepalive">Directriu TCPKeepAlive</h4>
+<p>Ens indica que el servidor sshd enviarà missatges de keepalive al client després que detecta alguna inactivitat. Aquest mètode pot ser explotat per tècniques de spoofing.</p>
+<p><code>TCPKeepAlive yes/no</code></p>
+<h4 id="directriu-useprivilegeseparation">Directriu UsePrivilegeSeparation</h4>
+<p>Significa que després que la sessió SSH s'ha establert es passessin els privilegis d'aquest procés a l'usuari de qui iniciï la connexió, si es deshabilita, el procés estarà a nom de root. Molt important per evitar escalada de privilegis.</p>
+<p><code>UsePrivilegeSeparation yes/no</code></p>
+<h4 id="directriu-clientaliveinterval">Directriu ClientAliveInterval</h4>
+<p>Aquesta directriu especifica l'interval de temps en segons en el qual després que no s'ha rebut cap dada del client, sshd enviés un missatge a través del canal xifrat per requerir una resposta del client, el valor predeterminat és 0, el qual significa que no s'envia tal missatge. Aquesta opció només s'aplica al protocol SSHv2. </p>
+<p>És útil quan es té una connexió intermitent i es requereix que la sessió estigui oberta sense que es tanqui la sessió.</p>
+<p><code>ClientAliveInterval 0</code></p>
+<h4 id="directriu-clientalivecountmax">Directriu ClientAliveCountMax</h4>
+<p>Ens indica les vegades que el servidor sshd enviarà missatges keepalive quan el client està inactiu. Si el client no envia cap resposta, llavors el servidor acabés la connexió i per tant la sessió.</p>
+<p>Si tenim connexions intermitents és recomanable pujar el numero a aquest valor. Cal tenir en compte que aquesta opció és diferent a l'opció TCPKeepAlive, aquests missatges són enviats a través del canal xifrat, per tant no pot ser explotat per tècniques de spoofing com el TCPKeepAlive.</p>
+<p><code>ClientAliveCountMax 3</code></p>
+<h4 id="directriu-pidfile">Directriu PidFile</h4>
+<p>Aquesta opcion estableix el nom i ruta de l'arxiu on es guarda l'identificador de procés (pid) de sshd.</p>
+<p><code>PidFile /var/run/sshd.pid</code></p>
+<h4 id="directriu-subsystem">Directriu Subsystem</h4>
+<p>Aquesta opció el que fa és iniciar el servidor sftp-server el qual és un substitut per a un servidor FTP, però la comunicació és segura, ja que es fa per un canal xifrat.</p>
+<p><code>Subsystem sftp /usr/libexec/sftp-server</code></p>
+<h4 id="directriu-permitblacklistedkeys">Directriu PermitBlacklistedKeys</h4>
+<p>Si aquesta directriu s'estableix a yes permetrà fer login amb claus en llista negra.
+<code>PermitBlacklistedKeys yes/no</code></p>
+<h4 id="directriu-ignorerhosts-i-rhostsrsaauthentication">Directriu IgnoreRhosts i RhostsRSAAuthentication</h4>
+<p>Amb aquestes directrius deneguem l'ús de relacions de confiança establertes en els fitxers /.rhosts i /.shosts dels usuaris:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">IgnoreRhosts yes/no</span>
+<span class="l l-Scalar l-Scalar-Plain">RhostsRSAAuthentication yes/no</span>
+</code></pre></div>
+<h4 id="directriu-hostbasedauthentication">Directriu HostbasedAuthentication</h4>
+<p>Deshabilitar o habilitar autenticació basada en host.
+<code>HostbasedAuthentication yes/no</code></p>
+<h4 id="directriu-usepam">Directriu UsePAM</h4>
+<p>Si utilitzem claus no necessitem PAM (Mòduls d'autenticació Conectables) i permetem a sshd funcionar com un usuari no root.</p>
+<h2 id="bastionathardeningfortificacio-del-servici-ssh">Bastionat/hardening/fortificació del servici SSH</h2>
+<div class="admonition tip">
+<p class="admonition-title">Avís</p>
+<p>Totes les comprovacions les heu de fer tant des de l'ordinador amfitrió, usant la IP de la LAN del servidor, com des del client Xubuntu, usant el nom del DNS.</p>
+</div>
+<p>Ja hem vist en l'apartat 4.2 que el fitxer que hem de modificar és el /etc/ssh/sshd_config, que és el que es correspon amb el del servidor del servici SSH. 
+Com sempre que anem a modificar una configuració, el primer serà fer una còpia de sshd_config a sshd_config.bak, per si alguna cosa no sortís bé.</p>
+<p>Per començar, si us heu fixat, en fer login en un Ubuntu Server, se'ns mostra una gran quantitat i informació, alguna cosa així:</p>
+<p><img alt="" src="../../img/5.1-3.png" /></p>
+<p>AIxò, com hem vist en les directives, és el que coneixem com motd o “message of the day”.</p>
+<p>Pot ser que en alguns casos això resulti útil però per al cas que ens ocupa, és massa informació, es fa innecessària i proporciona massa pistes sobre la màquina. 
+L'única forma de desactivar aquest motd per defecte és impedint que s'executin els arxius de configuració associats:</p>
+<div class="highlight"><pre><span></span><code>sudo chmod -x /etc/update-motd.d/
+</code></pre></div>
+<p>Podem utilitzar un asciiart per crear-nos un motd personalitzat, a més d'un missatge advertint de l'accés restringit a la màquina. Aquest motd personalitzat hem de crear-ho en el directori /etc i dins d'aquest directori, en un arxiu anomenat motd.</p>
+<p>Podeu crear-vos un ascciart en: <a href="http://www.patorjk.com/software/taag/#p=display&amp;f=Grafiti&amp;t=Type%20Something%20">Asciiart</a></p>
+<p>Quedaria alguna cosa així:</p>
+<p><img alt="" src="../../img/5.1-4.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Comprovació</p>
+<p>Comprova adjuntant una captura de pantalla, que apareix correctament el motd en fer login mitjançant ssh.</p>
+</div>
+<p>Paràmetres de seguretat que heu de configurar dins de sshd_config mitjançant les directives que hem vist abans(las que no estiguin, haureu d'afegir-los vosaltres):</p>
+<ol>
+<li>
+<p>Utilitzar només la versió 2 del protocol</p>
+</li>
+<li>
+<p>Utilitzar el port 8022 en lloc del 22</p>
+<ul>
+<li>Per connectar-vos haureu d'utilitzar l'opció “-p 8022” per indicar el port:
+<div class="highlight"><pre><span></span><code>ssh nom_usuari@proxy-server -p <span class="m">8022</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>No es permet a l'usuari root fer login mitjançant SSH</p>
+</li>
+<li>
+<p>El màxim nombre d'intents d'autenticació seguits per a una sessió o connexió és 3</p>
+<ul>
+<li>Comproveu, adjuntant una captura de pantalla, que introduint 3 vegades la contrasenya de forma incorrecta el servidor us desconnecta i no us dóna més oportunitats.</li>
+</ul>
+</li>
+<li>
+<p>El temps que l'usuari tindrà per introduir el seu login abans que es tanqui laconexión amb el servidor és de 20 segons</p>
+<ul>
+<li>Comprova, adjuntant una captura de pantalla, que després d'executar el comando <code>ssh nom_usuari@proxy-server -p 8022</code>, si espereu més de 20 segons, quan intenteu introduir el password, el servidor us desconnecta.</li>
+</ul>
+</li>
+<li>
+<p>No es permet el login amb passwords buits</p>
+</li>
+<li>
+<p>ja que anem a configurar el login per claus únicament</p>
+<ul>
+<li>
+<p>En principi, sí si ha de permetre l'autenticació amb password</p>
+</li>
+<li>
+<p>No s'ha de permetre l'autenticació mediante Kerberos, ni mitjançant GSSAPI.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Ignorar rhosts</p>
+</li>
+<li>
+<p>Deshabilitar TCPKeepAlive</p>
+</li>
+<li>
+<p>Només es permet fer login a l'usuari <code>raul</code> des de la IP de l'equip <code>clixubuntu.raul.es</code> (des de la seua IP) i a l'usuari <code>raul</code> des de la IP de la LAN (classe o casa).</p>
+<div class="admonition task">
+<p class="admonition-title">Comprovació</p>
+<ul>
+<li>Afegiu un nou usuari que sigui el vostre primer cognom a la màquina <code>proxy-server</code> i <strong>comproveu</strong>, adjuntant una captura de pantalla, que no podeu fer login amb aquest nou usuari.</li>
+</ul>
+<p><strong><em>Recordatori de com afegir un usuari:</em></strong></p>
+<div class="highlight"><pre><span></span><code>useradd -m cognom
+passwd cognom
+usermod -a -G sudo cognom
+chsh -s /bin/bash cognom
+</code></pre></div>
+</div>
+</li>
+<li>
+<p>El servidor ha d'usar la resolució DNS (així podrà identificar a <code>clixubuntu.raul.es</code>)</p>
+</li>
+<li>
+<p>Ha d'estar activada l'autenticació PAM</p>
+</li>
+<li>
+<p>El SyslogFacility ha de ser AUTH i el nivell de LOG ha de ser INFO</p>
+</li>
+<li>
+<p>Hem de saber quin va ser la IP  que va utilitzar l'usuari per connectar-se o fer login per SSH l'última vegada.</p>
+</li>
+<li>
+<p>Ha d'aparèixer un bàner abans d'autenticar-nos amb el text:</p>
+<p><code>ATENCIÓ: Ha d'estar autoritzat per accedir a aquest servidor</code></p>
+<div class="admonition task">
+<p class="admonition-title">Comprovació</p>
+<ul>
+<li><strong>Comprova</strong>, adjuntant una captura de pantalla, que, efectivament, apareix el bàner abans d'introduir cap password</li>
+</ul>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Recorda</p>
+<p>A més de les comprovacions indicades, adjunta una o diverses captures de pantalla on es vegi clarament la configuració de tots els paràmetres indicats.</p>
+</div>
+<h2 id="generacio-de-claus-configuracio-y-comprovacio">Generació de claus, configuració y comprovació</h2>
+<p>La configuració del login mitjançant claus ens donarà l'avantatge de no necessitar utilitzar password per autenticar-nos en el servidor quan fem ús de SSH.</p>
+<p>Per crear un parell de claus pública/privada en el client, executarem el comando:</p>
+<p><div class="highlight"><pre><span></span><code>ssh-keygen -b <span class="m">4096</span>
+</code></pre></div>
+Si deixeu les opcions per defecte, us crearà una clau privada (id_rsa) i una clau pública (id_rsa.pub) en el directori home/el vostre_usuari/.ssh</p>
+<p>Us demanarà un password per protegir la vostra clau privada. Si recordeu el mòdul de Seguretat Informàtica, la clau privada associada a la pública ha de ser protegida convenientment perquè ningú més que l'usuari tingui accés a ella.</p>
+<ol>
+<li>Li posem el password a la clau privada perquè l'anem a guardar xifrada en el disc i aquesta serà la contrasenya necessària per desxifrar-la i poder utilitzar-la, <strong>¡RECORDEU-LA!</strong></li>
+</ol>
+<p><img alt="" src="../../img/5.1-5.png" /></p>
+<ol>
+<li>Per copiar la clau pública al servidor, podem fer-ho manualment o utilitzant SSH (més fàcil):<ul>
+<li><ins>Utilitzant SSH:</ins>
+    <div class="highlight"><pre><span></span><code>ssh-copy-id usuari_servidor@ip_servidor
+</code></pre></div></li>
+<li>
+<p><ins>Manualment:</ins>
+    Copieu el valor de la clau.</p>
+<p><div class="highlight"><pre><span></span><code>cat /.ssh/id_rsa.pub
+</code></pre></div>
+Feu login per SSH al servidor i copieu aquest valor de la clau en el següent arxiu (creeu-ho si no existeix):</p>
+<p><div class="highlight"><pre><span></span><code>/home/el_vostre_usuari/.ssh/authorized_keys
+</code></pre></div>
+Si tinguèreu qualsevol problema de permisos, podeu posar els permisos adequats als directoris amb els següents comandos:</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">700</span> /.ssh
+chmod <span class="m">600</span> /.ssh/authorized_keys
+</code></pre></div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition task">
+<p class="admonition-title">Comprovació</p>
+<p>Comproveu, adjuntant una captura de pantalla, que a l'hora d'iniciar ara la sessió SSH contra el servidor us demana un password. Es tracta del password de la clau privada.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Comprovació</p>
+<p>Comproveu, adjuntant una captura de pantalla, que en les successives sessions SSH (obriu una altra pestanya, sortiu i torneu a entrar en la sessió, tanqueu i obriu el terminal…), no us torna a demanar cap contrasenya i fa login automàticament.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Només cal introduir el password una vegada, fet això la clau queda desxifrada en la RAM per poder fer ús d'ella.</p>
+</div>
+</div>
+<h2 id="proteccio-amb-sshguard">Protecció amb <ins>sshguard</ins></h2>
+<p>Els servidors exposats a Internet  solen sofrir amb gran freqüència ataquis per força bruta. Un atac per força bruta sobre SSH consisteix a intentar iniciar sessió en el sistema amb totes les combinacions de noms i contrasenyes possibles. </p>
+<p>S'han de prendre les precaucions adequades per evitar que es produeixi un accés no autoritzat al sistema mitjançant aquest atac.</p>
+<p>És molt famós l'ús de <ins>fail2ban</ins> per protegir-nos enfront d'això. No obstant això en aquesta pràctica utilitzarem <a href="https://wiki.archlinux.org/title/Sshguard_(Espa%C3%B1ol)">sshguard</a> ja que admet fàcilment la integració amb systemd, a més d'amb múltiples firewalls diferents. A més, està escrit en C, per la qual cosa és molt més lleuger.</p>
+<p>Amb sshguard, quan es realitzen un nombre (establert en la configuració) d'intents d'autenticació fallits en el sistema, es bloqueja l'adreça IP des d'on s'està duent a terme l'atac.</p>
+<p>Procedim doncs a instal·lar i configurar sshguard. </p>
+<h3 id="installacio-de-sshguard">Instal·lació de sshguard</h3>
+<p>En primer lloc actualitzem els repositoris:</p>
+<div class="highlight"><pre><span></span><code>sudo apt update
+</code></pre></div>
+<p>Instal·lem el paquet de sshguard.</p>
+<p><div class="highlight"><pre><span></span><code>sudo apt install sshguard
+</code></pre></div>
+Comprovem que el servici funciona sense problemes:</p>
+<div class="highlight"><pre><span></span><code>systemctl status sshguard
+</code></pre></div>
+<h3 id="configuracio-de-sshguard">Configuració de sshguard</h3>
+<p>L'arxiu de configuració d'aquest servici es diu sshguard.conf i ho trobareu en el següent directori:</p>
+<p><code>/etc/sshguard</code></p>
+<p>Sshguard es basa en revisar els logs a la recerca de registres d'intents de login fallits. Si detecta més de X intents fallits en I temps (ambdues coses configurables), introdueix una regla en el firewall per bloquejar a la IP origen d'aquests atacs.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p><strong>Existeix un error conegut de sshguard com és que també busca en els seus propis logs intents fallits de login, fent que cada vegada que registra un intent erroni, ho torna a detectar i a registrar en un bucle que continua fins que es bloqueja la IP.</strong></p>
+</div>
+<p><strong><ins>En què es tradueix això?</ins></strong> Doncs que amb un únic intent fallit de login SSH, que pot ser no intencionat (m'he equivocat en posar el password), es bloquejarà la IP origen. </p>
+<p>Per solucionar-ho, en l'arxiu de configuració hem de canviar el valor del paràmetre LOGREADER perquè quedi així:</p>
+<p><code>LOGREADER="LANG=C /bin/journalctl -afb -p info -n1 -o cat -t sshd"</code></p>
+<p>A més, encara que sshguard permet utilitzar <a href="https://wiki.archlinux.org/title/Sshguard_(Espa%C3%B1ol)#Ajustes">múltiples firewalls</a> com ja hem dit, anem a utilitzar iptables. Per a això cal canviar el valor del paràmetre BACKEND perquè quedi així:</p>
+<p><code>BACKEND="/usr/lib/x86_64-linux-gnu/sshg-fw-iptables"</code></p>
+<p>En definitiva, el fitxer sshguard.conf ha de quedar així:</p>
+<p><img alt="" src="../../img/5.1-6.png" /></p>
+<p>On, a part del ja dit:</p>
+<ul>
+<li>
+<p><strong>THRESHOLD:</strong> cada atac té un valor de perillositat (normalment 10). El threshold és el valor acumulat d'aquests atacs que s'ha de superar per bloquejar la IP.</p>
+</li>
+<li>
+<p><strong>BLOCK_TIME:</strong> És el temps (en segons) durant el qual es bloqueja una IP.</p>
+</li>
+<li>
+<p><strong>DETECTION_TIME:</strong> El temps (en segons) dins del com es van acumulant el valor dels   atacs que es produeixen (si la suma supera al threshold, es bloqueja la IP).</p>
+</li>
+</ul>
+<p>Així les coses, el que hem configurat és el següent:</p>
+<ul>
+<li>
+<p>Si en un període de 30 segons (DETECTION_TIME) es produeixen una sèrie d'atacs que, sumant la seva perillositat, superin el valor 30 (THRESHOLD), es bloquejarà la IP durant 10 segons (BLOCK_TIME).</p>
+<ul>
+<li>Cal dir que si la IP insisteix, cada nova vegada que es torni a bloquejar, ho farà durant el doble de temps que l'anterior ocasió (primer 10s, després 20s, després 40s…)</li>
+</ul>
+</li>
+</ul>
+<h3 id="comprovacio">Comprovació</h3>
+<p>Connecta't per SSH al proxy invers des de la teva terminal de Lliurex:</p>
+<p><code>ssh raul@proxy-invers</code></p>
+<p>O des de Putty en Windows.</p>
+<p>Executa el següent comando per veure els logs de sshguard en temps real:</p>
+<p><code>journalctl -o sshguard -f</code></p>
+<p>Ara, des del client Xubuntu, intenta connectar-te per SSH al proxy invers però introduint un nom d'usuari incorrecte o una contrasenya incorrecta.</p>
+<ul>
+<li>
+<p>En els logs apareixeran aquests intents de connexió com a atacs i s'informarà del bloqueig d'aquesta IP. <strong>Adjunta captura de pantalla</strong>.</p>
+</li>
+<li>
+<p>A més, comprova des del client Xubuntu que, efectivament, se t'ha bloquejat l'accés i no et deixa fer un SSH al proxy invers. <strong>Adjunta captura de pantalla</strong>.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Notes importants</p>
+<p>Si al principi ssguard no bloqueja les IP, és possible que calgui informar al firewall amb els següents comandos:</p>
+<p><div class="highlight"><pre><span></span><code>iptables -N sshguard
+iptables -A INPUT -m multiport -p tcp --destination-ports <span class="m">22</span> -j sshguard
+</code></pre></div>
+Si sshguard, per la raó que siga, us bloqueja la IP permanentment i no la desbloqueja al cap del temps que us indica, la podeu desbloquejar a mà amb el següent comando:</p>
+<div class="highlight"><pre><span></span><code>sudo iptables -F sshguard
+</code></pre></div>
+</div>
+<h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Comprova que pots conectar-te des del client Xubuntu al server utilitzant el seu nom DNS en lloc de la IP (haurìa de funcionar, qualsevol altra cosa no estaría bé).
+Des de Lliurex pots fer el mateix? Independentment de la resposta, raona i detalla el per què.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Pots conectar-te a ambdues IP de les interfaces del proxy des del client? I des de Lliurex? Per què?</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Descriu que ocorreix si posem en la nostra configuració SSH la següent línea: "ListenAddress 192.168.1.103"</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+<p>Ón es guarden les claus SSH al vostre ordinador?</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Bastionat correcte amb els paràmetres demanats del servici SSH</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Generació de claus, configuració i comprovació</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració i comprovació del correcte funcionament de sshguard</td>
+<td align="center"><strong>4 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1.5 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>0.5 punts</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P4.5/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P5.2/" class="md-footer__link md-footer__link--next" aria-label="Següent: Practica 5.2 - SSH amb MFA (Autenticació Multifactor)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,890 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Pràctica 1 - Muntant l'arquitectura de xarxa - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-1-muntant-larquitectura-de-xarxa" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctica 1 - Muntant l'arquitectura de xarxa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 1 - Muntant l'arquitectura de xarxa
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-de-les-maquines" class="md-nav__link">
+    Configuració de les màquines
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuració de les màquines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-server" class="md-nav__link">
+    Ubuntu Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xubuntu-client" class="md-nav__link">
+    Xubuntu (client)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-dinterfaces-amb-netplan" class="md-nav__link">
+    Configuració d'interfaces amb netplan
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-enrutament-o-encaminament" class="md-nav__link">
+    Configuració del enrutament o encaminament
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuració del enrutament o encaminament">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rutes-estatiques" class="md-nav__link">
+    Rutes estàtiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toc-final" class="md-nav__link">
+    Toc final
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-1-muntant-larquitectura-de-xarxa">Pràctica 1 - Muntant l'arquitectura de xarxa</h1>
+<h2 id="configuracio-de-les-maquines">Configuració de les màquines</h2>
+<p>Atenent al diagrama de xarxa, veiem que el Ubuntu Server ha de tindre dues interfaces de xarxa i el Xubuntu una.
+Això es tradueix en que el Ubuntu Server tindrà configurats dos adaptadors de xarxa i el Xubuntu un.</p>
+<p><img alt="Diagrama de xarxa" src="../../img/diagrama_xarxa.png" /></p>
+<h3 id="ubuntu-server">Ubuntu Server</h3>
+<p>Ja que ha de tindre una IP de la mateixa LAN que l'ordinador físic on està creada aquesta màquina virtual, un dels adaptadors de xarxa ha de ser, sense dubte, adaptador pont o “bridge”:
+<img alt="" src="../../img/ub_ser_1.png" /></p>
+<p>A més, ja que formará una xarxa privada juntament amb l'altra màquina virtual, la xarxa formada per aquestes dues màquines serà una Xarxa Interna:
+<img alt="" src="../../img/ub_ser_2.png" /></p>
+<h3 id="xubuntu-client">Xubuntu (client)</h3>
+<p>Si mirem el diagrama de xarxa, Xubuntu únicament té una interfície de xarxa. Aquesta interfície està a la xarxa privada que forma juntament amb el Ubuntu Server, ja que tots dos equips estan connectats directament. Així doncs:</p>
+<p><img alt="" src="../../img/xub.png" /></p>
+<p>Ja hem configurat les interfícies, o el que és el mateix, és com si haguéssim connectat tots els cables físicament per formar l'arquitectura que podeu vore dibuixada en el diagrama. </p>
+<h3 id="configuracio-dinterfaces-amb-netplan">Configuració d'interfaces amb netplan</h3>
+<p>Ara hem de configurar les IPs dins de cada màquina virtual. Per a això utilitzarem el configurador d'interfícies de xarxa en Linux, “netplan”.</p>
+<p>Les interfícies han de configurar-se en un arxiu de text en llenguatge “yaml”. Aquest arxiu està localitzat en: </p>
+<div class="highlight"><pre><span></span><code>/etc/netplan
+</code></pre></div>
+<p>Per saber quines són les nostres interfícies, hem d'utilitzar el comando “ip a” Si comprovem el server:</p>
+<p><img alt="" src="../../img/netplan1.png" /></p>
+<p>Veiem que tenim la interfície de loopback que no ens preocupa i dues interfícies més, enp0s3 i enp0s8. </p>
+<p>La primera es correspon amb la primera que tenim configurada en la màquina, és a dir, l'adaptador pont. Això ho sabem perquè ja té assignada una IP automàticament.</p>
+<p>La segona, enp0s8, és la que es correspon amb la xarxa interna i és la que hem de configurar en l'arxiu de netplan de la següent forma:</p>
+<p><img alt="" src="../../img/netplan2.png" /></p>
+<p>enp0s3 apareix ja en l'arxiu configurada automàticament per DHCP. En roig s'assenyala el que hem d'afegir, la nova interfície i la seua IP </p>
+<div class="admonition attention">
+<p class="admonition-title">Atenció</p>
+<p>Recordeu posar la <strong>VOSTRA</strong> ip. </p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Recordatori</p>
+<p>Cura amb les indentacions, els espais i editeu l'arxiu amb <strong>sudo</strong> o no us deixarà. </p>
+</div>
+<p>Després de realitzar aquesta configuració, hem d'aplicar-la-hi a la màquina, sinó no es produiran els canvis. Es poden utilitzar els comandos:</p>
+<div class="highlight"><pre><span></span><code>sudo netplan try
+</code></pre></div>
+<p>Prova la configuració abans d'aplicar-la</p>
+<p><img alt="" src="../../img/netplan3.png" /></p>
+<p>Si li donem a enter apliquem la configuració, si esperem al fet que el comptador arribi a 0, la configuració no s'aplicarà. </p>
+<div class="highlight"><pre><span></span><code>sudo netplan apply
+</code></pre></div>
+<p><img alt="" src="../../img/netplan4.png" /></p>
+<p>Aplica la configuració directament</p>
+<div class="admonition attention">
+<p class="admonition-title">Atenció</p>
+<p>Recordeu que és MOLT IMPORTANT que després d'aplicar una configuració la comprovem. De gens serveix fer canvis i no comprovar que aquestos s'han produït.</p>
+</div>
+<p><img alt="" src="../../img/netplan5.png" /></p>
+<p>Així doncs, veiem que cada interfície està configurada amb la seua IP correctament. En el client Xubuntu el procés seria el mateix i si, després de comprovar-ho, tot està correcte, podrem fer ping des del Ubuntu Server al Xubuntu i viceversa.</p>
+<h2 id="configuracio-del-enrutament-o-encaminament">Configuració del enrutament o encaminament</h2>
+<p>Ara, tots tindreu configurada una de les interfícies del Ubuntu Server a la LAN de classe. El següent pas va a ser aconseguir que, treballant per parelles, l'ALUMNE 1, des del seu client Xubuntu puga fer ping al Xubuntu de l'ALUMNE 2</p>
+<p><img alt="" src="../../img/routing1.png" /></p>
+<p>Us heu d'adonar que aquest ping ara mateix NO es pot realitzar ja que tots dos Xubuntu estan en xarxes privades diferents i no hi ha forma de que aquestes xarxes es “vegin”. El Ubuntu Server fa de router i per tant un router separa xarxes, de tal forma que ni el Server 1, ni el Xubuntu 1 veuran la xarxa privada de l'Alumne 2 i viceversa.</p>
+<p>Si recordeu de Xarxes d'Àrea Local, la forma de que un router puga encaminar paquets a xarxes llunyanes era que aquest router “aprenguera” aquestes xarxes mitjançant algoritmes d'encaminament. Aquests algoritmes podien ser:</p>
+<ul>
+<li>
+<p>Dinàmics: el router aprenia ell a soles, intercanviant informació amb altres routers</p>
+</li>
+<li>
+<p>Estàtics: es configuraven les rutes cap a altres xarxes a mà</p>
+</li>
+</ul>
+<p>Per al cas que ens ocupa, utilitzarem rutes estàtiques que hem de configurar en el nostre router, en aquest cas el Ubuntu Server.
+Per qüestions de seguretat, Linux no pot actuar com a router per defecte, fa falta activar aquesta funcionalitat. Així doncs, anem a activar el que es denomina com a <strong>bit de forwarding</strong>. Això ho podem fer mitjançant el següent comando:</p>
+<p><div class="highlight"><pre><span></span><code>sysctl -w net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+No obstant això, en aquest cas el canvi serà temporal i quan es reiniciï el Server, es perdrà la configuració. Per a que aquest canvi siga persistent, hem de modificar l'arxiu:</p>
+<div class="highlight"><pre><span></span><code>/etc/sysctl.conf
+</code></pre></div>
+<p>I buscar la línia que posa:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># net.ipv4.ip_forward = 0</span>
+</code></pre></div>
+<p>i eliminar el coixinet inicial i canviar el 0 per un 1:</p>
+<p><img alt="" src="../../img/forw_uncomment.png" /></p>
+<p>Guardem l'arxiu i activem els canvis amb el comando:</p>
+<div class="highlight"><pre><span></span><code>sysctl -p
+</code></pre></div>
+<h4 id="rutes-estatiques">Rutes estàtiques</h4>
+<p>El comando que hem d'introduir en Linux per configurar una ruta estàtica és:</p>
+<p><div class="highlight"><pre><span></span><code>sudo ip route add xarxa via gateway
+</code></pre></div>
+On:</p>
+<ul>
+<li>
+<p>Xarxa: la xarxa a la qual volem arribar </p>
+<div class="admonition danger">
+<p class="admonition-title">Ull viu!</p>
+<p>L'adreça de xarxa, no la IP del dispositiu</p>
+</div>
+</li>
+<li>
+<p>Gateway: el següent salt al que cal manar el paquet per aconseguir la xarxa que volem</p>
+</li>
+</ul>
+<p>A més, com el client Xubuntu no coneixerà la xarxa a la qual li anem a fer ping, necessita saber per on enviar paquets quan no coneix la xarxa destí. Això es coneix com gateway per defecte o porta d'enllaç. La porta d'enllaç serà el router/Ubuntu Server. 
+Ja hem dit que tota la configuració de xarxa es fa en l'arxiu que utilitza netplan, així doncs el gateway s'ha de configurar així:</p>
+<p><img alt="" src="../../img/netplan_gw.png" /></p>
+<p>On en gateway4 heu de posar la IP del vostre Server.</p>
+<p>Suposem en el nostre cas que l'ALUMNE 1 té la següent configuració:</p>
+<p><strong>Ubuntu Server</strong></p>
+<p><div class="highlight"><pre><span></span><code>enp0s3: 192.168.10.10
+enp0s8: 172.1.1.1
+</code></pre></div>
+<strong>Xubuntu</strong>
+<div class="highlight"><pre><span></span><code>enp0s3: 172.1.1.2
+</code></pre></div></p>
+<p>I que l'ALUMNE 2 té aquesta configuració:</p>
+<p><strong>Ubuntu Server</strong>
+<div class="highlight"><pre><span></span><code>enp0s3: 192.168.10.20
+enp0s8: 172.1.6.1
+</code></pre></div>
+<strong>Xubuntu</strong>
+<div class="highlight"><pre><span></span><code>enp0s3: 172.1.6.2
+</code></pre></div></p>
+<p>A quina interfície ha de manar el router de l'ALUMNE 1 el paquet per arribar a la xarxa de l'ALUMNE 2, la 172.1.6.0/24?</p>
+<p>Si mireu el dibuix us adonareu que el següent salt és el router de l'ALUMNE 2.</p>
+<ul>
+<li>
+<p>Configureu la ruta estàtica necessària.</p>
+</li>
+<li>
+<p>Comproveu que la ruta està bé mitjançant el comando que mostra les rutes:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ip route
+</code></pre></div>
+<p>Després d'introduir correctament la configuració, comproveu si funciona el ping d'un Xubuntu a un altre. Us adonareu que no funciona.</p>
+<p>Per què no? Perquè el paquet sap arribar de <em>Xubuntu1</em> a <em>Xubuntu2</em> però no sap tornar → ALUMNE 2 també ha de configurar una ruta estàtica per poder arribar a la xarxa privada d'ALUMNE 1.</p>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<p>Configureu les rutes estàtiques en tots dos Servers/routers.</p>
+</div>
+<p>Finalment hauries de poder fer ping.</p>
+<p>Si us equivoqueu ficant les rutes, les podeu eliminar amb el mateix comando però canviant <em>“add”</em> per <em>“del”</em>.</p>
+<h2 id="toc-final">Toc final</h2>
+<p>ja que les rutes estàtiques s'esborraran quan el servidor es reiniciï per qualsevol raó, anem a escriure el comando </p>
+<div class="highlight"><pre><span></span><code>sudo ip route add xarxa via gateway
+</code></pre></div>
+<p>(amb els paràmetres que hàgiu utilitzat vosaltres) en un arxiu de text que es cridarà:</p>
+<div class="highlight"><pre><span></span><code>rutes_estatiques.sh
+</code></pre></div>
+<p>I ho aneu a guardar al directori:</p>
+<p><div class="highlight"><pre><span></span><code>/etc/network
+</code></pre></div>
+I donar-li permisos d'execució:</p>
+<div class="highlight"><pre><span></span><code>chmod +x rutes_estatiques.sh
+</code></pre></div>
+<p>Per comprovar que funciona, el comando que heu d'executar és:
+<div class="highlight"><pre><span></span><code>sudo sh rutes_estatiques.sh
+</code></pre></div>
+I comproveu que us ha configurat les rutes.</p>
+<div class="admonition caution">
+<p class="admonition-title">Atenció per a l'informe</p>
+<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració de xarxa correcta amb netplan d'ambdues màquines</td>
+<td align="center"><strong>4 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de l'encaminament entre els dos alumnes en les dos direccions</td>
+<td align="center"><strong>5 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració extra d'un segon client</td>
+<td align="center"><strong>+0,5 punts (extra)</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P2.1/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 2.1 - Instal·lació i configuració de servidor DHCP" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

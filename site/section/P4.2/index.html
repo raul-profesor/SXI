@@ -1,0 +1,1008 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Pràctica 4.2 - Autenticació en Nginx - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-42-autenticacio-en-nginx" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctica 4.2 - Autenticació en Nginx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 4.2 - Autenticació en Nginx
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paquets-necessaris" class="md-nav__link">
+    Paquets necessaris
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacio-dusuaris-i-contrasenyes-per-a-lacces-web" class="md-nav__link">
+    Creació d'usuaris i contrasenyes per a l'accés web
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurant-el-servidor-nginx-per-usar-autenticacio-basica" class="md-nav__link">
+    Configurant el servidor Nginx per usar autenticació bàsica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provant-la-nova-configuracio" class="md-nav__link">
+    Provant la nova configuració
+  </a>
+  
+    <nav class="md-nav" aria-label="Provant la nova configuració">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tasques" class="md-nav__link">
+    Tasques
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combinacio-de-lautenticacio-basica-amb-la-restriccio-dacces-per-ip" class="md-nav__link">
+    Combinació de l'Autenticació Bàsica amb la restricció d'accés per IP
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasques_1" class="md-nav__link">
+    Tasques
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-42-autenticacio-en-nginx">Pràctica 4.2 – Autenticació en Nginx</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>La pràctica 4.1 ha d'estar funcionant correctament</li>
+<li>No començar la pràctica abans de tenir la 4.1 <ins><strong>funcionant i comprovada</strong></ins></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor web</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Client</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<p>En el context d'una transacció HTTP, l'autenticació <strong>d'accés bàsica</strong> és un mètode dissenyat per a permetre a un navegador web, o un altre programa client, proveir credencials en la forma d'usuari i contrasenya quan se les sol·licita una pàgina al servidor. </p>
+<p>L'autenticació bàsica, com el seu nom ho indica, és la forma més bàsica d'autenticació disponible per a les aplicacions Web. Va ser definida per primera vegada en l'especificació HTTP en si i no és de cap manera elegant, però compleix la seua funció. </p>
+<p>Aquest tipus d'autenticació és el tipus més simple disponible però emmalalteix d'importants problemes de seguretat que no la fan recomanable en moltes situacions. No requereix l'ús ni de cookies, ni d'identificadors de sessió, ni de pàgina d'ingrés. </p>
+<h2 id="paquets-necessaris">Paquets necessaris</h2>
+<p>Per a aquesta pràctica podem utilitzar l'eina <ins>openssl</ins> per crear les contrasenyes.</p>
+<p>En primer lloc hem de comprovar si el paquet està instal·lat:</p>
+<div class="highlight"><pre><span></span><code>dpkg -l <span class="p">|</span> grep openssl
+</code></pre></div>
+<p>I si no ho estigués, instal·lar-lo.</p>
+<h2 id="creacio-dusuaris-i-contrasenyes-per-a-lacces-web">Creació d'usuaris i contrasenyes per a l'accés web</h2>
+<p>Crearem un arxiu ocult anomenat <strong>.htpasswd</strong> en el directori de configuració <code>/etc/nginx</code> on guardar els nostres usuaris i contrasenyes (la -c és per crear l'arxiu):</p>
+<div class="highlight"><pre><span></span><code>sudo sh -c <span class="s2">&quot;echo -n &#39;teu_nom:&#39; &gt;&gt; /etc/nginx/.htpasswd&quot;</span>
+</code></pre></div>
+<p>Ara crearem un password xifrat per a l'usuari:</p>
+<p><div class="highlight"><pre><span></span><code>sudo sh -c <span class="s2">&quot;openssl passwd -apr1 &gt;&gt; /etc/nginx/.htpasswd&quot;</span>
+</code></pre></div>
+Aquest procés es podrà repetir per a tants usuaris com calgui. </p>
+<ul>
+<li>Crea dos usuaris, un amb el teu nom i un altre amb el teu primer cognom.</li>
+<li>Comprova que l'usuari i la contrasenya apareixen xifrats en el fitxer:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cat /etc/nginx/.htpasswd
+</code></pre></div>
+<h2 id="configurant-el-servidor-nginx-per-usar-autenticacio-basica">Configurant el servidor Nginx per usar autenticació bàsica</h2>
+<p>Editarem la configuració del server block sobre el qui volem aplicar la restricció d'accés. Utilitzarem per a aquesta autenticació el lloc web de John Doe: </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Recorda que un server block és cadascun dels dominis ((<code>server {...}</code> dins l'arxiu de configuració)) d'algun dels llocs webs que hi ha en el servidor</p>
+</div>
+<p><img alt="" src="../../img/4.1-3.png" /></p>
+<div class="highlight"><pre><span></span><code>sudo nano /etc/nginx/sites-enabled/vostre_domini
+</code></pre></div>
+<p>Hem de decidir quins recursos estaran protegits. Nginx permet afegir restriccions a nivell de servidor o en un location (directori o arxiu) específic. Per al nostre exemple, protegirem el document root (l'arrel, la pàgina principal) del nostre lloc.</p>
+<p>Utilitzarem la directiva <code>auth_basic</code> dins del location i li posarem el text que serà mostrat a l'usuari en sol·licitar les credencials. Finalment, configurem Nginx perquè utilitze el fitxer que prèviament hem creat amb la directiva <code>auth_basic_user_file</code>:</p>
+<p><div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server {</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen 80;</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen [::]:80;</span>
+
+        <span class="l l-Scalar l-Scalar-Plain">root /var/www/vostre_domini/html/retro-doe;</span>
+        <span class="l l-Scalar l-Scalar-Plain">index index.html index.htm index.nginx-debian.html;</span>
+
+        <span class="l l-Scalar l-Scalar-Plain">server_name vostre_domini www.vostre_domini;</span>
+
+        <span class="l l-Scalar l-Scalar-Plain">location / {</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">auth_basic  &quot;Àrea restringida&quot;;</span>
+</span><span class="hll">        <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file    /etc/nginx/.htpasswd;</span>
+</span>            <span class="l l-Scalar l-Scalar-Plain">try_files $uri $uri/ =404;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+Una vegada acabada la configuració, reiniciem el servei perquè apliqui la nostra política d'accés.</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl restart nginx
+</code></pre></div>
+<h2 id="provant-la-nova-configuracio">Provant la nova configuració</h2>
+<div class="admonition question">
+<p class="admonition-title">Comprovació 1</p>
+<p>Comprova des del teu client Xubuntu que en accedir a http://vostre_domini o http://www.vostre_domini se't sol·licita una autenticació.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Comprovació 2</p>
+<p>Comprova que si decideixes cancel·lar l'autenticació, se't negarà l'accés al lloc amb un error. Quin error és?</p>
+</div>
+<h3 id="tasques">Tasques</h3>
+<div class="admonition question">
+<p class="admonition-title">Tasca 1</p>
+<ul>
+<li>
+<p>Intenta entrar primer amb un usuari erroni i després amb un altre correcte. Pots veure tots els successos i registres en els logs access.log i error.log. </p>
+</li>
+<li>
+<p>Adjunta una captura de pantalla dels logs on es vegi que intentes entrar primer amb un usuari invàlid i amb un altre vàlid. Indica on podem veure els errors d'usuari invàlid o no oposat, així com on podem veure el nombre d'error que us apareixia abans.</p>
+</li>
+</ul>
+</div>
+<p>Quan hem configurat el següent bloc:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">location / {</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">auth_basic  &quot;Àrea restringida&quot;;</span>
+</span><span class="hll">        <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file    /etc/nginx/.htpasswd;</span>
+</span>            <span class="l l-Scalar l-Scalar-Plain">try_files $uri $uri/ =404;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<p>L'autenticació s'aplica al directori/arxiu que li indiquem, en aquest cas l'arrel <code>/</code>, que és:</p>
+<div class="highlight"><pre><span></span><code>/var/www/exemple1/html/retro-doe/
+</code></pre></div>
+<p>I a tots els arxius que hi ha dins, ja que no hem especificat cap.</p>
+<p>Ara bé, anem a provar a aplicar autenticació només a una part de la web. Intentarem que només es necessite autenticacíó per a entrar a la part de portfolio:</p>
+<p><img alt="" src="../../img/4.1-4.png" /></p>
+<p>Aquesta secció es correspon amb l'arxiu “portofolio.html” dins del directori arrel.</p>
+<div class="admonition question">
+<p class="admonition-title">Tasca 2</p>
+<p>Esborra les dues línies que fan referència a l'autenticació bàsica en el location del directori arrel. Després d'això, afegeix un nou location sota amb l'autenticació bàsica per a l'arxiu portofolio.html. </p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Fixeu-vos que heu d'anar amb compte perquè l'última línia de l'arxiu ha de ser la <code>}</code> que tanca la primera línia <code>server {</code> de l'arxiu.</p>
+</div>
+<h3 id="combinacio-de-lautenticacio-basica-amb-la-restriccio-dacces-per-ip">Combinació de l'Autenticació Bàsica amb la restricció d'accés per IP</h3>
+<p>L'autenticació bàsica HTTP pot ser combinada de forma efectiva amb la restricció d'accés per adreça IP. Es poden implementar dos escenaris:</p>
+<ul>
+<li>
+<p>Un usuari ha d'estar ambdues coses, autenticat i tenir una IP vàlida</p>
+</li>
+<li>
+<p>Un usuari deu o bé estar autenticat, o bé tenir una IP vàlida</p>
+</li>
+</ul>
+<p>Vegem com ho faríem:</p>
+<ol>
+<li>
+<p>Com permetre o denegar accés sobre una IP concreta (directives <strong>allow</strong> i <strong>deny</strong>, respectivament). Dins del block server o arxiu de configuració del domini web, que recordeu està en el directori sites-available:</p>
+<p><img alt="" src="../../img/4.1-5.png" /></p>
+<p>L'accés només es garantirà a la IP <code>192.168.1.1/24</code>, excloent a l'adreça <code>192.168.1.2</code>.</p>
+<p>Cal tenir en compte que les directives allow i deny s'aniran aplicant en l'ordre en el qual apareixen l'arxiu. </p>
+<p>Ací apliquem sobre la <code>location /api</code> (es només un exemple), però podriem aplicar sobre qualsevol, inclòs tot el lloc web, la location arrel (/).</p>
+<p>L'última directiva <code>deny all</code> vol dir que per defecte denegarem l'accés a tothom. Per això cal posar els allow i deny més específics just abans d'aquesta, perquè en avaluar-se en ordre d'aparició, si els posàrem baix es denegaria l'accés a tothom, ja que <code>deny all</code> seria el primer que s'avaluaria.</p>
+</li>
+<li>
+<p>Combinar la restricció IP i l'autenticació HTTP amb la directiva <strong>satisfy</strong>. </p>
+<p>Si establim el valor de la directiva a <code>all</code>, l'accés es permet si el client satisfà ambdues condicions (IP i usuari vàlid). Si ho establim a <code>any</code>, l'accés es permet si se satisfà almenys una de les dues condicions.</p>
+<p><img alt="" src="../../img/4.1-6.png" /></p>
+</li>
+</ol>
+<h2 id="tasques_1">Tasques</h2>
+<div class="admonition question">
+<p class="admonition-title">Tasca 1</p>
+<p>Col·loca una altra vegada dos clients a la teva xarxa interna i <ins><strong>assegura't que la seua configuració de xarxa és correcta</strong></ins></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca 2</p>
+<p>Configura Nginx perquè no deixi accedir amb la IP del client1 al directori arrel de la mateixa web d'abans, la de John Doe’s. Modifica el seu server block o arxiu de configuració. Comprova com es denega l'accés:</p>
+<ul>
+<li>Mostra la pàgina d'error en el navegador</li>
+<li>Mostra el missatge d'error d'error.log</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca 3</p>
+<p>Configura Nginx per a que el client2 hagi de tenir tant una IP vàlida com un usuari vàlid, ambdues coses alhora, i comprova que sí pot accedir sense problemes.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Tasca 4</p>
+<p>Configura Nginx ara per a que deixe accedir si es té una IP vàlida o també si l'usuari introduït és correcte. Comprova que ara sí poden accedir tots dos clients, per què?</p>
+</div>
+<h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, equivocant-me al posar usuari i contrasenya. Podré accedir?</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy all;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny  all;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic &quot;Questió final 1&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, introduïnt correctament usuari i contrasenya. Podré accedir?  </p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy all;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  all;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic &quot;Questió final 2</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">The revenge&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="err">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Suposem que jo sóc el client amb la IP 172.1.10.15 i e intente accedir al directori “/web_molt_guay” del
+meu lloc web, introduïnt correctament usuari i contrasenya. Podré accedir?</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">location /web_molt_guay {</span>
+    <span class="l l-Scalar l-Scalar-Plain">#...</span>
+    <span class="l l-Scalar l-Scalar-Plain">satisfy any;</span>    
+    <span class="l l-Scalar l-Scalar-Plain">deny  172.1.10.6;</span>
+    <span class="l l-Scalar l-Scalar-Plain">deny 172.1.10.15;</span>
+    <span class="l l-Scalar l-Scalar-Plain">allow 172.1.3.14;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic           &quot;Questió final 3</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">The final combat&quot;;</span>
+    <span class="l l-Scalar l-Scalar-Plain">auth_basic_user_file conf/htpasswd;</span>
+<span class="err">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 4</p>
+<p>A lo millor no sabeu que tinc una web per a documentar totes les meues excursions a l’espai amb Jeff Bezos, és aquesta: <a href="https://freewebsitetemplates.com/preview/space-science/index.html">Jeff Bezos i jo</a></p>
+<p>Suposem que vull restringir l’accés al directori de projectes perquè es molt secret, això vol dir afegir autenticació bàsica a la URL: <a href="https://freewebsitetemplates.com/preview/space-science/projects.html">Projectes</a></p>
+<p>Completa la configuració per a aconseguir-ho:</p>
+<div class="highlight"><pre><span></span><code>    <span class="l l-Scalar l-Scalar-Plain">server {</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen 80;</span>
+        <span class="l l-Scalar l-Scalar-Plain">listen [::]:80;</span>
+        <span class="l l-Scalar l-Scalar-Plain">root /var/www/freewebsitetemplates.com/preview/space-science;</span>
+        <span class="l l-Scalar l-Scalar-Plain">index index.html index.htm index.nginx-debian.html;</span>
+        <span class="l l-Scalar l-Scalar-Plain">server_name freewebsitetemplates.com www.freewebsitetemplates.com;</span>
+<span class="hll">        <span class="l l-Scalar l-Scalar-Plain">location              {</span>
+</span><span class="hll">
+</span>            <span class="l l-Scalar l-Scalar-Plain">try_files $uri $uri/ =404;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració correcta de l'autorització bàsica d'Nginx, comprovació i identificació de l'error</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Captures correctes del log</td>
+<td align="center"><strong>0.5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de l'autorització bàsica al "portofolio"</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Correcta configuració i comprovació de les tasques d'autenticació bàsica i restricció per IP</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong>0.5 punt</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P4.1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P4.3/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 4.3 - Proxy invers amb Nginx" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Pràctica 4.3 - Proxy invers amb Nginx
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

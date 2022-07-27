@@ -1,0 +1,973 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Practica 5.2 - SSH amb MFA (Autenticació Multifactor) - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-52-ssh-amb-mfa-autenticacio-multifactor" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-lautenticacio-multifactor" class="md-nav__link">
+    Què és l'autenticació multifactor?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#com-ho-implementem" class="md-nav__link">
+    Com ho implementem?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-de-mfa-per-a-openssh" class="md-nav__link">
+    Instal·lació i configuració de MFA per a OpenSSH
+  </a>
+  
+    <nav class="md-nav" aria-label="Instal·lació i configuració de MFA per a OpenSSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-del-modul-pam-de-google" class="md-nav__link">
+    Instal·lació i configuració del mòdul PAM de Google
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-openssh" class="md-nav__link">
+    Configurar OpenSSH
+  </a>
+  
+    <nav class="md-nav" aria-label="Configurar OpenSSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor" class="md-nav__link">
+    Fent que SSH sigui conscient de l'autenticació multifactor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#afegint-un-tercer-factor-dautenticacio" class="md-nav__link">
+    Afegint un tercer factor d'autenticació
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-52-ssh-amb-mfa-autenticacio-multifactor">Pràctica 5.2 – SSH amb MFA (Autenticació Multifactor)</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>
+<p>Heu de tenir el servici SSH funcionant correctament i preferiblement haver fet la pràctica 5.1 completa</p>
+</li>
+<li>
+<p>Heu de baixar-vos la app “Latch” al mòbil o, en el seu defecte, “Google Authenticator”</p>
+</li>
+<li>
+<p>Heu de canviar en l'arxiu sshd_config el port d'escolta de nou al 22 (1 punt)</p>
+</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Client SSH</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Servidor SSH</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<h3 id="que-es-lautenticacio-multifactor">Què és l'autenticació multifactor?</h3>
+<p>L'autenticació multifactor (MFA) és un mètode en el qual es proporciona accés a un sistema o servici sol després que puguis demostrar que efectivament ets tu qui dius ser. Ho faràs presentant dos o més evidències (o factors).</p>
+<p>Aquests poden ser una <strong>contrasenya</strong> que tingui un codi de verificació secundari, un certificat digital instal·lat en l'equip, una pregunta personal, etc. És clar que quantes més capes de protecció posis millor vas a poder protegir els teus comptes.</p>
+<p>Normalment se solen compaginar els següents factors:</p>
+<ul>
+<li>
+<p><strong>Alguna cosa que conec:</strong> una contrasenya, resposta a una pregunta, un PIN, etc.</p>
+</li>
+<li>
+<p><strong>Alguna cosa que obtinc:</strong> una notificació que rebo en el mòbil, un codi de seguretat, etc. </p>
+</li>
+<li>
+<p><strong>Alguna cosa únic que tinc:</strong> en aquest cas és la biometria, com la teva empremta digital i/o el reconeixement facial. </p>
+</li>
+</ul>
+<h3 id="com-ho-implementem">Com ho implementem?</h3>
+<p>Anem a partir de la pràctica anterior, on ja podem connectar-nos per SSH al nostre proxy invers.</p>
+<p>Necessitarem instal·lar en el nostre mòbil l'aplicació Latch d'Elevin Paths. També podríem utilitzar l'aplicació Google Authenticator.</p>
+<p>No obstant això, l'elecció de Latch enfront de Google Authenticator està basada en <a href="https://www-elladodelmal-com.translate.goog/2016/10/latch-cloud-totp-versus-google.html?_x_tr_sl=es&amp;_x_tr_tl=ca&amp;_x_tr_hl=es">diverses consideracions de seguretat</a>. Google Authenticator:</p>
+<ul>
+<li>
+<p>No garanteix un únic dispositiu</p>
+</li>
+<li>
+<p>La llavor es podia robar del backup</p>
+</li>
+<li>
+<p>En Google Authenticator s'indica l'usuari</p>
+</li>
+<li>
+<p>En Google no implementen correctament les alertes TOTP (Time-based One-Time Password algorithm)</p>
+</li>
+</ul>
+<h2 id="installacio-i-configuracio-de-mfa-per-a-openssh">Instal·lació i configuració de MFA per a OpenSSH</h2>
+<h3 id="installacio-i-configuracio-del-modul-pam-de-google">Instal·lació i configuració del mòdul PAM de Google</h3>
+<p>Ara que ja hem configurat SSH para no necessitar introduir el password cada vegada que fem login, anem a implementar el 2FA o segon factor d'autenticació per a major seguretat. Això és el que es coneix com fer “hardening” o fortificació de servidors.</p>
+<div class="admonition danger">
+<p class="admonition-title">Atenció</p>
+<p>Ens connectarem per SSH al proxy invers i realitzarem tota la configuració d'aquesta pràctica estant connectats per SSH.</p>
+<p>Si necessiteu fer proves de noves connexions, podeu obrir una altra pestanya del terminal sense desconnectar-vos.</p>
+</div>
+<p>Els passos que s'han de seguir són els següents:</p>
+<ul>
+<li>
+<p>Fer un update del sistema:</p>
+<p><img alt="" src="../../img/5.2-1.png" /></p>
+</li>
+<li>
+<p>Instal·lar el mòdul d'autenticació de Google per a Ubuntu:</p>
+<p><img alt="" src="../../img/5.2-2.png" /></p>
+</li>
+</ul>
+<div class="admonition failure">
+<p class="admonition-title">Avís</p>
+<p>Nota: si rebeu aquest missatge “I: Unable to locate package libpam-google-authenticator”, cal activar el repositori Universe amb el comando: </p>
+<div class="highlight"><pre><span></span><code><span class="nv">$sudo</span> add-apt-repository universe   
+</code></pre></div>
+</div>
+<ul>
+<li>
+<p>Una vegada instal·lat, s'executa:</p>
+<p><img alt="" src="../../img/5.2-3.png" /></p>
+</li>
+</ul>
+<p>I vos anirà fent una sèrie de preguntes que heu de respondre. La primera us pregunta si el codi deu canviar aleatòriament en el temps, a la qual cosa heu de respondre sí. Us generarà el codi QR que heu d'escanejar amb el mòbil i els codis de recuperació.</p>
+<p><img alt="" src="../../img/5.2-4.png" /></p>
+<p>En la app Latch heu d'anar a la secció “TOTP” i “Afegir compte”:</p>
+<p><img alt="" src="../../img/5.2-5.png" style="height:600px;width:300px" /></p>
+<p>I després escanejar el codi QR que us ha aparegut abans:</p>
+<p><img alt="" src="../../img/5.2-6.png" style="height:600px;width:300px" /></p>
+<p>La següent pregunta és si voleu que actualitze automàticament l'arxiu <code>google_authenticator</code>, cosa necessària perquè funcione el 2FA, ergo heu de respondre sí novament:</p>
+<p><img alt="" src="../../img/5.2-7.png" /></p>
+<p>En la següent pregunta, en respondre que sí, li indiqueu que el codi que useu caduqui en aquest mateix instant. Això vol dir que només es podrà realitzar un login cada 30 segons però augmentarà la protecció enfront d'atacs automatitzats:</p>
+<p><img alt="" src="../../img/5.2-8.png" /></p>
+<p>Per defecte els codis es generen cada 30 segons, deixant un petit marge temporal on el codi anterior i el posterior seguiran sent vàlids. Això és per compensar certs desajustaments temporals entre l'hora del servidor i del client. </p>
+<p>Aquí respondrem que no doncs aquest marge és suficient i podria comprometre la seguridad de l'augmentar-ho:</p>
+<p><img alt="" src="../../img/5.2-9.png" /></p>
+<p>Per protegir el nostre servidor contra atacs de força bruta respondrem que sí a la pregunta de permetre un màxim de 3 intents de login cada 30 segons:</p>
+<p><img alt="" src="../../img/5.2-10.png" /></p>
+<h2 id="configurar-openssh">Configurar OpenSSH</h2>
+<div class="admonition tip">
+<p class="admonition-title">Nota important</p>
+<p>Ja que realitzarem canvis per SSH estant connectats per SSH, és molt important no tancar mai la connexió SSH inicial per no córrer el risc de perdre l'accés al servidor. </p>
+</div>
+<p>Per fer proves, establirem una nova connexió SSH i quan comprovem que tot funciona, podran tancar-se totes les sessions.</p>
+<p>Ara hem de configurar el servici d'autenticació de Linux perquè sigui conscient que pot utilitzar l'autenticació de Google. Editem l'arxiu <code>/etc/pam.d/sshd</code>:</p>
+<p><img alt="" src="../../img/5.2-11.png" /></p>
+<p>I afegirem al final de l'arxiu la línia:</p>
+<p><img alt="" src="../../img/5.2-12.png" /></p>
+<p>El <code>nullok</code> del final servicix per indicar-li al mecanisme d'autorització centralitzat de Linux, PAM (Pluggable Authentication Modulis) que aquest mètode d'autenticació és opcional. D'aquesta forma permetrem que els usuaris que no utilitzin el 2FA, puguin seguir fent login encara usant les seves claus.</p>
+<p>A continuació hem de configurar l'arxiu de configuració del servici SSH perquè suporti aquest tipus de autenticación:</p>
+<p><img alt="" src="../../img/5.2-13.png" />
+<img alt="" src="../../img/5.2-14.png" /></p>
+<p>Guardem l'arxiu i reiniciem el servici:</p>
+<p><img alt="" src="../../img/5.2-15.png" /></p>
+<h3 id="fent-que-ssh-sigui-conscient-de-lautenticacio-multifactor">Fent que SSH sigui conscient de l'autenticació multifactor</h3>
+<p>Reobrim l'arxiu de configuració del servici ssh:</p>
+<p><img alt="" src="../../img/5.2-16.png" /></p>
+<p>I afegim aquesta línia al final de l'arxiu, per indicar-li al SSH que mètodes d'autenticació es requereixen. Això li indica a SSH que necessitem o una clau SSH, o un password o un codi de verificació (o les tres coses):</p>
+<p><img alt="" src="../../img/5.2-17.png" /></p>
+<p>Tanquem i guardem aquest arxiu.</p>
+<p>Ara tornem a obrir l'arxiu de configuració de PAM:</p>
+<p><img alt="" src="../../img/5.2-18.png" /></p>
+<p>Hem de buscar i comentar la línia indicada per dir-li a PAM que no mostri l'opció d'introduir password:</p>
+<p><img alt="" src="../../img/5.2-19.png" /></p>
+<p>Guardem i tanquem l'arxiu. </p>
+<p>Tot seguit reiniciem el servici:</p>
+<p><img alt="" src="../../img/5.2-20.png" /></p>
+<p>Ara heu d'intentar fer login de nou en el server. En aquesta ocasió hauria de demanar-vos el codi de verificació. </p>
+<p>Aquest codi de verificació és el que apareix en Latch cada 30 segons, així que haureu de consultar-ho en el mòbil, introduir-ho i si tot va bé, estareu logueats.</p>
+<p><img alt="" src="../../img/5.2-21.png" /></p>
+<p><img alt="" src="../../img/5.2-22.png" style="height:600px;width:300px" /></p>
+<p>A pesar que no s'explicita, s'han usat tant les claus SSH com el codi de verificació, és a dir, dos factors. Per verificar-ho, feu el ssh amb l'opció -v (de verbose) per poder comprovar-ho:</p>
+<p><img alt="" src="../../img/5.2-23.png" /></p>
+<p>En <strong>1</strong> podeu veure que es produeix l'autenticació mitjançant claus, resultant en una autenticació parcial. </p>
+<p>Quedaria la segona part, que es correspon amb la part configurada com a interactiva amb el teclat (<em>keyboard-interactive</em>), que no és mes que introduir el codi temporal de Latch, com us diu en <strong>2</strong>.</p>
+<div class="admonition task">
+<p class="admonition-title">Comprovació del doble factor d'autenticació</p>
+<p>Comprova-ho connectant-te per SSH des de l'ordinador amfitrió (Lliurex o Windows) utilitzant la IP de la LAN i també des del client Xubuntu utilitzant el nom del DNS (proxy-server).</p>
+<p>Adjunta unes captures de pantalles, utilitzant l'opció “-v” i indica, recuadrant-lo, on es pot veure que ha utilitzat tots dos factors d'autenticació.</p>
+</div>
+<h3 id="afegint-un-tercer-factor-dautenticacio">Afegint un tercer factor d'autenticació</h3>
+<p>En la fase 3 hem llistat diversos tipus d'autenticació permeses, en l'arxiu de configuració sshd_config:</p>
+<ul>
+<li>
+<p>Claus públiques (publickey)</p>
+</li>
+<li>
+<p>Password (password publickey)</p>
+</li>
+<li>
+<p>Codi de verificació (keyboard-interactive)</p>
+</li>
+</ul>
+<p>Però malgrat això, només hem permès el login mitjançant clau pública + codi de verificació.</p>
+<p>Si volguéssim tenir els tres factors, es podria realitzar amb un canvi ràpid. Simplement caldria descomentar la línia que hem comentat abans en l'arxiu <code>/etc/pam.d/sshd</code>:</p>
+<p><img alt="" src="../../img/5.2-24.png" /></p>
+<p>I reiniciar el servici.</p>
+<p>Després d'això, en intentar fer el ssh, ens demanarà el password a més del codi de verificació:</p>
+<p><img alt="" src="../../img/5.2-25.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Comprovación de login correcte amb els tres factors d'autenticació</p>
+<p>Comprova-ho connectant-te per SSH des de l'ordinador amfitrió (Lliurex o Windows) utilitzant la IP de la LAN i també des del client Xubuntu utilitzant el nom del DNS (proxy-server).</p>
+<p>Adjunta una captura amb l'opció “-v” on indiquis, amb un requadre, on s'estan utilitzant cadascun dels tres factors.</p>
+</div>
+<h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Descriu de quina manera podríem recuperar l'accés al servidor en cas de:</p>
+<ul>
+<li>
+<p>Perdre les claus (SSH o TOTP)</p>
+</li>
+<li>
+<p>Perdre l'accés a l'aplicació Latch</p>
+</li>
+</ul>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-ubuntu-16-04">Pista</a></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Qüestió 2</p>
+<p>Imagina que tenim un usuari al sistema únicament per realitzar tasques automatitzades mitjançant SFTP. Aquest usuari, òbviament, no serà capaç d'introduir cap codi de verificació ja que forma part d'unes tasques teòriques automatitzades per algun script.</p>
+<p>Indica què faries perquè només aquest usuari estigués exempt d'introduir el codi de verificació, deixant-lo activat per a la resta. </p>
+<p>Pista: <code>user exempt ssh 2FA exception</code></p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Instal·lació, configuració de 2FA per a OpenSSH i comprovació</td>
+<td align="center"><strong>4 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Afegir un 3er factor d'autenticació de forma correcta i comprovacions</td>
+<td align="center"><strong>3.5 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Fer configuració íntegrament vía SSH</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>0.5 punts</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P5.1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../proj/" class="md-footer__link md-footer__link--next" aria-label="Següent: Projecte final - Configuració de servicis" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Projecte final - Configuració de servicis
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

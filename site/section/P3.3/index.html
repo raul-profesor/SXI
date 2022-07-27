@@ -1,0 +1,871 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-33-configuracio-de-servidors-mestre-i-esclau-en-diferents-xarxes" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#escenari" class="md-nav__link">
+    Escenari
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-dels-dominis" class="md-nav__link">
+    Configuració dels dominis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-mestre" class="md-nav__link">
+    Configuració del mestre
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-de-lesclau" class="md-nav__link">
+    Configuració de l'esclau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprovacio" class="md-nav__link">
+    Comprovació
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-servidor-mestreesclau" class="md-nav__link">
+    Configuració servidor mestre/esclau
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Questions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-33-configuracio-de-servidors-mestre-i-esclau-en-diferents-xarxes">Pràctica 3.3 - Configuració de servidors mestre i esclau en diferents xarxes</h1>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<p>✔ És <ins><strong>imprescindible</strong></ins> que tingueu funcionant correctament totes les pràctiques anteriors</p>
+<p>✔ Comproveu que les pràctiques anteriors funcionen correctament abans de començar aquesta pràctica.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor mestre</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Servidor esclau</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Client 1</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Client2</td>
+<td align="center">172.1.X.X</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="escenari">Escenari</h2>
+<p>En aquesta pràctica anem a muntar, igual que vam fer en l'anterior, un escenari de servidors mestre/esclau. El mestre serà el vostre servidor i l'esclau el servidor d'un altre company.</p>
+<p><img alt="" src="../../img/3.3_1.png" /></p>
+<p>Si transferim les zones des del servidor fins a l'esclau amb aquesta configuració de xarxa, l'alumne 2 serà capaç de fer ping al nostre nom de domini d'alumne 1 (recordeu que, de la pràctica 1, ja es podía fer ping per IP).</p>
+<p>És a dir, la màquina 171.1.a.2 podria fer ping a <strong>clixubuntu.sre.es</strong>.</p>
+<h2 id="configuracio-dels-dominis">Configuració dels dominis</h2>
+<p>En primer lloc, anem a canviar el nom dels dominis.
+Canviarem el nom del subdomini a utilitzar de <code>.sre.es.</code> a <code>nom_alumne.es.</code> Així doncs, el meu domini per exemple quedaria com <code>raul.es.</code>. D'aquesta forma, cada alumne tindrà un subdomini diferent.</p>
+<p>Això implica que haureu de canviar en tots els arxius, en totes les línies on aparega, <code>sre.es</code> pel vostre domini:</p>
+<ul>
+<li>Arxius de configuració de zones</li>
+<li><em><code>named.conf.local</code></em></li>
+<li>Configuració DHCP</li>
+</ul>
+<h2 id="configuracio-del-mestre">Configuració del mestre</h2>
+<p>Mireu el diagrama de xarxa o imatge de més amunt.</p>
+<p>Adoneu-vos que ara el servidor DNS ha d'escoltar per les dues interfícies:</p>
+<ul>
+<li><strong>La interfície de la xarxa interna</strong> → per resoldre les consultes del client</li>
+<li><strong>La interfície de la LAN</strong> → per poder transferir/rebre les zones</li>
+</ul>
+<p>Això implica que haureu de modificar l'arxiu <em>“named.conf.options”</em> de forma concorde. Recordem l'arxiu de configuració <em>“named.conf.options”</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="err">Llista</span> <span class="err">d&#39;accés</span> <span class="err">per</span> <span class="err">permetre</span> <span class="err">únicament</span> <span class="err">els</span> <span class="err">hosts</span> <span class="err">que</span> <span class="err">decidim</span>
+<span class="err">acl</span> <span class="err">confiables{</span>
+    <span class="err">172.1.1.0/24;</span>
+<span class="err">};</span>
+
+<span class="err">options</span> <span class="err">{</span>
+    <span class="err">directory</span> <span class="err">&quot;/var/cache/bind&quot;;</span>
+    <span class="err">querylog</span> <span class="err">yes;</span>
+    <span class="c">// If there is a firewall between you and nameservers you want</span>
+    <span class="c">// to talk to, you may need to fix the firewall to allow multiple</span>
+    <span class="c">// ports to talk.  See http://www.kb.cert.org/vuls/id/800113</span>
+
+    <span class="c">// If your ISP provided one or habiti IP addresses for stable </span>
+    <span class="c">// nameservers, you probably want to usi them as forwarders.  </span>
+    <span class="c">// Uncomment the following block, and insert the addresses replacing </span>
+    <span class="c">// the all-0&#39;s placeholder.</span>
+
+    <span class="err">forwarders</span> <span class="err">{</span>
+        <span class="err">208.67.222.222;</span>
+        <span class="err">1.1.1.1;</span> 
+     <span class="err">};</span>
+
+    <span class="err">allow-recursion</span> <span class="err">{confiables;};</span>
+    <span class="err">allow-transfer</span> <span class="err">{</span> <span class="err">X.X.X.X;</span> <span class="err">};</span>
+    <span class="err">also-notify</span> <span class="err">{</span> <span class="err">X.X.X.X;</span> <span class="err">};</span>
+    <span class="err">listen-on</span> <span class="err">port</span> <span class="err">53</span> <span class="err">{</span> <span class="err">172.1.1.1;</span> <span class="err">};</span>
+    <span class="err">recursion</span> <span class="err">yes;</span>
+
+    <span class="c">//========================================================================</span>
+    <span class="c">// If BIND logs error messages about the root key being expired,</span>
+    <span class="c">// you will need to update your keys.  See https://www.isc.org/bind-keys</span>
+
+    <span class="c">//dnssec-validation acte;</span>
+    <span class="err">dnssec-enable</span> <span class="err">yes;</span>
+    <span class="err">dnssec-validation</span> <span class="err">yes;</span>
+    <span class="c">//llistin-on-v6 { none; };</span>
+<span class="err">};</span>
+</code></pre></div>
+<p>Recordem què fa cada opció:</p>
+<ul>
+<li><strong>allow-recursion</strong> → de qui es permeten les consultes recursives en aquest servidor DNS</li>
+<li><strong>allow-transfer</strong> → cap a qui es permet transferència de zones</li>
+<li><strong>also-notify</strong>→ cap a qui s'envia un avís o notificació quan el mestre recarrega els seus arxius de zona</li>
+<li><strong>listen-on port 53</strong> → la IP  de la interfície on el servidor escolta consultes DNS</li>
+<li><strong>recursion yes;</strong> → es permeten les consultes recursives, amb allow-recursion li indiquem de qui exactament, utilitzant la ACL (llista d'accés) confiables.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En la pràctica anterior vos vaig dir que les línies <em>allow-transfer</em> i <em>also-notify</em> les podíeu tenir en “named.conf.options” o dins de cada zona en “named.conf.local”. Poseu-les només en un dels dos llocs perquè si les teniu en els dos llocs i no estan iguals, podeu tenir problemes.</p>
+</div>
+<p>Així les coses, hem de configurar el servidor mestre de tal forma que consideri al servidor esclau com confiable, que permita les consultes recursivas dels confiables, que permeti les transferències de zona cap a la IP de l'esclau, que també li notifiqui i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna i la de la LAN).</p>
+<p>Recordeu a l'hora de posar les IPs corresponents, mirant una vegada més el diagrama de xarxa, que ara les zones es transfereixen per la LAN.</p>
+<h2 id="configuracio-de-lesclau">Configuració de l'esclau</h2>
+<p>En l'esclau també s'han de canviar els mateixos arxius per posar-li el nou domini (recordeu que cada alumne tindrà un subdomini amb el seu nom).</p>
+<p>Hem de configurar el servidor esclau de tal forma que consideri al servidor mestre com confiable, que permita les consultes recursivas, i a més, ha d'escoltar consultes DNS en totes les IP de les seves interfícies (la de la xarxa interna per als clients i la de la LAN per al mestre).</p>
+<p>Recordeu de la pràctica 3.2 com es configuraven les zones en “named.conf.local”, depenent de si era mestre o esclau el servidor.</p>
+<h2 id="comprovacio">Comprovació</h2>
+<p>Comproveu amb “journalctl -u named -f” que es produeixen les transferències de zona.</p>
+<p>Si tot ha anat bé, podré resoldre (amb nslookup) i fer ping als meus noms de domini (dnsserver i cliXubuntu) i als de l'esclau (dnsserver.nomalumno.es i cliXubuntu.nom_alumne.es). </p>
+<p>Recordeu que per resoldre els subdominis de l'esclau haig d'afegir-li el subdomini ja que és un de diferent al meu i en el DHCP només li estic enviant el meu.</p>
+<h2 id="configuracio-servidor-mestreesclau">Configuració servidor mestre/esclau</h2>
+<p>Ara haureu de configurar tots dos servidors perquè siguin mestre/esclau.</p>
+<p>Serà mestre de les zones del vostre subdomini (raul.es. en el meu cas) i esclau de les del vostre company (nombrealumne.es.). </p>
+<p>Això vol dir que l'arxiu “named.conf.local” tindrà zones de tipus mestre i esclau.</p>
+<p>Una vegada configurat, comproveu que tots dos des dels vostres clients podeu resoldre els noms de domini del company (recordeu afegir el subdomini del company en els noms de les consultes).</p>
+<h2 id="questions-finals">Questions finals</h2>
+<p>Continuant amb l'escenari d'esta pràctica, imagineu que ara també activem el servidor clon. Així doncs, el servidor principal estará conectar per la interfaz de la seua xarxa interna al seu client i al servidor clon. I per la interfaz de la seua interfaz LAN, al servidor del vostre company.</p>
+<p>Ara volem que el servidor del company transferisca les seues zones al nostre servidor principal (és lo que acabem de fer en esta pràctica) i, a més, al nostre servidor clon, dins de la xarxa interna.</p>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>En el servidor del company, indica quina IP haurem de posar dins del <code>named.conf.options</code> en les directives:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">allow-transfer { X.X.X.X };</span>
+<span class="l l-Scalar l-Scalar-Plain">also-notify { X.X.X.X; };</span>  
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 2</p>
+<p>Explica qué haurem de configurar dins el arxiu <code>named.conf.local</code> del clon i quina IP haurem de color dins de la directiva <code>masters{...}</code></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Questió 3</p>
+<p>Recordem que el nostre server DNS principal/original és esclau del servidor DNS del company. El nostre server clon també ho serà ara, tras configurar-lo adequadament. Si volem poder resoldre direccions del domini del nostre company quan el nostre servidor principal no estiga funcionant, com s'ho farem saber als clients de la nostra xarxa interna?</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració correcta de la part del mestre/principal</td>
+<td align="center"><strong>1,5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de la part de l'esclau/secundari</td>
+<td align="center"><strong>1,5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">Comprovació de la transferència de zones i resolucions DNS correctes</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Questions finals</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P3.2/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P4.1/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

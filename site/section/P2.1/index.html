@@ -1,0 +1,822 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Pràctica 2.1 - Instal·lació i configuració de servidor DHCP - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-21-installacio-i-configuracio-de-servidor-dhcp" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-del-servidor-dhcp" class="md-nav__link">
+    Instal·lació del servidor DHCP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-client" class="md-nav__link">
+    Configuració del client
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-del-servidor-dhcp" class="md-nav__link">
+    Configuració del servidor DHCP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afegir-un-client-dhcp-amb-ip-reservada" class="md-nav__link">
+    Afegir un client DHCP amb IP reservada
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ultima-comprovacio" class="md-nav__link">
+    Ultima comprovació
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.5/" class="md-nav__link">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-21-installacio-i-configuracio-de-servidor-dhcp">Pràctica 2.1 - Instal·lació i configuració de servidor DHCP</h1>
+<h2 id="installacio-del-servidor-dhcp">Instal·lació del servidor DHCP</h2>
+<p>Per instal·lar el servidor DHCP en Ubuntu Server, usarem els repositoris oficials. Per això, podrem instal·lar-ho com qualsevol paquet en Ubuntu:
+<div class="highlight"><pre><span></span><code>suo apt-get install isc-dhcp-server
+</code></pre></div></p>
+<h2 id="configuracio-del-client">Configuració del client</h2>
+<p>Si recordem de la pràctica 1, el client té ara mateix configurada la IP de forma estàtica ja que la vam posar a mà en l'arxiu localitzat en el directori <strong><em>/etc/netplan</em></strong>.</p>
+<p>Com el nostre objectiu és muntar un servidor DHCP en l'Ubuntu Server que assigni IPs a tots els clients que hi hagi en aquesta xarxa, els clients han d'estar configurats de tal forma que obtinguin aquesta adreça per DHCP també.</p>
+<p>Així doncs, amb el coixinet comentem les línies on li indicàvem al servidor quin era la IP i el gateway perquè no es tinguin en compte i li indiquem que obtingui aquesta informació mitjançant el DHCP.</p>
+<p><img alt="Configuració netplan del client" src="../../img/2.1Cliente_netplan.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Recordatori</p>
+<p>Recordeu aplicar la configuració després de canviar-la.</p>
+</div>
+<h2 id="configuracio-del-servidor-dhcp">Configuració del servidor DHCP</h2>
+<p>Abans de gens, atès que el servidor té dues interfícies, la de l'adaptador pont (enp0s3) i la de la xarxa interna (enp0s8), hem d'indicar-li en quin d'elles ha d'assignar les IPs.</p>
+<p>Això es fa editant l'arxiu:</p>
+<div class="highlight"><pre><span></span><code>isc-dhcp-server
+</code></pre></div>
+<p>Que podeu trobar en el directori:</p>
+<p><div class="highlight"><pre><span></span><code>/etc/default
+</code></pre></div>
+<img alt="Configuració interfaces del servidor" src="../../img/2.1Servidor_interfaces.png" /></p>
+<p>Podem afegir una interfície de tipus IPv4 o IPv6. ja que nosaltres estem treballant amb adreces IP d'IPv4, hem d'editar la línia assenyalada en roig. Entre cometes posarem el nom de la interfície on es van a assignar les IP</p>
+<div class="admonition tip">
+<p class="admonition-title">Consell</p>
+<ul>
+<li>Recordeu quin era el comando per consultar el nom de les interfícies</li>
+<li>Observeu en el diagrama de xarxa quina serà la interfície per on s'han d'assignar les IP</li>
+</ul>
+</div>
+<p>Ara que ja li hem dit al servidor quin interfície ha d'utilitzar, anem a configurar tot el relacionat amb el DHCP.</p>
+<p>L'arxiu per configurar el servidor DHCP està en el directori:</p>
+<div class="highlight"><pre><span></span><code>/etc/dhcp
+</code></pre></div>
+<p>I el fitxer es diu:</p>
+<div class="highlight"><pre><span></span><code>dhcpd.conf
+</code></pre></div>
+<p>Tenint en compte els exemples de configuració d'aquest arxiu que hem vist en teoria i que podeu consultar en el PDF del tema 2, heu de configurar el servidor amb els següents paràmetres:</p>
+<ul>
+<li>
+<p>El rang ha d'anar des de la IP de la interfície corresponent número 3, fins a la 10. És a dir, s'han d'assignar les IPs des de la X.X.X.3 fins a la X.X.X.10. (X.X.X.0 és la xarxa de la interfície on ha d'estar el DHCP)</p>
+</li>
+<li>
+<p>Heu d'enviar-li també la porta d'enllaç als clients als quals assigneu la IP </p>
+</li>
+<li>
+<p>També heu d'enviar-li als clients els DNS, que seran dos: <em>1.1.1.1</em> i <em>8.8.8.8</em></p>
+</li>
+</ul>
+<p>Per a comprovar si la configuració la teniu bé, en el terminal podeu utilitza el comando:</p>
+<div class="highlight"><pre><span></span><code>dhcpd -t
+</code></pre></div>
+<p>Si la teniu bé, apareixerà alguna cosa com això:</p>
+<p><img alt="" src="../../img/2.1dhcpd-t.png" /></p>
+<p>I si està malament us indicarà l'error:</p>
+<p><img alt="" src="../../img/2.1dhcpd-t_error.png" /></p>
+<p>(Després de “subnet” no va “mask)</p>
+<p>Quan comproveu que la configuració està bé, reinicieu el servici DHCP amb el següent comando:</p>
+<p><div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
+</code></pre></div>
+I hauria d'assignar-li la IP al client.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Com sempre, heu de comprovar que tot està bé després de configurar-lo. </p>
+<p>Per a veure en el client la IP que us ha assignat el servidor:</p>
+<div class="highlight"><pre><span></span><code>ip a
+</code></pre></div>
+<p>Recordeu que donat que la primera IP que assigna la IP X.X.X.3, <strong>NO</strong> podeu tenir la mateixa IP que quan abans la teníeu estàtica, que era la X.X.X.2</p>
+<p>Per a comprovar si us ha afegit la ruta per defecte, és a dir, el gateway:</p>
+<p><div class="highlight"><pre><span></span><code>ip route
+</code></pre></div>
+I haurà d'aparèixer una ruta del tipus:</p>
+<div class="highlight"><pre><span></span><code>default via porta_de_enllaç dev interfície ...
+</code></pre></div>
+<p>Si ho teniu tot en ordre, podreu seguir fent ping a un equip client d'un altre company, tal i com vam fer en la pràctica 1.</p>
+</div>
+<h2 id="afegir-un-client-dhcp-amb-ip-reservada">Afegir un client DHCP amb IP reservada</h2>
+<p>Per a aquesta part de la pràctica, en Virtualbox heu de clonar la màquina client (Xubuntu).</p>
+<p>Amb la màquina apagada → “Màquina → Clonar”. </p>
+<p>I la iniciem per tenir dos clients a la nostra xarxa interna.</p>
+<p>A aquesta màquina, anem a reservar-li la mateixa IP sempre. Si consulteu l'apartat de “Reserves” del tema de teoria, teniu un exemple de com configurar això en l'arxiu <strong>dhcpd.conf</strong></p>
+<p>Recordeu que aquesta configuració ha d'estar just sota la qual ja teniu i entre les claus del bloc:</p>
+<div class="highlight"><pre><span></span><code>subnet x.x.x.x netmask x.x.x.x <span class="o">{</span>
+    La vostra configuració anterior
+    La configuració per a la IP reservada ← Aquí
+<span class="o">}</span>
+</code></pre></div>
+<p>La IP fixa ha de ser la número 11 → <strong>X.X.X.11</strong></p>
+<p>Realitzeu la mateixes comprovacions que en l'apartat anterior (el client té bé la IP, el gateway/porta d'enllaç, pot fer ping al client d'un altre company).</p>
+<p>Recordeu que després de canviar la configuració del servidor DHCP sempre heu de reiniciar el servici amb el comando vist anteriorment:</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl restart isc-dhcp-server
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Nota</p>
+<p>L'adreça física/MAC/hardware address, la podeu consultar en la interfície corresponent amb el comando:</p>
+<div class="highlight"><pre><span></span><code>ip a 
+</code></pre></div>
+</div>
+<h2 id="ultima-comprovacio">Ultima comprovació</h2>
+<p>Finalment, ja vam dir en la part de teoria que el servidor ha de portar un registre de quin IPs ha assignat i quan, ja que caduquen. </p>
+<p>Aquest registre es pot consultar en el directori:</p>
+<div class="highlight"><pre><span></span><code>/var/lib/dhcp
+</code></pre></div>
+<p>En l'arxiu </p>
+<div class="highlight"><pre><span></span><code>dhcpd.leases
+</code></pre></div>
+<p>(Poden aparèixer arxius del tipus dhcpd.leases, que són temporals i heu d'ignorar)</p>
+<p>Aquí podreu veure totes les IP que ha assignat el servidor, a quina hora i quan caduquen, entre altres coses. </p>
+<p>Adjunteu també una captura de pantalla del contingut d'aquest arxiu.</p>
+<div class="admonition caution">
+<p class="admonition-title">Atenció per a l'informe</p>
+<p>Documenta tota la pràctica amb les captures de pantalla corresponents de cada configuració i comprovació.</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Configuració del servidor DHCP</td>
+<td align="center"><strong>4 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Afegir un client amb IP reservada</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Evidències de les comprovacions del correcte funcionament</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P1/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 1 - Muntant l&#39;arquitectura de xarxa" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Pràctica 1 - Muntant l'arquitectura de xarxa
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P2.2/" class="md-footer__link md-footer__link--next" aria-label="Següent: Pràctica 2.2 - DHCP Relay" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Pràctica 2.2 - DHCP Relay
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>

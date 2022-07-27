@@ -1,0 +1,62 @@
+theme:
+  name: material
+  language: ca
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - toc.integrate
+  palette:
+      - scheme: default
+        primary: teal
+        toggle:
+          icon: material/toggle-switch-off-outline
+          name: Cambiar a modo oscuro
+      - scheme: slate
+        primary: deep purple
+        toggle:
+          icon: material/toggle-switch
+          name: Cambiar a modo normal
+  plugins:
+    - search:
+      lang: ca
+      
+markdown_extensions: 
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.caret   
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: false
+  - attr_list
+  - tables
+    
+
+site_name: Servicis en xarxa i Internet
+nav:  
+  - Pràctiques SXI:
+    - Home: index.md
+    #- section/index.md
+    - Pràctica 1 - Muntant l'arquitectura de xarxa: section/P1.md
+    - Pràctica 2.1 - Instal·lació i configuració de servidor DHCP: section/P2.1.md
+    - Pràctica 2.2 - DHCP Relay: section/P2.2.md
+    - Pràctica 3.1 - Configuració d'un servidor DNS: section/P3.1.md
+    - Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració: section/P3.2.md
+    - Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes: section/P3.3.md
+    - Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX: section/P4.1.md
+    - Pràctica 4.2 - Autenticació en Nginx: section/P4.2.md
+    - Pràctica 4.3 - Proxy invers amb Nginx: section/P4.3.md
+    - Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx: section/P4.4.md
+    - Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX: section/P4.5.md
+    - Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH: section/P5.1.md
+    - Practica 5.2 - SSH amb MFA (Autenticació Multifactor): section/P5.2.md
+    - Projecte final - Configuració de servicis: section/proj.md
+
+  #- Desplegament automàtc d'escenaris:
+  #  - Ejeegue automático de escenariomplo: 

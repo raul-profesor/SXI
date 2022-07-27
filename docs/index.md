@@ -1,0 +1,1 @@
+En aquesta web podreu consultar totes les pràctiques d'aquest mòdul.

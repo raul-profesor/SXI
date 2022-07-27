@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX - Servicis en xarxa i Internet</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica45-proxy-invers-i-balanceig-de-carrega-amb-ssl-en-nginx" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-header__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Servicis en xarxa i Internet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Cambiar a modo normal"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Cambiar a modo normal" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
+        Pràctiques SXI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Servicis en xarxa i Internet" class="md-nav__button md-logo" aria-label="Servicis en xarxa i Internet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Servicis en xarxa i Internet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Pràctiques SXI</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Pràctiques SXI" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pràctiques SXI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P1/" class="md-nav__link">
+        Pràctica 1 - Muntant l'arquitectura de xarxa
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.1/" class="md-nav__link">
+        Pràctica 2.1 - Instal·lació i configuració de servidor DHCP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P2.2/" class="md-nav__link">
+        Pràctica 2.2 - DHCP Relay
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.1/" class="md-nav__link">
+        Pràctica 3.1 - Configuració d'un servidor DNS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.2/" class="md-nav__link">
+        Pràctica 3.2 - Configuració de servidor DNS mestre/esclau i millora de la configuració
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P3.3/" class="md-nav__link">
+        Pràctica 3.3 - Configuració de servidor DNS mestre i esclau en diferents xarxes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.1/" class="md-nav__link">
+        Pràctica 4.1 - Instal·lació i configuració de servidor web NGINX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.2/" class="md-nav__link">
+        Pràctica 4.2 - Autenticació en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.3/" class="md-nav__link">
+        Pràctica 4.3 - Proxy invers amb Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P4.4/" class="md-nav__link">
+        Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Practica 4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requisits-abans-de-comencar-la-practica" class="md-nav__link">
+    Requisits abans de començar la pràctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    Introducció
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificats" class="md-nav__link">
+    Certificats
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasca" class="md-nav__link">
+    Tasca
+  </a>
+  
+    <nav class="md-nav" aria-label="Tasca">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacio-del-certificat-autofirmat" class="md-nav__link">
+    Creació del certificat autofirmat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracio-ssl-en-el-proxy-invers" class="md-nav__link">
+    Configuració SSL en el proxy invers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprovacions" class="md-nav__link">
+    Comprovacions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redireccio-forcosa-a-https" class="md-nav__link">
+    Redirecció forçosa a HTTPS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-finals" class="md-nav__link">
+    Qüestions finals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avaluacio" class="md-nav__link">
+    Avaluació
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.1/" class="md-nav__link">
+        Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../P5.2/" class="md-nav__link">
+        Practica 5.2 - SSH amb MFA (Autenticació Multifactor)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proj/" class="md-nav__link">
+        Projecte final - Configuració de servicis
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica45-proxy-invers-i-balanceig-de-carrega-amb-ssl-en-nginx">Practica4.5 - Proxy invers i balanceig de càrrega amb SSL en NGINX</h1>
+<h2 id="requisits-abans-de-comencar-la-practica">Requisits abans de començar la pràctica</h2>
+<div class="admonition danger">
+<p class="admonition-title">Atenció, molt important abans de començar!</p>
+<ul>
+<li>La pràctica 4.4 ha d'estar funcionant correctament</li>
+<li>No començar la pràctica abans de tenir la 4.3 <ins><strong>funcionant i comprovada</strong></ins></li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Nota - Descripció de les màquines</p>
+<p>Heu de posar al principi de l'informe de la pràctica aquest apartat, indicant què màquines heu utilitzat en la pràctica i amb quines IPs:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Màquina</th>
+<th align="center">IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Servidor web</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Servidor web 2</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">Proxy invers</td>
+<td align="center">172.1.X.X</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="center">...</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="introduccio">Introducció</h2>
+<p>A partir de les pràctiques anteriors hem arribat a un escenari on un proxy invers actua d'intermediari entre dos servidors web Nginx, balancejant la càrrega entre ells. </p>
+<p>Ja vam dir que una important funció que podia tenir un proxy invers era realitzar el xifrat i desxifrat de SSL per utilitzar HTTPS en els servidors web. D'aquesta forma s'alleujava la càrrega de treball dels servidors web, ja que és una tasca que consumeix recursos.</p>
+<p>En definitiva, tindríem un esquema com aquest:</p>
+<p><img alt="" src="../../img/4.1-16.png" /></p>
+<p>Podria arribar-se a pensar que en termes de seguretat no és adequat que el tràfic de xarxa entre el balanceador de càrrega i els servidors web vagi sense xifrar (HTTP). No obstant això, pensant en un cas real, la xarxa privada i el proxy invers/balanceador de càrrega, a més d'estar a la mateixa xarxa privada, solen estar administrats per les mateixes persones de la mateixa empresa, per la qual cosa no suposa un perill real que aquest tràfic vagi sense xifrar.</p>
+<p>Podria xifrar-se si fos necessari, però llavors perd sentit que el proxy invers s'encarregui del xifrat SSL para HTTPS, ja que faríem el mateix treball dues vegades.</p>
+<p>Així les coses, ens quedarem amb l'esquema de la imatge de més amunt per a la pràctica.</p>
+<h3 id="certificats">Certificats</h3>
+<p>HTTPS es basa en l'ús de certificats digitals.</p>
+<p>Grosso modo, quan entrem en una web via HTTPS, aquesta ens presenta un certificat digital per assegurar que és qui diu ser. Com sabem que aquest certificat és vàlid? Hem de consultar a l'Autoritat de Certificació (CA) que va emetre aquest certificat si és vàlid.</p>
+<p>Les CA són entitats que emeten certificats i el seu funcionament es basa en la confiança. Confiem que els certificats emesos i signats per aquestes entitats són reals i funcionals. </p>
+<p><img alt="" src="../../img/4.1-17.png" /></p>
+<p>Els navegadors web tenen precargadas les Autoritats de Certificació en les quals confien per defecte a l'hora de navegar per webs HTTPS:</p>
+<p><img alt="" src="../../img/4.1-18.png" /></p>
+<p>Si accedim a una web que el seu certificat no hagi estat emès i signat per una d'aquestes entitats, ens saltarà el famós avís:</p>
+<p><img alt="" src="../../img/4.1-19.png" /></p>
+<p>Ja que si el certificat no ha estat emès i signat per una CA de confiança, pot ser que es tracti d'una web maliciosa que ens suposi un risc de seguretat, com bé diu l'avís.</p>
+<h2 id="tasca">Tasca</h2>
+<p>Partim de la configuració exacta de la pràctica anterior, que recordem era aquesta:</p>
+<p><img alt="" src="../../img/4.1-20.png" /></p>
+<p>Pel que en aquesta pràctica simplement hem d'afegir la configuració SSL per al xifrat en el Proxy Invers:</p>
+<p><img alt="" src="../../img/4.1-21.png" /></p>
+<p>Tal com quedarà la configuració, des del client encara podríem accedir als dos servidors web amb HTTP (podeu provar-ho) però és alguna cosa que solucionarem en següents temes, configurant un firewall perquè només la IP del proxy invers pugui accedir per HTTP als servidors web i ningú més.</p>
+<h3 id="creacio-del-certificat-autofirmat">Creació del certificat autofirmat</h3>
+<p>Nosaltres no utilitzarem certificats de cap CA de confiança, bàsicament perquè:</p>
+<ul>
+<li>
+<p>Els nostres servicis no estan publicats en Internet</p>
+</li>
+<li>
+<p>Aquests certificats son de pagament</p>
+</li>
+</ul>
+<p>Així doncs, nosaltres crearem els nostres propis certificats i els signarem nosaltres mateixos com si anéssim una CA autèntica per poder simular aquest escenari.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Això provocarà que quan accedim per HTTPS a nostre lloc web per primera vegada, ens vaig saltar l'avís de seguretat que es comentava en la introducció.</p>
+</div>
+<p>En aquest cas no hi haurà perill donat que estem 100% segurs de que aquest certificat ho hem emès nosaltres per a aquesta pràctica, no hi ha dubtes.</p>
+<p>Veiem doncs el procés per generar els certificats i les claus associades a ells (privada/pública). En primer lloc hem de crear el següent directori:</p>
+<p><code>/etc/nginx/ssl/balanceig</code></p>
+<p>Podem crear el certificat i les claus de forma simultània amb un únic comando, on:</p>
+<ul>
+<li>
+<p><strong>openssl</strong>: aquesta és l'eina per línia de comandos bàsica per crear i administrar certificats, claus i altres arxius OpenSSL. </p>
+</li>
+<li>
+<p><strong>req</strong>: aquest subcomando s'utilitza per generar una sol·licitud de certificats i també sol·licituds de signatura de certificats (CSR).</p>
+</li>
+<li>
+<p><strong>-x509</strong>: Això modifica encara més el subcomando anterior en dir-li a l'eina que volem crear un certificat autofirmat en lloc de generar una sol·licitud de signatura de certificat, com succeiria normalment. </p>
+</li>
+<li>
+<p><strong>-nodes</strong>: Això li diu a OpenSSL que ometi l'opció d'assegurar el nostre certificat amb contrasenya. Necessitem que Nginx puga llegir l'arxiu sense la intervenció de l'usuari quan s'inicia el servidor. Una contrasenya evitaria que això passés ja que hauríem de introduir-la a mà després de cada reinici. </p>
+</li>
+<li>
+<p><strong>-days 365</strong>: aquesta opció estableix el temps durant el qual el certificat es considerarà vàlid. Ho configurem pa r a un any.</p>
+</li>
+<li>
+<p><strong>-newkey rsa</strong>: 2048 : Això especifica que volem generar un nou certificat i una nova clau al mateix temps. No vam crear la clau necessària per signar el certificat en un pas anterior, per la qual cosa hem de crear-la juntament amb el certificat. La rsa:2048part li diu que creï una clau RSA de 2048 bits de longitud. </p>
+</li>
+<li>
+<p><strong>-keyout</strong>: aquest paràmetre li diu a OpenSSL on col·locar l'arxiu de clau privada generat que estem creant. </p>
+</li>
+<li>
+<p><strong>-out</strong>: Això li diu a OpenSSL on col·locar el certificat que estem creant. </p>
+</li>
+</ul>
+<p>El comando complet seria així:</p>
+<p><img alt="" src="../../img/4.1-22.png" /></p>
+<p>Vos sol·licitarà que introduïu una sèrie de paràmetres, com veieu en el requadre vermell de baix de la imatge. Heu d'introduir els mateixos paràmetres que en la imatge excepte en el “Organizational Unit Name” que veieu en el requadre en groc. Ací haureu de posar <code>2SMR – SRE - Vostrenom</code></p>
+<h3 id="configuracio-ssl-en-el-proxy-invers">Configuració SSL en el proxy invers</h3>
+<p>De la pràctica anterior, dins del directori <code>/etc/nginx/sites-available</code> ja heu de tenir l'arxiu de configuració anomenat <em>“balanceig”</em>. És precisament aquí on realitzarem la configuració perquè l'accés  a l'lloc web es realitzi mitjançant SSL (HTTPS).</p>
+<p>Dins del bloc <code>server {…}</code> heu d'afegir, sense llevar res, les següents línies de configuració:</p>
+<p><img alt="" src="../../img/4.1-23.png" /></p>
+<p>On li esteu dient que:</p>
+<ul>
+<li>
+<p>Escolti en el port 443 → Port per defecte d'HTTPS</p>
+</li>
+<li>
+<p>El directori on està el certificat que heu generat anteriorment</p>
+</li>
+<li>
+<p>El directori on està la clau que heu generat anteriorment</p>
+</li>
+<li>
+<p>Els protocols i tipus de xifrats que es poden utilitzar → Aquestes són les versions de protocols i els tipus de xifrats considerats assegurances a dia d'avui (hi ha molts més però no es consideren assegurances actualment)</p>
+</li>
+<li>
+<p><code>server_name</code> ja ho teníeu de la pràctica anterior, no fa mancada tocar-ho</p>
+</li>
+<li>
+<p>L'arxiu on es guarden els logs canvia de nom, ara serà https_access.log.</p>
+</li>
+</ul>
+<p>Recordeu que després de modificar qualsevol configuració d'un servici, cal reiniciar el servici, en aquest cas Nginx.</p>
+<h3 id="comprovacions">Comprovacions</h3>
+<ul>
+<li>
+<p>Si accediu ara a https://balanceig us hauria de saltar un avís de seguretat a causa que el nostre certificat és autofirmat, com comentàvem anteriorment.</p>
+</li>
+<li>
+<p>Si afegiu una una excepció podreu accedir a l'lloc web i recarregant repetidament la pàgina amb F5, veureu que el balanceig de càrrega es fa correctament accedint mitjançant HTTPS.</p>
+</li>
+<li>
+<p>Per comprovar que les dades del certificat són, efectivament, els vostres podeu comprovar-ho així. Prement en el cadenat de la barra de recerca:</p>
+</li>
+</ul>
+<p><img alt="" src="../../img/4.1-24.png" /></p>
+<p>Amb més informació:
+<img alt="" src="../../img/4.1-25.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Ací també podreu eliminar l'excepció que heu afegit a la pàgina de l'advertiment de seguretat, per si necessiteu reiniciar les proves.</p>
+</div>
+<p>I finalment, veure certificat:</p>
+<p><img alt="" src="../../img/4.1-26.png" /></p>
+<p>I podrem veure els detalls:
+<img alt="" src="../../img/4.1-27.png" /></p>
+<p>Si ara intenteu accedir a <strong><code>http://balanceig</code></strong>, hauríeu de poder accedir? Comproveu-ho i descriviu què passa i per què.</p>
+<h3 id="redireccio-forcosa-a-https">Redirecció forçosa a HTTPS</h3>
+<p>Perquè, indistintament de la forma per la qual accedim a l'lloc web balancejo, sempre es forci a utilitzar HTTPS, necessitarem una configuració addicional.</p>
+<p>Necessitem afegir un bloc “server” addicional i separat de l'altre, a l'arxiu de configuració de “balanceig”. Alguna cosa així:</p>
+<p><img alt="" src="../../img/4.1-28.png" /></p>
+<p>Amb aquesta configuració li estem dient que:</p>
+<ul>
+<li>
+<p>Escolti en el port 80 (HTTP)</p>
+</li>
+<li>
+<p>Que el nom al que respondrà el servidor/lloc web és balanceig</p>
+</li>
+<li>
+<p>Què guardi els logs d'aquest bloc en aquest directori i amb aquest nom</p>
+</li>
+<li>
+<p>Quan es rep una petició amb les dues condicions anteriors, es retorna un codi HTTP 301:</p>
+<ul>
+<li>
+<p><strong>HTTP 301 Moved Permanently</strong> (Mogut permanentment en valencià) és un codi d'estat d'HTTP que indica que el host ha estat capaç de comunicar-se amb el servidor però que el recurs sol·licitat ha estat mogut a una altra adreça permanentementeEs molt important configurar les redireccions 301 en els llocs web i per a això hi ha diferents mètodes i sintaxis per realitzar la redirecció 301.</p>
+<ul>
+<li>La <strong>redirecció 301</strong> és un codi o comando inserit per un Webmaster que permet redirigir als usuaris i cercadors d'un lloc web d'un lloc a un altre</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Aclaració</p>
+<p>És a dir, la qual cosa estem fent és que quan es rebi una petició HTTP (port 80) en <code>http://balanceig</code>, es redirigeixi a <code>https://balanceig</code> (HTTPS)</p>
+</div>
+</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Tasca</p>
+<ul>
+<li>Elimineu de l'altre bloc <code>server{…}</code> la línies que facin referència a escoltar en el port 80 (<code>listen 80…</code>).</li>
+<li>Reinicieu el servici</li>
+<li>Comproveu ara que quan entreu en <code>http://balanceig</code>, automàticament us redirigeix a la versió segura de la web.</li>
+<li>Comproveu que quan realitzeu una petició en l'arxiu de log <code>http_access.log</code> apareix la redirecció 301 i que, de la mateixa manera, apareix una petició GET en <code>https_access.log</code>.</li>
+</ul>
+</div>
+<h2 id="questions-finals">Qüestions finals</h2>
+<div class="admonition task">
+<p class="admonition-title">Questió 1</p>
+<p>Hem configurat el nostre proxy invers amb tot lo que ens fa falta però no ens funciona i ens dona un error del tipus <code>This site can't provide a secure connection, ERR_SSL_PROTOCOL_ERROR.</code></p>
+<p>Dins del nostre server block tenim això:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">server {</span>
+    <span class="l l-Scalar l-Scalar-Plain">listen 443;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_certificate /etc/nginx/ssl/enrico-berlinguer/server.crt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_certificate_key /etc/nginx/ssl/enrico-berlinguer/server.key;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_protocols                   TLSv1.3;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ssl_ciphers                     ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS;</span>
+    <span class="l l-Scalar l-Scalar-Plain">server_name enrico-berlinguer;</span>
+    <span class="l l-Scalar l-Scalar-Plain">access_log /var/log/nginx/https_access.log;</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">location / {</span>
+        <span class="l l-Scalar l-Scalar-Plain">proxy_pass http://red-party;</span>
+        <span class="l l-Scalar l-Scalar-Plain">}</span>
+    <span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Qüestió 2</p>
+<p>Imagineu que intentem accedir al nostre lloc web HTTPS i ens trobem el següent error:</p>
+<p><img alt="" src="../../img/Your-connection-isnt-private-NET-ERR_CERT_REVOKED.png" /></p>
+<p>Investigueu què està passant i com s'ha de solucionar.</p>
+</div>
+<h2 id="avaluacio">Avaluació</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Criteri</th>
+<th align="center">Puntuació</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Creació correcta del certificat</td>
+<td align="center"><strong>1 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració SSL correcta del proxy</td>
+<td align="center"><strong>3 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Comprovacions</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Configuració correcta de la redirecció forçosa a HTTPS i comprovacions</td>
+<td align="center"><strong>2 punts</strong></td>
+</tr>
+<tr>
+<td align="left">Qüestions finals</td>
+<td align="center"><strong>1 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha tingut cura amb el format del document, utilitzant la plantilla actualitzada i fent ús d'un correcte llenguatge tècnic</td>
+<td align="center"><strong>0.5 punt</strong></td>
+</tr>
+<tr>
+<td align="left">S'ha inclòs la taula amb les IPs de cada màquina de la pràctica, tal i com es demana</td>
+<td align="center"><strong>0.5 punt</strong></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../P4.4/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Pràctica 4.4 - Balanceig de càrrega amb proxy invers en Nginx
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../P5.1/" class="md-footer__link md-footer__link--next" aria-label="Següent: Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              Practica 5.1 - Instal·lació i hardening (bastionat) de servici SSH
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.top", "navigation.indexes", "toc.integrate"], "translations": {"clipboard.copy": "C\u00f2pia al porta-retalls", "clipboard.copied": "Copiat al porta-retalls", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Cerca", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
