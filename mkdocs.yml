@@ -58,5 +58,9 @@ nav:
     - Practica 5.2 - SSH amb MFA (Autenticació Multifactor): section/P5.2.md
     - Projecte final - Configuració de servicis: section/proj.md
 
+analytics: 
+    provider: google 
+    property: G-3NX5MD5C8H
+
   #- Desplegament automàtc d'escenaris:
   #  - Ejeegue automático de escenariomplo: 
